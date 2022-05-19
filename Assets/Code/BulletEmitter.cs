@@ -15,6 +15,8 @@ public class BulletEmitter : MonoBehaviour
     
     [SerializeField] private float startSpawningAfterSeconds = 1f;
     private float angle;
+
+    public bool shouldRotateWithEmitter;
     
     private ParticleSystem bulletParticleSystem;
     
@@ -56,6 +58,11 @@ public class BulletEmitter : MonoBehaviour
             mainModule.startSize = bulletSize;
             mainModule.startSpeed = bulletSpeed;
             mainModule.maxParticles = 100000;
+            
+            if (!shouldRotateWithEmitter)
+            {
+                mainModule.simulationSpace = ParticleSystemSimulationSpace.World;
+            }
 
             var emission = bulletParticleSystem.emission;
             emission.enabled = false;
@@ -78,6 +85,11 @@ public class BulletEmitter : MonoBehaviour
             // Create a bullet Particle System from given Template for every given angle.
             var bulletSpawner = Instantiate(bulletTemplate, transform.position, Quaternion.identity, transform);
             bulletSpawner.transform.Rotate(angle * i, 90, 0);
+            if (!shouldRotateWithEmitter)
+            {
+                var mainModule = template.main;
+                mainModule.simulationSpace = ParticleSystemSimulationSpace.World;
+            }
         }
 
         InvokeRepeating("SpawnBulletsFromTemplate", startSpawningAfterSeconds, delayBetweenBullets);

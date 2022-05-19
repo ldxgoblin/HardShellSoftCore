@@ -1,3 +1,5 @@
+using System;
+using Cinemachine;
 using UnityEngine;
 
 public class ShootingModule : MonoBehaviour
@@ -6,11 +8,23 @@ public class ShootingModule : MonoBehaviour
     [SerializeField] private Vector3 _mousePos;
     [SerializeField] private GameObject _bullet;
     [SerializeField] private Transform _bulletTransform;
-    
+
+    [SerializeField] private AudioClip _shotClip;
+    private AudioSource _shotSource;
+
     public bool canFire;
     private float _timer;
-    private float timeBetweenFiring;
-    
+    [SerializeField] private float timeBetweenFiring;
+    private CinemachineImpulseSource _shotImpulseSource;
+
+    private float impulseModifier = 0.025f;
+
+    private void Awake()
+    {
+        _shotSource = GetComponent<AudioSource>();
+        _shotImpulseSource = GetComponent<CinemachineImpulseSource>();
+    }
+
     private void Update()
     {
         _mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -34,6 +48,11 @@ public class ShootingModule : MonoBehaviour
         {
             canFire = false;
             Instantiate(_bullet, _bulletTransform.position, Quaternion.identity);
+
+            Vector3 direction = transform.position - _mousePos;
+            _shotImpulseSource.GenerateImpulse(-direction * impulseModifier);
+            
+            _shotSource.PlayOneShot(_shotClip);
         }
     }
     
