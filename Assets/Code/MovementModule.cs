@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class MovementModule : MonoBehaviour
@@ -23,6 +24,7 @@ public class MovementModule : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         HandleMovement();
         HandleJumping();
+        CheckForRestartAfterFall();
     }
     
     void FixedUpdate()
@@ -34,6 +36,11 @@ public class MovementModule : MonoBehaviour
         }
     }
 
+    private void CheckForRestartAfterFall()
+    {
+        if (transform.position.y <= -10) SceneManager.LoadScene(0);
+    }
+    
     private void HandleCharacterFlip()
     {
         var scale = transform.localScale;
