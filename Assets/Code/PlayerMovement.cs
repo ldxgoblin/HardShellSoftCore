@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private CharacterController characterController;
     [SerializeField] private float horizontalMovement = 0f;
 
     private bool jump = false;
@@ -15,39 +15,55 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed = 6f;
     [SerializeField] private float timeZeroToMax = 0.5f;
     [SerializeField] private float timeMaxToZero = 6f;
-    [SerializeField] private float timeBrakeToZero = 1f;
-    
+
     private float forwardVelocity;
     
     private float accelRatePerSec;
     private float decelRatePerSec;
-    private float brakeRatePerSec;
-    
+
     private void Awake()
     {
         accelRatePerSec = maxSpeed / timeZeroToMax;
         decelRatePerSec = -maxSpeed / timeMaxToZero;
-        brakeRatePerSec = -maxSpeed / timeBrakeToZero;
-        
+
         forwardVelocity = 0f;
     }
     // Start is called before the first frame update
     void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
+        
+        if (characterController == null)
+        {
+            Debug.LogError("Player Character Controller missing!");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        forwardVelocity += accelRatePerSec * Time.deltaTime;
-        forwardVelocity = Mathf.Min(forwardVelocity, maxSpeed);
+        horizontalMovement = Input.GetAxisRaw("Horizontal");
         
-        horizontalMovement = Input.GetAxisRaw("Horizontal") * forwardVelocity;
+        if (horizontalMovement != 0) 
+        {
+            Accelerate(accelRatePerSec);
+        }
+        else
+        {
+            Accelerate(decelRatePerSec);
+        }
+        
+        horizontalMovement *= forwardVelocity;
         
         HandleInput();
     }
 
+    private void Accelerate(float accel)
+    {
+        forwardVelocity += accel * Time.deltaTime;
+        forwardVelocity = Mathf.Clamp(forwardVelocity, 0, maxSpeed);
+    }
+    
     private void HandleInput()
     {
         if (Input.GetButtonDown("Jump"))
@@ -67,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        _characterController.Move(horizontalMovement * Time.fixedDeltaTime, crouch, jump);
+        characterController.Move(horizontalMovement * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }
     
