@@ -604,13 +604,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56eb4e93392ce468db12fa539b05c482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 348023605}
+  characterController: {fileID: 0}
   horizontalMovement: 0
-  crouch: 0
+  crouch: 1
   maxSpeed: 40
   timeZeroToMax: 0.5
   timeMaxToZero: 6
-  timeBrakeToZero: 1
 --- !u!114 &348023605
 MonoBehaviour:
   m_ObjectHideFlags: 0
