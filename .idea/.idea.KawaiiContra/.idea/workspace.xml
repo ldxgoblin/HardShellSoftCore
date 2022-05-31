@@ -21,8 +21,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Desktop/FullAutoFluff_Prototype_v0.app/Contents/MacOS/Full Auto Fluff" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -65,6 +67,8 @@
       <workItem from="1653011484522" duration="10263000" />
       <workItem from="1653370564742" duration="579000" />
       <workItem from="1653371226713" duration="603000" />
+      <workItem from="1654024916988" duration="345000" />
+      <workItem from="1654027056030" duration="5920000" />
     </task>
     <servers />
   </component>
@@ -73,5 +77,9 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
