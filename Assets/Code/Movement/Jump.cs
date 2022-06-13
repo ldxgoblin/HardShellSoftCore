@@ -1,13 +1,16 @@
 using UnityEngine;
 
+[RequireComponent(typeof(GroundCheck),typeof(InputHandler))]
 public class Jump : MonoBehaviour
 {
-    [SerializeField] private InputController inputSource = null;
     [SerializeField, Range(0f, 100f)] private float jumpHeight = 4f;
     [SerializeField, Range(0, 5)] private int maxJumpCount = 2;
     [SerializeField, Range(0f, 5f)] private float downwardMultiplier = 3f;
     [SerializeField, Range(0f, 5f)] private float upwardMultiplier = 3f;
 
+    private InputHandler inputHandler;
+    private InputSource inputSource = null;
+    
     private Rigidbody2D rigidbody2D;
     private GroundCheck groundCheck;
     private Vector2 velocity;
@@ -17,21 +20,31 @@ public class Jump : MonoBehaviour
 
     private bool desiredJump;
     private bool isOnGround;
-    
+
     private void Awake()
     {
+        inputHandler = GetComponent<InputHandler>();
+        if (inputHandler.InputSource != null)
+        {
+            inputSource = inputHandler.InputSource;
+        }
+
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
     }
 
     private void Update()
     {
+        if(!inputHandler.IsInputActive()) return;
+        
         // using the OR Operator this value remains set until we change it to false manually
         desiredJump |= inputSource.GetJumpInput();
     }
 
     private void FixedUpdate()
     {
+        if(!inputHandler.IsInputActive()) return;
+        
         isOnGround = groundCheck.GetCurrentGroundState();
         velocity = rigidbody2D.velocity;
         

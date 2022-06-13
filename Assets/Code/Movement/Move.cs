@@ -1,9 +1,8 @@
 using UnityEngine;
 
+[RequireComponent(typeof(GroundCheck),typeof(InputHandler))]
 public class Move : MonoBehaviour
 {
-    [SerializeField] private InputController inputSource = null;
-
     [SerializeField, Range(0f, 100f)] private float maxSpeed = 4f;
     [SerializeField, Range(0f, 100f)] private float maxAcceleration = 35f;
     [SerializeField, Range(0f, 100f)] private float maxAirAcceleration = 20f;
@@ -18,13 +17,16 @@ public class Move : MonoBehaviour
     private float acceleration;
     private bool isOnGround;
 
+    private InputHandler inputHandler;
+
     private Vector2 facingLeft;
     private bool isFacingLeft;
-    
+
     private Animator animator;
     
     private void Awake()
     {
+        inputHandler = GetComponent<InputHandler>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
 
@@ -35,7 +37,9 @@ public class Move : MonoBehaviour
     
     private void Update()
     {
-        direction.x = inputSource.GetHorizontalInput();
+        if(!inputHandler.IsInputActive()) return;
+        
+        direction.x = inputHandler.InputSource.GetHorizontalInput();
         
         // this way we always have a velocity value above 0
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - groundCheck.GetFriction(), 0f);
@@ -43,6 +47,8 @@ public class Move : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!inputHandler.IsInputActive()) return;
+        
         isOnGround = groundCheck.GetCurrentGroundState();
         velocity = rigidbody2D.velocity;
 
@@ -67,7 +73,6 @@ public class Move : MonoBehaviour
         
         //animator.SetFloat("Speed", velocity.x);
     }
-
     
     // this whole flipping business should be extracted into a character class as it is only barely related to movement
     private void FlipSprite()

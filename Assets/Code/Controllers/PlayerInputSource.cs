@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerController", menuName = "InputController/PlayerController")]
-public class PlayerController : InputController
+public class PlayerInputSource : InputSource
 {
     public override float GetHorizontalInput()
     {
@@ -21,5 +21,10 @@ public class PlayerController : InputController
     public override bool GetDashInput()
     {
         return Input.GetButtonDown("Dash");
+    }
+
+    public override bool GetExitInput()
+    {
+        return Input.GetButtonDown("Cancel");
     }
 }

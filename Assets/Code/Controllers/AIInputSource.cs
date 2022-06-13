@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AIController", menuName = "InputController/AIController")]
-public class AIController : InputController
+public class AIInputSource : InputSource
 {
     
     // These are currently only placeholder values as there is no AI System yet
@@ -21,6 +21,11 @@ public class AIController : InputController
     }
 
     public override bool GetDashInput()
+    {
+        return false;
+    }
+
+    public override bool GetExitInput()
     {
         return false;
     }
