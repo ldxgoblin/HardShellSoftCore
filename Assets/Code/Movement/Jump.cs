@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
     [SerializeField] private InputController inputSource = null;
-    [SerializeField, Range(0f, 10f)] private float jumpHeight = 4f;
+    [SerializeField, Range(0f, 100f)] private float jumpHeight = 4f;
     [SerializeField, Range(0, 5)] private int maxJumpCount = 2;
     [SerializeField, Range(0f, 5f)] private float downwardMultiplier = 3f;
     [SerializeField, Range(0f, 5f)] private float upwardMultiplier = 3f;
