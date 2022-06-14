@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/AIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/AIInputSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/AIController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/AIInputSource.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/InputSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/InputController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/InputSource.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerInputSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerInputSource.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Dash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Movement/Dash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Jump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Movement/Jump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Movement/Move.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PrototypeGate1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PrototypeGate1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +76,7 @@
       <workItem from="1653371226713" duration="603000" />
       <workItem from="1654024916988" duration="345000" />
       <workItem from="1654027056030" duration="5920000" />
-      <workItem from="1655133677030" duration="14999000" />
+      <workItem from="1655133677030" duration="17518000" />
     </task>
     <servers />
   </component>

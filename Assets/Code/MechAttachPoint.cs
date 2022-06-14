@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,9 +7,12 @@ public class MechAttachPoint : MonoBehaviour
     private InputHandler playerInputHandler;
 
     private CircleCollider2D circleCollider2D;
-    private float cooldown = 1f;
     
     private GameObject currentRider = null;
+    private Rigidbody2D riderRigidbody2D;
+
+    [SerializeField] private float ejectionForce = 10f;
+    [SerializeField, Range(1f, 5f)] private float postEjectionCooldown = 1f;
     
     private bool mechIsOccupied = false;
 
@@ -40,6 +42,7 @@ public class MechAttachPoint : MonoBehaviour
         {
             currentRider = col.gameObject;
             playerInputHandler = currentRider.GetComponent<InputHandler>();
+            riderRigidbody2D = currentRider.GetComponent<Rigidbody2D>();
             
             currentRider.transform.parent = transform;
             currentRider.SetActive(false);
@@ -57,14 +60,16 @@ public class MechAttachPoint : MonoBehaviour
     private void ExitMech()
     {
         playerInputHandler.SwapInputSource(mechInputHandler);
-        ReleaseRider();
+        EjectRider();
         mechIsOccupied = false;
     }
 
-    private void ReleaseRider()
+    private void EjectRider()
     {
         currentRider.transform.parent = null;
         currentRider.SetActive(true);
+        
+        riderRigidbody2D.AddForce(Vector2.up * ejectionForce, ForceMode2D.Impulse);
         
         StartCoroutine(CoolDown());
         
@@ -74,7 +79,7 @@ public class MechAttachPoint : MonoBehaviour
     private IEnumerator CoolDown()
     {
         circleCollider2D.enabled = false;
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(postEjectionCooldown);
         circleCollider2D.enabled = true;
     }
 }

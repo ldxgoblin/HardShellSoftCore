@@ -3924,9 +3924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300f4f5460ff849b48da85dbba905b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 4
+  maxSpeed: 18
   maxAcceleration: 35
-  maxAirAcceleration: 20
+  maxAirAcceleration: 5
 --- !u!114 &231413329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4030,7 +4030,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.41401672
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -4042,7 +4042,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0.36320752, b: 0.7264305, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4094,7 +4094,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -7723,6 +7723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a364ca184563247eea8d5efa7f1274f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ejectionForce: 15
+  postEjectionCooldown: 1
 --- !u!1 &1672083491
 GameObject:
   m_ObjectHideFlags: 0
