@@ -60,8 +60,8 @@ public class MechAttachPoint : MonoBehaviour
     private void ExitMech()
     {
         playerInputHandler.SwapInputSource(mechInputHandler);
-        EjectRider();
         mechIsOccupied = false;
+        EjectRider();
     }
 
     private void EjectRider()
@@ -69,7 +69,7 @@ public class MechAttachPoint : MonoBehaviour
         currentRider.transform.parent = null;
         currentRider.SetActive(true);
         
-        riderRigidbody2D.AddForce(Vector2.up * ejectionForce, ForceMode2D.Impulse);
+        //riderRigidbody2D.AddForce(Vector2.up * ejectionForce);
         
         StartCoroutine(CoolDown());
         

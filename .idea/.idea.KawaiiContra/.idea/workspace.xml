@@ -7,12 +7,33 @@
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BulletMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BulletMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/GunMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/GunMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Slippery.physicMaterial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Slippery.physicMaterial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BulletTemplates.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BulletTemplates/BasicPinkBullet.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BulletTemplates/BasicPinkBullet.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BulletTemplates/GreenStream.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BulletTemplates/GreenStream.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PrototypeGate1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PrototypeGate1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@12.1.6/Editor/Drawing/PreviewManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -76,7 +97,7 @@
       <workItem from="1653371226713" duration="603000" />
       <workItem from="1654024916988" duration="345000" />
       <workItem from="1654027056030" duration="5920000" />
-      <workItem from="1655133677030" duration="17518000" />
+      <workItem from="1655133677030" duration="20749000" />
     </task>
     <servers />
   </component>
