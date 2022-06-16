@@ -75,7 +75,7 @@ Material:
     - _Radius: 0.4
     - _RemovedSegments: 0
     - _Rotation: 0
-    - _SegmentCount: 8
+    - _SegmentCount: 40
     - _SegmentSpacing: 0.01
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

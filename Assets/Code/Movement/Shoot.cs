@@ -2,7 +2,7 @@ using System;
 using Cinemachine;
 using UnityEngine;
 
-public class ShootingModule : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private Vector3 _mousePos;

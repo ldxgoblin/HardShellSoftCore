@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer),typeof(InputHandler))]
@@ -19,6 +18,9 @@ public class Dash : MonoBehaviour
     private bool desiredDash;
     private bool isDashing;
     private bool canDash = true;
+    
+    [SerializeField] private AudioClip _dashClip;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -30,6 +32,8 @@ public class Dash : MonoBehaviour
         
         rigidbody2D = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
+        
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()

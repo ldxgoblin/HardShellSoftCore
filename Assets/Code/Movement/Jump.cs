@@ -20,6 +20,9 @@ public class Jump : MonoBehaviour
 
     private bool desiredJump;
     private bool isOnGround;
+    
+    [SerializeField] private AudioClip _jumpClip;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -31,6 +34,8 @@ public class Jump : MonoBehaviour
 
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -38,7 +43,7 @@ public class Jump : MonoBehaviour
         if(!inputHandler.IsInputActive()) return;
         
         // using the OR Operator this value remains set until we change it to false manually
-        desiredJump |= inputSource.GetJumpInput();
+        desiredJump |= inputHandler.InputSource.GetJumpInput();
     }
 
     private void FixedUpdate()
