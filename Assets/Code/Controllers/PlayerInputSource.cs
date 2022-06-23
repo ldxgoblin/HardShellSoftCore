@@ -27,4 +27,9 @@ public class PlayerInputSource : InputSource
     {
         return Input.GetButtonDown("Cancel");
     }
+
+    public override bool GetFireInput()
+    {
+        return Input.GetButtonDown("Fire1");
+    }
 }

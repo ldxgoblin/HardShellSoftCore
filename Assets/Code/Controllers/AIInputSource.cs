@@ -29,4 +29,9 @@ public class AIInputSource : InputSource
     {
         return false;
     }
+
+    public override bool GetFireInput()
+    {
+        return false;
+    }
 }
