@@ -6,42 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/MechAnimation.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/MechAnimation/HS_HoverMech 1.psb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/MechAnimation/HS_HoverMech 1.psb.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/MechAnimation/HS_HoverMech.psb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/MechAnimation/HS_HoverMech.psb.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempCharacter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/TempCharacter.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/machinegun.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/machinegun.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/pistol.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/pistol.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/rifle.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/rifle.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/shotgun.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/shotgun.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/AIInputSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/AIInputSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/InputSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/InputSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerInputSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerInputSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Dash.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Dash.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/GroundCheck.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/GroundCheck.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Jump.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Jump.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Move.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Move.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Shoot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Movement/Shoot.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mech.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mech.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PrototypeGate1.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PrototypeGate1.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Shoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Shoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UIManager.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +86,7 @@
       <workItem from="1655133677030" duration="23759000" />
       <workItem from="1655802722564" duration="1072000" />
       <workItem from="1655805599657" duration="13438000" />
+      <workItem from="1655993630113" duration="10889000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using UnityEngine;
 
@@ -9,7 +10,6 @@ public class Shoot : MonoBehaviour
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform projectileTransform;
     [SerializeField] private float delayBetweenShots;
-    [SerializeField] private float aimRotationSpeed = 5f;
     [SerializeField] private AudioClip shotClip;
     
     private Camera mainCamera;
@@ -20,8 +20,11 @@ public class Shoot : MonoBehaviour
     private float shotCooldown;
     public bool canFire;
     
-    private Vector3 aimDirection;
+    private Vector3 aimTarget;
     
+    // Debug Actions
+    public static Action<Vector3, Vector3> onMousePositionUpdate;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -32,7 +35,7 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        // if(!inputHandler.IsInputActive()) return;
+        if(!inputHandler.IsInputActive()) return;
 
         RotateTowardsMousePosition();
         
@@ -45,27 +48,37 @@ public class Shoot : MonoBehaviour
                 shotCooldown = 0;
             }
         }
+        
         if(inputHandler.InputSource.GetFireInput() && canFire)
         {
             canFire = false;
             Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
-            Vector3 direction = transform.position - aimDirection;;
+            Vector3 direction = transform.position - aimTarget;;
             shotImpulseSource.GenerateImpulse(-direction * impulseModifier);
             
             shotAudioSource.PlayOneShot(shotClip);
         }
+        
     }
-    
     private void RotateTowardsMousePosition()
     {
-        aimDirection = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.transform.position.z));
+        //this works only as long as we dont flip the localscale lol
         
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        //Quaternion aimRotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-        Quaternion aimRotation = Quaternion.LookRotation(Vector3.forward, aimDirection);
-        Debug.Log($"{aimRotation.eulerAngles}");
+        Vector3 mousePosition = Input.mousePosition;
         
-        transform.rotation = Quaternion.Slerp(transform.rotation, aimRotation, aimRotationSpeed * Time.deltaTime);
+        mousePosition.z = 5.23f;
+
+        Vector3 targetPosition = mainCamera.WorldToScreenPoint(transform.position);
+        mousePosition.x -= targetPosition.x;
+        mousePosition.y -= targetPosition.y;
+
+        float angle = 0f;
+        
+        angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
+
+        Debug.Log($"Current Z-Rotation: {angle}");
+        
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }

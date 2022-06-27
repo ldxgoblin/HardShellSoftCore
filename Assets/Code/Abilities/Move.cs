@@ -20,7 +20,7 @@ public class Move : MonoBehaviour
     private InputHandler inputHandler;
 
     private Vector2 facingLeft;
-    private bool isFacingLeft;
+    public bool isFacingLeft;
 
     private Animator animator;
     

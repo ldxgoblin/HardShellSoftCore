@@ -45,14 +45,18 @@ public class MechAttachPoint : MonoBehaviour
             riderRigidbody2D = currentRider.GetComponent<Rigidbody2D>();
             
             currentRider.transform.parent = transform;
-            currentRider.SetActive(false);
-            
+            transform.localScale = currentRider.transform.localScale;
+
             EnterMech(playerInputHandler);
         }
     }
 
     private void EnterMech(InputHandler origin)
     {
+        transform.parent.localScale = currentRider.transform.localScale;
+        
+        currentRider.SetActive(false);
+        
         mechInputHandler.SwapInputSource(origin);
         mechIsOccupied = true;
     }
@@ -66,13 +70,13 @@ public class MechAttachPoint : MonoBehaviour
 
     private void EjectRider()
     {
-        currentRider.transform.parent = null;
         currentRider.SetActive(true);
         
-        //riderRigidbody2D.AddForce(Vector2.up * ejectionForce);
+        currentRider.transform.localScale = transform.parent.localScale;
         
         StartCoroutine(CoolDown());
         
+        currentRider.transform.parent = null;
         currentRider = null;  
     }
 
