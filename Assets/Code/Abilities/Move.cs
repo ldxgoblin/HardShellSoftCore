@@ -11,6 +11,7 @@ public class Move : MonoBehaviour
     private Vector2 desiredVelocity;
     private Vector2 velocity;
     private Rigidbody2D rigidbody2D;
+    private SpriteRenderer spriteRenderer;
     private GroundCheck groundCheck;
 
     private float maxSpeedChange;
@@ -28,6 +29,7 @@ public class Move : MonoBehaviour
     {
         inputHandler = GetComponent<InputHandler>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         groundCheck = GetComponent<GroundCheck>();
 
         animator = GetComponent<Animator>();
@@ -80,12 +82,14 @@ public class Move : MonoBehaviour
         if (isFacingLeft)
         {
             // moving left
-            transform.localScale = facingLeft;
+            //transform.localScale = facingLeft;
+            spriteRenderer.flipX = true;
         } 
         else
         {
             // moving right
-            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+            //transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+            spriteRenderer.flipX = false;
         }
     }
 }

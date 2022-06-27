@@ -91,28 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Forground booster
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 369
-      y: 4
-      width: 110
-      height: 231
-    spriteID: 1f7e5204adec74b22a620c84573bda70
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 369, y: -2}
-  - name: Foreground Player
+  - name: Player Mech Build
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -121,9 +100,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 357
+      width: 397
       height: 363
-    spriteID: 42f071750707842edb2749f4053a8edd
+    spriteID: 80b6bb4aae93e4a54b7793169d2222f0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -132,7 +111,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -36, y: 3}
+    uvTransform: {x: 4, y: 3}
   characterData:
     bones: []
     parts: []
@@ -164,31 +143,11 @@ ScriptedImporter:
   mosaicPSDLayers: []
   rigPSDLayers:
   - name: Player Mech Build
-    spriteName: 
-    isGroup: 1
+    spriteName: Player Mech Build
+    isGroup: 0
     parentIndex: -1
-    spriteID: 35e74659d8537457192addbb83bfaed7
+    spriteID: 80b6bb4aae93e4a54b7793169d2222f0
     layerID: 50
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 1
-  - name: Forground booster
-    spriteName: Forground booster
-    isGroup: 0
-    parentIndex: 0
-    spriteID: 1f7e5204adec74b22a620c84573bda70
-    layerID: 157
-    mosaicPosition: {x: 369, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Foreground Player
-    spriteName: Foreground Player
-    isGroup: 0
-    parentIndex: 0
-    spriteID: 42f071750707842edb2749f4053a8edd
-    layerID: 49
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1

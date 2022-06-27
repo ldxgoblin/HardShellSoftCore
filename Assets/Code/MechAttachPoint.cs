@@ -53,8 +53,6 @@ public class MechAttachPoint : MonoBehaviour
 
     private void EnterMech(InputHandler origin)
     {
-        transform.parent.localScale = currentRider.transform.localScale;
-        
         currentRider.SetActive(false);
         
         mechInputHandler.SwapInputSource(origin);
@@ -71,9 +69,7 @@ public class MechAttachPoint : MonoBehaviour
     private void EjectRider()
     {
         currentRider.SetActive(true);
-        
-        currentRider.transform.localScale = transform.parent.localScale;
-        
+
         StartCoroutine(CoolDown());
         
         currentRider.transform.parent = null;
