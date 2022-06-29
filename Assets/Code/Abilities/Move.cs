@@ -32,7 +32,7 @@ public class Move : MonoBehaviour
         
         inputHandler = GetComponent<InputHandler>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         groundCheck = GetComponent<GroundCheck>();
 
         animator = GetComponent<Animator>();

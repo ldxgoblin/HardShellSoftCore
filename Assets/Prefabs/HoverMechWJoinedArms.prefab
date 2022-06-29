@@ -136,7 +136,7 @@ MonoBehaviour:
   inputHandler: {fileID: 7818845176373898187}
   projectile: {fileID: 369544534265692808, guid: 516eb83a4ede74e4ab9023633e59937a, type: 3}
   projectileTransform: {fileID: 6493789859599269049}
-  delayBetweenShots: 0.5
+  delayBetweenShots: 0.15
   shotClip: {fileID: 8300000, guid: 400dcc666f747458793d2141288f385b, type: 3}
   canFire: 0
 --- !u!82 &379484179430875688
@@ -493,7 +493,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 40
-  maxJumpCount: 2
+  maxJumpCount: 5
   downwardMultiplier: 3
   upwardMultiplier: 5
   _jumpClip: {fileID: 0}

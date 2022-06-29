@@ -1,28 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 
-public class HitPoints : MonoBehaviour
+[System.Serializable]
+public class HitPoints
 {
-    [field: SerializeField] public int MaxHitPoints { get; private set;  } = 20;
-    [field: SerializeField] public int CurrentHitPoints { get; private set; } = 20;
+    public int maxHitPoints = 20;
+    public int currentHitPoints = 20;
 
     private void ResetHitPoints()
     {
-        CurrentHitPoints = MaxHitPoints;
+        currentHitPoints = maxHitPoints;
     }
     
     public void IncreaseHitPoints(int amount)
     {
-        if (CurrentHitPoints + amount >= MaxHitPoints) CurrentHitPoints += amount;
-        else CurrentHitPoints = MaxHitPoints;
+        if (currentHitPoints + amount >= maxHitPoints) currentHitPoints += amount;
+        else currentHitPoints = maxHitPoints;
     }
 
-    private void DecreaseHitPoints(int amount)
+    public void DecreaseHitPoints(int amount)
     {
-        CurrentHitPoints -= amount;
-        if (CurrentHitPoints <= 0) Destroy(gameObject);
+        currentHitPoints -= amount;
     }
   
     private async void DecreaseHitPointsOverTime(int amount, int ticks)

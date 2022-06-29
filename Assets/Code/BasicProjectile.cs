@@ -30,23 +30,14 @@ public class BasicProjectile : MonoBehaviour
 
     private void MoveWithTransform()
     {
-        //transform.position += direction * projectileSpeed * Time.deltaTime;
         rigidbody2D.position += (Vector2)direction * projectileSpeed * Time.deltaTime;
 
         //rigidbody2D.MovePosition();
-        
         
         // To modify the position of the object with Rigidbody on it, always set Rigidbody.position when a 
         // new position doesn’t follow the previous one, or Rigidbody.MovePosition when it is a continuous movement, 
         // which also takes interpolation into account. When modifying it, apply operations always in FixedUpdate, 
         // not in Update functions. It will assure consistent physics behaviors.
-
-
-    }
-
-    private void MoveWithPhysics()
-    {
-        
     }
 
     private void AutoDestruct()
@@ -56,7 +47,13 @@ public class BasicProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Bullet Hit!");
+        Debug.Log($"Bullet Hit: {col.gameObject.name} !");
+        
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            var enemyActor = col.gameObject.GetComponent<Enemy>();
+            enemyActor.Damage(projectileDamage);
+        }
         Destroy(gameObject);
     }
 

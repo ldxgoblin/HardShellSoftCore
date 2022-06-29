@@ -30,6 +30,6 @@ public class PlayerInputSource : InputSource
 
     public override bool GetFireInput()
     {
-        return Input.GetButtonDown("Fire1");
+        return Input.GetButton("Fire1");
     }
 }
