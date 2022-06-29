@@ -23,7 +23,9 @@ public class MouseAimAndShoot : MonoBehaviour
     
     private Vector3 aimTarget;
     private Vector3 mousePosition;
-    
+
+    public static event Action<bool> onLookDirectionChange;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -65,6 +67,7 @@ public class MouseAimAndShoot : MonoBehaviour
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
         newProjectile.GetComponent<BasicProjectile>().SetupProjectile(direction);
     }
+    
     private void AimAtMousePosition()
     {
         mousePosition = Input.mousePosition;
@@ -83,10 +86,12 @@ public class MouseAimAndShoot : MonoBehaviour
         if (angle > 90 || angle < -90)
         {
             aimLocalScale.y = -1f;
+            onLookDirectionChange?.Invoke(true);
         }
         else
         {
             aimLocalScale.y = 1f;
+            onLookDirectionChange?.Invoke(false);
         }
         
         transform.localScale = aimLocalScale;

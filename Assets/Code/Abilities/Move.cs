@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundCheck),typeof(InputHandler))]
@@ -27,6 +28,8 @@ public class Move : MonoBehaviour
     
     private void Awake()
     {
+        MouseAimAndShoot.onLookDirectionChange += FlipSpriteX;
+        
         inputHandler = GetComponent<InputHandler>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -36,7 +39,12 @@ public class Move : MonoBehaviour
 
         facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
     }
-    
+
+    private void OnDestroy()
+    {
+        MouseAimAndShoot.onLookDirectionChange -= FlipSpriteX;
+    }
+
     private void Update()
     {
         if(!inputHandler.IsInputActive()) return;
@@ -62,34 +70,21 @@ public class Move : MonoBehaviour
         if (direction.x > 0 && isFacingLeft)
         {
             isFacingLeft = false;
-            FlipSprite();
         }
         
         if (direction.x < 0 && !isFacingLeft)
         {
             isFacingLeft = true;
-            FlipSprite();
         }
-        
+
+        FlipSpriteX(isFacingLeft);
         rigidbody2D.velocity = velocity;
         
         //animator.SetFloat("Speed", velocity.x);
     }
     
-    // this whole flipping business should be extracted into a character class as it is only barely related to movement
-    private void FlipSprite()
+    private void FlipSpriteX(bool flipX)
     {
-        if (isFacingLeft)
-        {
-            // moving left
-            //transform.localScale = facingLeft;
-            spriteRenderer.flipX = true;
-        } 
-        else
-        {
-            // moving right
-            //transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-            spriteRenderer.flipX = false;
-        }
+        spriteRenderer.flipX = flipX;
     }
 }

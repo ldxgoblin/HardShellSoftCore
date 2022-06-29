@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7047894155724562840}
   - component: {fileID: 7047894155724562842}
   - component: {fileID: 7047894155724562832}
+  - component: {fileID: 5838946776627192405}
   - component: {fileID: 7047894155724562844}
   - component: {fileID: 7047894155724562845}
   - component: {fileID: 7047894155724562847}
@@ -251,6 +252,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputSource: {fileID: 11400000, guid: e0c0153df3ded42e0a40df784d07bcba, type: 2}
+--- !u!114 &5838946776627192405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047894155724562821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff56d3a3d7de43df9bca1e84566d1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHitPoints>k__BackingField: 20
+  <CurrentHitPoints>k__BackingField: 20
 --- !u!114 &7047894155724562844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +293,7 @@ MonoBehaviour:
   maxSpeed: 15
   maxAcceleration: 100
   maxAirAcceleration: 100
+  isFacingLeft: 0
 --- !u!114 &7047894155724562847
 MonoBehaviour:
   m_ObjectHideFlags: 0

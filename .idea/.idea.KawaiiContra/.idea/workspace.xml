@@ -6,22 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/MechParts/HS_HoverMech_Body.psb" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/MechParts/HS_HoverMech_Body.psb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/MechParts/HS_HoverMech_Body.psb.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/MechParts/HS_HoverMech_Body.psb.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Shoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Shoot.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Bullet.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Bullet.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/CameraShake.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/CameraShake.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UIManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UIManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/BasicProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/BasicProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/AIInputSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/AIInputSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMech.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +89,8 @@
       <workItem from="1655133677030" duration="23759000" />
       <workItem from="1655802722564" duration="1072000" />
       <workItem from="1655805599657" duration="13438000" />
-      <workItem from="1655993630113" duration="18395000" />
+      <workItem from="1655993630113" duration="20657000" />
+      <workItem from="1656447517823" duration="5037000" />
     </task>
     <servers />
   </component>

@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 4701119235513044600}
   - component: {fileID: 7818845176373898190}
   m_Layer: 0
-  m_Name: HoverMech
+  m_Name: HoverMechWSeparateArms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
