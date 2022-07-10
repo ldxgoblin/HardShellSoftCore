@@ -1,20 +1,17 @@
-using System;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer),typeof(InputHandler))]
 public class Dash : MonoBehaviour
 {
-    [SerializeField, Range(0.1f, 10f)] private float dashTime = 0.5f;
-    [SerializeField, Range(0f, 10f)] private float dashTrailTime = 0.5f;
-    [SerializeField, Range(50f, 200f)] private float dashVelocity = 50f;
-
+    [SerializeField] private int maxDashCount = 2;
+    [SerializeField, Range(0.25f, 1f)] private float dashTime = 0.5f;
+    [SerializeField, Range(150f, 250f)] private float dashSpeed = 50f;
     [SerializeField, Range(1, 10)] private int dashDamage = 1;
     [SerializeField] private int damageFrames = 10;
-    
+
     private InputHandler inputHandler;
-    private InputSource inputSource = null;
+    private InputSource inputSource;
     
     private Rigidbody2D rigidbody2D;
     private GroundCheck groundCheck;
@@ -22,17 +19,17 @@ public class Dash : MonoBehaviour
 
     private Vector2 dashDirection;
     private bool desiredDash;
+    
     private bool isDashing;
     private bool isOnGround;
-    private bool canDash = true;
     
-    [SerializeField] private bool canDamage = true;
-
-    [SerializeField] private int maxDashCount = 1;
+    private bool canDash = true;
+    private bool canDamage = true;
+    
     private int dashPhase = 0;
     
     [SerializeField] private AudioClip _dashClip;
-    private AudioSource _audioSource;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -45,7 +42,7 @@ public class Dash : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
         trailRenderer = GetComponent<TrailRenderer>();
-        _audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -53,9 +50,15 @@ public class Dash : MonoBehaviour
         if(!inputHandler.IsInputActive()) return;
         
         desiredDash = inputHandler.InputSource.GetDashInput();
-
+        
+        if (desiredDash)
+        {   
+            // get and store direction in the exact moment the input is true
+            dashDirection = GetDashDirection();
+        }
+        
         isOnGround = groundCheck.GetCurrentGroundState();
-
+        
         // reset dash counter
         if (isOnGround)
         {
@@ -70,12 +73,12 @@ public class Dash : MonoBehaviour
                 isDashing = true;
                 canDash = false;
             }
-            
-            dashDirection = GetDashDirection();
-            
             EndDash();
         }
+    }
 
+    private void FixedUpdate()
+    {
         if (isDashing)
         {
             PerformDash();
@@ -84,25 +87,34 @@ public class Dash : MonoBehaviour
 
     private Vector2 GetDashDirection()
     {
-        return CrossHair.GetCrossHairPosition() - transform.position;
+        Vector2 dashDirection = CrossHair.GetCrossHairPosition() - transform.position;
+        return dashDirection.normalized;
     }
     
     private void PerformDash()
     {
         trailRenderer.emitting = true;
+
+        Vector2 dashVelocity = dashDirection * dashSpeed;
+        rigidbody2D.MovePosition(rigidbody2D.position + dashVelocity * Time.fixedDeltaTime);
+        
         StartCoroutine(DamageFrames(damageFrames));
-        rigidbody2D.velocity = dashDirection.normalized * dashVelocity;
     }
 
     private void EndDash()
     {
-        StartCoroutine(StopDashing());
-        StartCoroutine(ClearDashTrail());
+        StartCoroutine(StopDashDelayed());
+        StartCoroutine(ClearDashTrailDelayed());
     }
     
-    private IEnumerator StopDashing()
+    private IEnumerator StopDashDelayed()
     {
         yield return new WaitForSeconds(dashTime);
+        StopDashInstantly();
+    }
+
+    private void StopDashInstantly()
+    {
         isDashing = false;
         canDash = true;
     }
@@ -119,22 +131,28 @@ public class Dash : MonoBehaviour
         canDamage = false;
     }
     
-    private IEnumerator ClearDashTrail()
+    private IEnumerator ClearDashTrailDelayed()
     {
-        yield return new WaitForSeconds(dashTrailTime);
+        yield return new WaitForSeconds(dashTime);
+        ClearDashTrailInstantly();
+    }
+
+    private void ClearDashTrailInstantly()
+    {
         trailRenderer.emitting = false;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if(!col.gameObject.CompareTag("Enemy")) return;
-
-        if (canDamage)
+        if(col.gameObject.CompareTag("Enemy"))
         {
-            var enemyActor = col.gameObject.GetComponent<Enemy>();
-            enemyActor.Damage(dashDamage);
-        }
+            if (canDamage)
+            {
+                var enemyActor = col.gameObject.GetComponent<Enemy>();
+                enemyActor.Damage(dashDamage);
+            }
 
-        EndDash();
+            StopDashInstantly();
+        }
     }
 }

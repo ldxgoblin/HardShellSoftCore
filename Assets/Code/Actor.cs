@@ -14,7 +14,7 @@ public class Actor : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rigidbody2D;
 
-    
+ 
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();

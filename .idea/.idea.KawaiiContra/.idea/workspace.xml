@@ -7,16 +7,11 @@
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/BasicProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/BasicProjectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerInputSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Controllers/PlayerInputSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/HitPoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/HitPoints.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMechWJoinedArms.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HoverMechWJoinedArms.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +95,7 @@
       <workItem from="1655802722564" duration="1072000" />
       <workItem from="1655805599657" duration="13438000" />
       <workItem from="1655993630113" duration="20657000" />
-      <workItem from="1656447517823" duration="18228000" />
+      <workItem from="1656447517823" duration="25739000" />
     </task>
     <servers />
   </component>

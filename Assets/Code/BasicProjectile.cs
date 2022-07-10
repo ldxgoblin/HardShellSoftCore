@@ -23,21 +23,15 @@ public class BasicProjectile : MonoBehaviour
         AutoDestruct();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        MoveWithTransform();
+        MoveProjectile();
     }
 
-    private void MoveWithTransform()
+    private void MoveProjectile()
     {
-        rigidbody2D.position += (Vector2)direction * projectileSpeed * Time.deltaTime;
-
-        //rigidbody2D.MovePosition();
-        
-        // To modify the position of the object with Rigidbody on it, always set Rigidbody.position when a 
-        // new position doesn’t follow the previous one, or Rigidbody.MovePosition when it is a continuous movement, 
-        // which also takes interpolation into account. When modifying it, apply operations always in FixedUpdate, 
-        // not in Update functions. It will assure consistent physics behaviors.
+        Vector2 velocity = direction * projectileSpeed;
+        rigidbody2D.MovePosition(rigidbody2D.position + velocity * Time.fixedDeltaTime);
     }
 
     private void AutoDestruct()
