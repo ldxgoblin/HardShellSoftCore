@@ -182,7 +182,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596691255368855}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -381,7 +381,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596691403770268}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -580,7 +580,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596691615598490}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -779,7 +779,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596691835930607}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1447,7 +1447,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596692337310361}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1691,7 +1691,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596692342962222}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1890,7 +1890,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596692514350641}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2089,7 +2089,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 909596692945985948}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    // 
     private State currentState;
-
-    // Update is called once per frame
+    
     void Update()
     {
         RunStateMachine();

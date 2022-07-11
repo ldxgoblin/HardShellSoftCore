@@ -18,6 +18,11 @@ public class PlayerInputSource : InputSource
         return Input.GetButtonDown("Jump");
     }
 
+    public override bool GetBoosterInput()
+    {
+        return Input.GetButton("Jump");
+    }
+
     public override bool GetDashInput()
     {
         return Input.GetButtonDown("Dash");

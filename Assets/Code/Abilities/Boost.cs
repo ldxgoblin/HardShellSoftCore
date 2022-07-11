@@ -1,10 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GroundCheck),typeof(InputHandler))]
-public class Jump : MonoBehaviour
+public class Boost : MonoBehaviour
 {
-    [SerializeField, Range(0f, 100f)] private float jumpHeight = 4f;
-    [SerializeField, Range(0, 5)] private int maxJumpCount = 2;
+    [SerializeField, Range(0f, 100f)] private float boostHeight = 4f;
+    [SerializeField, Range(0, 200)] private float maxBoostFuel = 2;
+    [SerializeField, Range(0.25f, 1f)] private float fuelDepletionRate = 0.25f;
     [SerializeField, Range(0f, 5f)] private float downwardMultiplier = 3f;
     [SerializeField, Range(0f, 5f)] private float upwardMultiplier = 3f;
 
@@ -15,18 +17,16 @@ public class Jump : MonoBehaviour
     private GroundCheck groundCheck;
     private Vector2 velocity;
 
-    private int jumpPhase;
+    [SerializeField] private float boostFuelUsed;
     private float defaultGravityScale = 1f;
 
-    private bool jumpRequested;
     private bool boosterRequested;
+    private bool isBoosting;
     private bool isOnGround;
     
     [SerializeField] private AudioClip _jumpClip;
     private AudioSource _audioSource;
-
-    [SerializeField] private bool jetPackMode;
-
+    
     private void Awake()
     {
         inputHandler = GetComponent<InputHandler>();
@@ -45,35 +45,29 @@ public class Jump : MonoBehaviour
     {
         if(!inputHandler.IsInputActive()) return;
         
-        // using the OR Operator this value remains set until we change it to false manually
-        if (!jetPackMode)
-        {
-            jumpRequested |= inputHandler.InputSource.GetJumpInput();
-        }
-        else
-        {
-            boosterRequested = inputHandler.InputSource.GetBoosterInput();
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if(!inputHandler.IsInputActive()) return;
+        boosterRequested = inputHandler.InputSource.GetBoosterInput();
         
-        isOnGround = groundCheck.GetCurrentGroundState();
         velocity = rigidbody2D.velocity;
-        
-        // reset jump counter
+
+        isOnGround = groundCheck.GetCurrentGroundState();
+        // reset boost counter
         if (isOnGround)
         {
-            jumpPhase = 0;
+            boostFuelUsed = 0;
         }
         
-        // check if a jump was requested and perform it
-        if (jumpRequested)
+        // check if a boost was requested and perform it
+        if (boosterRequested)
         {
-            jumpRequested = false;
-            PerformJump();
+            if (boostFuelUsed < maxBoostFuel)
+            {
+                isBoosting = true;
+                PerformBoost();
+            }
+            else
+            {
+                isBoosting = false;
+            }
         }
         
         // multipliers
@@ -96,19 +90,25 @@ public class Jump : MonoBehaviour
         rigidbody2D.velocity = velocity;
     }
 
-    private void PerformJump()
+    private void FixedUpdate()
     {
-        if (isOnGround || jumpPhase < maxJumpCount)
+        if (isBoosting)
         {
-            jumpPhase += 1;
-            float jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpHeight);
-            
-            if (velocity.y > 0)
-            {
-                jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
-            }
-
-            velocity.y += jumpSpeed;
+            PerformBoost();
         }
     }
+
+    private void PerformBoost()
+    {
+        boostFuelUsed += 1 * fuelDepletionRate;
+        float boostSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * boostHeight);
+            
+        if (velocity.y >= 0)
+        {
+            boostSpeed = Mathf.Max(boostSpeed - velocity.y, 0f);
+        }
+
+        velocity.y += boostSpeed;
+    }
+
 }

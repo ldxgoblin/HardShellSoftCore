@@ -228,6 +228,7 @@ MonoBehaviour:
   downwardMultiplier: 5
   upwardMultiplier: 5
   _jumpClip: {fileID: 0}
+  jetPackMode: 0
 --- !u!114 &7047894155724562833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,9 +241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51361f22b3a84af5aca3712f416f61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDashCount: 2
+  maxDashCount: 3
   dashTime: 0.25
-  dashSpeed: 100
+  dashSpeed: 200
   dashDamage: 1
   damageFrames: 15
   _dashClip: {fileID: 0}

@@ -23,6 +23,11 @@ public class AIInputSource : InputSource
         return false;
     }
 
+    public override bool GetBoosterInput()
+    {
+        return false;
+    }
+
     public override bool GetDashInput()
     {
         return false;

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints:
-    maxHitPoints: 5
+    maxHitPoints: 20
     currentHitPoints: 5
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
 --- !u!50 &6740654810402834790
@@ -88,7 +88,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.25}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.9
 --- !u!1 &6740654810989252038
 GameObject:
   m_ObjectHideFlags: 0
