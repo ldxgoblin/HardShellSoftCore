@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class Dash : MonoBehaviour
     [SerializeField, Range(1, 10)] private int dashDamage = 1;
     [SerializeField] private int damageFrames = 10;
 
+    public static event Action onDashHit;
+    
     private InputHandler inputHandler;
     private InputSource inputSource;
     
@@ -113,7 +116,7 @@ public class Dash : MonoBehaviour
         StopDashInstantly();
     }
 
-    private void StopDashInstantly()
+    public void StopDashInstantly()
     {
         isDashing = false;
         canDash = true;
@@ -150,6 +153,8 @@ public class Dash : MonoBehaviour
             {
                 var enemyActor = col.gameObject.GetComponent<Enemy>();
                 enemyActor.Damage(dashDamage);
+                
+                onDashHit?.Invoke();
             }
 
             StopDashInstantly();

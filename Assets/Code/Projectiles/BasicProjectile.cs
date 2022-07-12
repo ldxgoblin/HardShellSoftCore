@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class BasicProjectile : MonoBehaviour
 {
-    [SerializeField] private int projectileDamage;
-    [SerializeField] private float projectileSpeed;
-    [SerializeField] private int destroyAfterSeconds = 2;
+    [SerializeField] protected int projectileDamage;
+    [SerializeField] protected float projectileSpeed;
+    [SerializeField] protected int destroyAfterSeconds = 2;
 
     private Rigidbody2D rigidbody2D;
-    private Vector3 direction;
+    protected Vector3 direction;
 
     private void Awake()
     {
@@ -39,15 +39,9 @@ public class BasicProjectile : MonoBehaviour
         Destroy(gameObject, destroyAfterSeconds);
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    public virtual void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log($"Bullet Hit: {col.gameObject.name} !");
-        
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            var enemyActor = col.gameObject.GetComponent<Enemy>();
-            enemyActor.Damage(projectileDamage);
-        }
+        Debug.Log($"{this.gameObject.name}'s bullet hit: {col.gameObject.name} !");
         Destroy(gameObject);
     }
 

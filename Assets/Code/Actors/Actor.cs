@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -22,6 +20,8 @@ public class Actor : MonoBehaviour
         
         baseSpriteMaterial = spriteRenderer.material;
         rigidbody2D = GetComponent<Rigidbody2D>();
+        
+        hitPoints.ResetHitPoints();
     }
 
     public void Damage(int damage)
@@ -37,7 +37,7 @@ public class Actor : MonoBehaviour
         }
     }
 
-    private void Die()
+    public virtual void Die()
     {
         Destroy(gameObject);
     }

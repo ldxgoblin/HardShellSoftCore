@@ -47,6 +47,9 @@ public class MechAttachPoint : MonoBehaviour
             currentRider.transform.parent = transform;
             transform.localScale = currentRider.transform.localScale;
 
+            // Infinite Dash Fix
+            currentRider.GetComponent<Dash>().StopDashInstantly();
+            
             EnterMech(playerInputHandler);
         }
     }

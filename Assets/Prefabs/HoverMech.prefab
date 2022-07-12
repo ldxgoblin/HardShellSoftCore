@@ -387,11 +387,12 @@ GameObject:
   - component: {fileID: 7818845176373898185}
   - component: {fileID: 7818845176373898187}
   - component: {fileID: 7818845176373898189}
-  - component: {fileID: 4701119235513044600}
+  - component: {fileID: 2461007897361601653}
   - component: {fileID: 7818845176373898190}
+  - component: {fileID: 3544188008135532197}
   m_Layer: 0
   m_Name: HoverMech
-  m_TagString: Untagged
+  m_TagString: Mech
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,7 +640,7 @@ MonoBehaviour:
   maxAcceleration: 35
   maxAirAcceleration: 35
   isFacingLeft: 0
---- !u!114 &4701119235513044600
+--- !u!114 &2461007897361601653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -648,15 +649,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7818845176373898192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fbd09cc1f4984ac19fb5995f2b7375a, type: 3}
+  m_Script: {fileID: 11500000, guid: 634cf14840ea0e4459a10662bd019af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 40
-  maxJumpCount: 5
-  downwardMultiplier: 3
-  upwardMultiplier: 5
+  boostHeight: 10
+  maxBoostFuel: 200
+  fuelDepletionRate: 0.25
+  downwardMultiplier: 5
+  upwardMultiplier: 1.5
+  boostFuelUsed: 0
   _jumpClip: {fileID: 0}
-  jetPackMode: 0
 --- !u!114 &7818845176373898190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,6 +671,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35103089c745c40c2b313843a51a2647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3544188008135532197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818845176373898192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd2729f68439e240a296b11051ea573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints:
+    maxHitPoints: 20
+    currentHitPoints: 20
+  hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
 --- !u!1 &7818845177880571492
 GameObject:
   m_ObjectHideFlags: 0

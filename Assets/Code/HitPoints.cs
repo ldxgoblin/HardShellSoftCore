@@ -6,7 +6,7 @@ public class HitPoints
     public int maxHitPoints = 20;
     public int currentHitPoints = 20;
 
-    private void ResetHitPoints()
+    public void ResetHitPoints()
     {
         currentHitPoints = maxHitPoints;
     }

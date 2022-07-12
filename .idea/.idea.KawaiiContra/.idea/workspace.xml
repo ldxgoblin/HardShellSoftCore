@@ -20,6 +20,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Code/Abilities/Boost.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Actors/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Projectiles/EnemyProjectile.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -96,7 +98,7 @@
       <workItem from="1655805599657" duration="13438000" />
       <workItem from="1655993630113" duration="20657000" />
       <workItem from="1656447517823" duration="25739000" />
-      <workItem from="1657571610652" duration="3243000" />
+      <workItem from="1657571610652" duration="18151000" />
     </task>
     <servers />
   </component>
