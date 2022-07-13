@@ -6,12 +6,14 @@ using UnityEngine;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private int maxDashCount = 2;
-    [SerializeField, Range(0.25f, 1f)] private float dashTime = 0.5f;
-    [SerializeField, Range(150f, 250f)] private float dashSpeed = 50f;
+    [SerializeField, Range(0.25f, 0.5f)] private float dashTime = 0.5f;
+    [SerializeField, Range(100f, 150f)] private float dashSpeed = 50f;
     [SerializeField, Range(1, 10)] private int dashDamage = 1;
     [SerializeField] private int damageFrames = 10;
 
     public static event Action onDashHit;
+
+    [SerializeField] private GameObject dashImpactFX;
     
     private InputHandler inputHandler;
     private InputSource inputSource;
@@ -27,7 +29,7 @@ public class Dash : MonoBehaviour
     private bool isOnGround;
     
     private bool canDash = true;
-    private bool canDamage = true;
+    private bool canDamage;
     
     private int dashPhase = 0;
     
@@ -99,7 +101,9 @@ public class Dash : MonoBehaviour
         trailRenderer.emitting = true;
 
         Vector2 dashVelocity = dashDirection * dashSpeed;
-        rigidbody2D.MovePosition(rigidbody2D.position + dashVelocity * Time.fixedDeltaTime);
+        //rigidbody2D.MovePosition(rigidbody2D.position + dashVelocity * Time.fixedDeltaTime);
+
+        rigidbody2D.velocity = dashVelocity;
         
         StartCoroutine(DamageFrames(damageFrames));
     }
@@ -153,6 +157,8 @@ public class Dash : MonoBehaviour
             {
                 var enemyActor = col.gameObject.GetComponent<Enemy>();
                 enemyActor.Damage(dashDamage);
+
+                Instantiate(dashImpactFX, transform.position, Quaternion.identity);
                 
                 onDashHit?.Invoke();
             }

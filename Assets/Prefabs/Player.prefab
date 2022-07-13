@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7047894155724562833}
   - component: {fileID: 4913631893367317298}
   - component: {fileID: 5228027129012606474}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -263,6 +263,7 @@ MonoBehaviour:
   dashSpeed: 200
   dashDamage: 1
   damageFrames: 15
+  dashImpactFX: {fileID: 0}
   _dashClip: {fileID: 0}
 --- !u!82 &4913631893367317298
 AudioSource:
@@ -386,7 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3285483978395793274}
   - component: {fileID: 3427042484931333943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +429,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -26,7 +26,10 @@ public class Boost : MonoBehaviour
     
     [SerializeField] private AudioClip _jumpClip;
     private AudioSource _audioSource;
-    
+
+    [SerializeField] private ParticleSystem boosterIdleParticles;
+    [SerializeField] private ParticleSystem boosterActiveParticles;
+
     private void Awake()
     {
         inputHandler = GetComponent<InputHandler>();
@@ -98,11 +101,17 @@ public class Boost : MonoBehaviour
         }
     }
 
+    private void ModifyBoosterParticles(float size)
+    {
+        var main = boosterIdleParticles.main;
+        main.startSize = size;
+    }
+    
     private void PerformBoost()
     {
         boostFuelUsed += 1 * fuelDepletionRate;
         float boostSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * boostHeight);
-            
+
         if (velocity.y >= 0)
         {
             boostSpeed = Mathf.Max(boostSpeed - velocity.y, 0f);
