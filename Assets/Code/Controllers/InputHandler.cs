@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] private InputSource inputSource = null;
+    [SerializeField] private InputSource inputSource;
     public InputSource InputSource => inputSource;
 
     public bool IsInputActive()
@@ -12,7 +12,7 @@ public class InputHandler : MonoBehaviour
 
     private void SetInputSource(InputSource source)
     {
-        this.inputSource = source;
+        inputSource = source;
     }
 
     private void ClearInputSource()

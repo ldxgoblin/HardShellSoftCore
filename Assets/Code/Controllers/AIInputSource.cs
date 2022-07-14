@@ -3,11 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AIController", menuName = "InputController/AIController")]
 public class AIInputSource : InputSource
 {
-    
     // These are currently only placeholder values as there is no AI System yet
     // https://www.toptal.com/unity-unity3d/unity-ai-development-finite-state-machine-tutorial
-    
-    
+
+
     public override float GetHorizontalInput()
     {
         return 0f;

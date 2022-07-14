@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChaseState : State
@@ -13,13 +10,10 @@ public class ChaseState : State
 
     public override State RunCurrentState()
     {
-        if (aiDetector.TargetInSight)
-        {
-            Chase();
-        }
+        if (aiDetector.TargetInSight) Chase();
         return this;
     }
-    
+
     private void Chase()
     {
         var chaseDirection = aiDetector.Target.transform.position - transform.position;

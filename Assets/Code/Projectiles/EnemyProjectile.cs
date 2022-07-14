@@ -9,13 +9,13 @@ public class EnemyProjectile : BasicProjectile
             var playerActor = col.gameObject.GetComponent<Player>();
             playerActor.Damage(projectileDamage);
         }
-        
+
         if (col.gameObject.CompareTag("Mech"))
         {
             var mechActor = col.gameObject.GetComponent<Mech>();
             mechActor.Damage(projectileDamage);
         }
-        
+
         base.OnTriggerEnter2D(col);
     }
 }

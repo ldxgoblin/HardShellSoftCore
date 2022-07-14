@@ -4,32 +4,22 @@ using UnityEngine;
 public class ComboTracker : MonoBehaviour
 {
     [SerializeField] private int hitCounter;
-    
+
     [SerializeField] private float comboTimeWindow = 5;
     [SerializeField] private float currentComboTime;
 
     private bool comboInProgress;
 
-    public static event Action<int> onCombo;
-    public static event Action onComboEnded;
-
     private void Awake()
     {
         Dash.onDashHit += RegisterHit;
         PlayerProjectile.OnPlayerProjectileHit += RegisterHit;
-        
-        ResetHitCounter();
-    }
 
-    private void OnDisable()
-    {
-        Dash.onDashHit -= RegisterHit;
-        PlayerProjectile.OnPlayerProjectileHit -= RegisterHit;
+        ResetHitCounter();
     }
 
     private void Update()
     {
-        
         if (comboInProgress)
         {
             if (currentComboTime > 0)
@@ -42,18 +32,23 @@ public class ComboTracker : MonoBehaviour
                 onComboEnded?.Invoke();
             }
         }
-
     }
+
+    private void OnDisable()
+    {
+        Dash.onDashHit -= RegisterHit;
+        PlayerProjectile.OnPlayerProjectileHit -= RegisterHit;
+    }
+
+    public static event Action<int> onCombo;
+    public static event Action onComboEnded;
 
     private void RegisterHit()
     {
-        if (currentComboTime <= 0)
-        {
-            ResetHitCounter();
-        }
+        if (currentComboTime <= 0) ResetHitCounter();
 
         hitCounter++;
-        
+
         if (hitCounter > 1)
         {
             onCombo?.Invoke(hitCounter);
@@ -65,7 +60,7 @@ public class ComboTracker : MonoBehaviour
     {
         // add base score value multiplied by hitCounter to Score UI
     }
-    
+
     private void ResetHitCounter()
     {
         comboInProgress = false;

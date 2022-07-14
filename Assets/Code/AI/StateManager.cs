@@ -3,20 +3,17 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     public State currentState;
-    
-    void Update()
+
+    private void Update()
     {
         RunStateMachine();
     }
 
     private void RunStateMachine()
     {
-        State nextState = currentState?.RunCurrentState();
+        var nextState = currentState?.RunCurrentState();
 
-        if(nextState != null) 
-        {
-            SwitchToNextState(nextState);
-        }
+        if (nextState != null) SwitchToNextState(nextState);
     }
 
     private void SwitchToNextState(State nextState)

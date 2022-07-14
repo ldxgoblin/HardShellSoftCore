@@ -5,22 +5,22 @@ public class Actor : MonoBehaviour
 {
     [SerializeField] protected HitPoints hitPoints;
     [SerializeField] protected Material hitMaterial;
-    
+
     protected Color baseSpriteColor;
     protected Material baseSpriteMaterial;
-    
-    protected SpriteRenderer spriteRenderer;
     protected Rigidbody2D rigidbody2D;
 
- 
-    private void Awake()
+    protected SpriteRenderer spriteRenderer;
+
+
+    protected virtual void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         baseSpriteColor = spriteRenderer.color;
-        
+
         baseSpriteMaterial = spriteRenderer.material;
         rigidbody2D = GetComponent<Rigidbody2D>();
-        
+
         hitPoints.ResetHitPoints();
     }
 
@@ -41,10 +41,11 @@ public class Actor : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
     private async void HitFlash()
     {
         if (spriteRenderer == null) return;
-        
+
         spriteRenderer.color = Color.white;
         spriteRenderer.material = hitMaterial;
         await Task.Delay(100);

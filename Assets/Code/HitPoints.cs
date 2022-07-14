@@ -1,6 +1,7 @@
+using System;
 using System.Threading.Tasks;
 
-[System.Serializable]
+[Serializable]
 public class HitPoints
 {
     public int maxHitPoints = 20;
@@ -10,7 +11,7 @@ public class HitPoints
     {
         currentHitPoints = maxHitPoints;
     }
-    
+
     public void IncreaseHitPoints(int amount)
     {
         if (currentHitPoints + amount >= maxHitPoints) currentHitPoints += amount;
@@ -21,10 +22,10 @@ public class HitPoints
     {
         currentHitPoints -= amount;
     }
-  
+
     private async void DecreaseHitPointsOverTime(int amount, int ticks)
     {
-        for (int i = 0; i < ticks; i++)
+        for (var i = 0; i < ticks; i++)
         {
             DecreaseHitPoints(amount);
             await Task.Delay(1000);

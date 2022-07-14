@@ -1,18 +1,11 @@
-using System;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    private bool isOnGround;
     private float friction;
+    private bool isOnGround;
 
     private void OnCollisionEnter2D(Collision2D other)
-    {
-        CheckForFlatSurface(other);
-        GetFriction(other);
-    }
-    
-    private void OnCollisionStay2D(Collision2D other)
     {
         CheckForFlatSurface(other);
         GetFriction(other);
@@ -24,11 +17,17 @@ public class GroundCheck : MonoBehaviour
         friction = 0;
     }
 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        CheckForFlatSurface(other);
+        GetFriction(other);
+    }
+
     private void CheckForFlatSurface(Collision2D other)
     {
-        for (int i = 0; i < other.contactCount; i++)
-        {   
-            Vector2 normal = other.GetContact(i).normal;
+        for (var i = 0; i < other.contactCount; i++)
+        {
+            var normal = other.GetContact(i).normal;
             // a normal greater than 0.9f means we are colliding with a flat surface, this needs to be extended for slopes
             isOnGround = normal.y >= 0.9f;
         }
@@ -36,13 +35,10 @@ public class GroundCheck : MonoBehaviour
 
     private void GetFriction(Collision2D other)
     {
-        PhysicsMaterial2D material = other.collider.sharedMaterial;
+        var material = other.collider.sharedMaterial;
         friction = 0;
-        
-        if (material != null)
-        {
-            friction = material.friction;
-        }
+
+        if (material != null) friction = material.friction;
     }
 
     public bool GetCurrentGroundState()

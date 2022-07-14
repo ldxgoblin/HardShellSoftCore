@@ -1,13 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AIDetector : MonoBehaviour
 {
-    [field:SerializeField] public bool TargetInSight { get; private set; }
-    
+    [Header("Field of View Settings")] [SerializeField]
+    protected Transform detectorOrigin;
+
+    public Vector2 detectorOriginOffset = Vector2.zero;
+
+    public float detectionDelay = 0.3f;
+    public LayerMask detectorLayerMask;
+
+    [Header("Gizmo Settings")] public Color gizmoIdleColor = Color.green;
+
+    public Color gizmoDetectedColor = Color.red;
+    public bool showGizmos;
+
     protected GameObject target;
-    
+    [field: SerializeField] public bool TargetInSight { get; private set; }
+
     public GameObject Target
     {
         get => target;
@@ -17,20 +28,8 @@ public class AIDetector : MonoBehaviour
             TargetInSight = target != null;
         }
     }
-    
-    [Header("Field of View Settings")] [SerializeField]
-    protected Transform detectorOrigin;
-    public Vector2 detectorOriginOffset = Vector2.zero;
 
-    public float detectionDelay = 0.3f;
-    public LayerMask detectorLayerMask;
-    
-    [Header("Gizmo Settings")]
-    public Color gizmoIdleColor = Color.green;
-    public Color gizmoDetectedColor = Color.red;
-    public bool showGizmos;
-    
-    void Start()
+    private void Start()
     {
         StartCoroutine(DetectionCoroutine());
     }
@@ -41,7 +40,7 @@ public class AIDetector : MonoBehaviour
         RunDetection();
         StartCoroutine(DetectionCoroutine());
     }
-    
+
     public virtual void RunDetection()
     {
     }

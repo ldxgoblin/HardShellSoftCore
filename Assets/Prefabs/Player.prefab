@@ -84,7 +84,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,11 +260,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDashCount: 3
   dashTime: 0.25
-  dashSpeed: 200
+  dashSpeed: 150
   dashDamage: 1
   damageFrames: 15
-  dashImpactFX: {fileID: 0}
-  _dashClip: {fileID: 0}
+  dashImpactFX: {fileID: 5024009746357069194, guid: afff8bf5e70dd5a46b5eb1efe033c8b8, type: 3}
+  dashClip: {fileID: 8300000, guid: 203e685917093154c808a29e9341e464, type: 3}
 --- !u!82 &4913631893367317298
 AudioSource:
   m_ObjectHideFlags: 0

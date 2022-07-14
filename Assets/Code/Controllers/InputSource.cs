@@ -9,5 +9,4 @@ public abstract class InputSource : ScriptableObject
     public abstract bool GetDashInput();
     public abstract bool GetExitInput();
     public abstract bool GetFireInput();
-
 }

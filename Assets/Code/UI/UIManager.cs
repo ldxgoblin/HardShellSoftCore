@@ -1,24 +1,21 @@
-using System;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreCountText;
     [SerializeField] private TextMeshProUGUI comboCountText;
-    
-    [SerializeField] private Camera mainCamera;
 
-    [SerializeField, Range(2.5f, 5f)] private float rumbleIntensity = 2.5f;
-    [SerializeField, Range(0.25f, 1f)] private float rumbleFallOff;
+    [SerializeField] [Range(2.5f, 5f)] private float rumbleIntensity = 2.5f;
+    [SerializeField] [Range(0.25f, 1f)] private float rumbleFallOff;
 
     private float comboRumbleIntensity;
     private float scoreRumbleIntensity;
     
     private Vector3 comboTextBasePosition;
     private Vector3 scoreTextBasePosition;
-    
+
+    [SerializeField] private Material hpDisplay;
     
     private void Awake()
     {
@@ -27,22 +24,22 @@ public class UIManager : MonoBehaviour
 
         ComboTracker.onCombo += UpdateComboCountText;
         ComboTracker.onComboEnded += HideComboCountText;
-
-        Enemy.onEnemyKilled += UpdateScoreText;
+        
+        MissionTracker.onScoreChange += UpdateScoreText;
     }
 
     private void OnDisable()
     {
         ComboTracker.onCombo -= UpdateComboCountText;
         ComboTracker.onComboEnded -= HideComboCountText;
-        
-        Enemy.onEnemyKilled -= UpdateScoreText;
+
+        MissionTracker.onScoreChange -= UpdateScoreText;
     }
 
     private void Update()
     {
-        Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
-        
+        var randomDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
+
         if (comboRumbleIntensity > 0)
         {
             RumbleCounter(comboCountText, comboTextBasePosition, randomDirection, comboRumbleIntensity);
@@ -52,25 +49,26 @@ public class UIManager : MonoBehaviour
         {
             HideComboCountText();
         }
-        
+
         if (scoreRumbleIntensity > 0)
         {
             RumbleCounter(scoreCountText, scoreTextBasePosition, randomDirection, scoreRumbleIntensity);
             scoreRumbleIntensity -= rumbleFallOff * Time.deltaTime;
         }
     }
-    
-    private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction, float intensity)
+
+    private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction,
+        float intensity)
     {
         counterTextObject.transform.localPosition = basePosition + direction * intensity;
     }
-    
+
     private void UpdateScoreText(int score)
     {
         scoreRumbleIntensity = rumbleIntensity;
-        comboCountText.SetText(score.ToString());
+        scoreCountText.SetText(score.ToString());
     }
-    
+
     private void UpdateComboCountText(int hits)
     {
         comboCountText.enabled = true;
@@ -82,4 +80,16 @@ public class UIManager : MonoBehaviour
     {
         comboCountText.enabled = false;
     }
-}
+
+    private void SetHpDisplaySegments(float segmentCount)
+    {
+        // changes everytime we switch from mech to ball state
+        hpDisplay.SetFloat("SegmentCount", segmentCount);
+    }
+
+    private void RemoveHpDisplaySegment(int currentHp, int maxHp)
+    {
+        var segmentCount = currentHp - maxHp;
+        hpDisplay.SetFloat("SegmentCount", segmentCount);
+    }
+ }

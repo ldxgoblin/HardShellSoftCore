@@ -3,53 +3,49 @@ using UnityEngine;
 
 public class MechAttachPoint : MonoBehaviour
 {
-    private InputHandler mechInputHandler;
-    private InputHandler playerInputHandler;
+    [SerializeField] private float ejectionForce = 10f;
+    [SerializeField] [Range(1f, 5f)] private float postEjectionCooldown = 1f;
 
     private CircleCollider2D circleCollider2D;
-    
-    private GameObject currentRider = null;
-    private Rigidbody2D riderRigidbody2D;
 
-    [SerializeField] private float ejectionForce = 10f;
-    [SerializeField, Range(1f, 5f)] private float postEjectionCooldown = 1f;
-    
-    private bool mechIsOccupied = false;
+    private GameObject currentRider;
+    private InputHandler mechInputHandler;
+
+    private bool mechIsOccupied;
+    private InputHandler playerInputHandler;
+    private Rigidbody2D riderRigidbody2D;
 
     private void Awake()
     {
         mechInputHandler = transform.parent.gameObject.GetComponent<InputHandler>();
         circleCollider2D = GetComponent<CircleCollider2D>();
     }
-    
+
     private void Update()
     {
-        if(!mechInputHandler.IsInputActive()) return;
+        if (!mechInputHandler.IsInputActive()) return;
 
         Debug.Log(mechInputHandler.InputSource);
-        
-        if (mechInputHandler.InputSource.GetExitInput() && mechIsOccupied)
-        {
-            ExitMech();
-        }
+
+        if (mechInputHandler.InputSource.GetExitInput() && mechIsOccupied) ExitMech();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         print("yooooooo");
-        
-        if(col.CompareTag("Player"))
+
+        if (col.CompareTag("Player"))
         {
             currentRider = col.gameObject;
             playerInputHandler = currentRider.GetComponent<InputHandler>();
             riderRigidbody2D = currentRider.GetComponent<Rigidbody2D>();
-            
+
             currentRider.transform.parent = transform;
             transform.localScale = currentRider.transform.localScale;
 
             // Infinite Dash Fix
             currentRider.GetComponent<Dash>().StopDashInstantly();
-            
+
             EnterMech(playerInputHandler);
         }
     }
@@ -57,7 +53,7 @@ public class MechAttachPoint : MonoBehaviour
     private void EnterMech(InputHandler origin)
     {
         currentRider.SetActive(false);
-        
+
         mechInputHandler.SwapInputSource(origin);
         mechIsOccupied = true;
     }
@@ -74,9 +70,9 @@ public class MechAttachPoint : MonoBehaviour
         currentRider.SetActive(true);
 
         StartCoroutine(CoolDown());
-        
+
         currentRider.transform.parent = null;
-        currentRider = null;  
+        currentRider = null;
     }
 
     private IEnumerator CoolDown()

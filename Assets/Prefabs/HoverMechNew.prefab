@@ -137,7 +137,7 @@ MonoBehaviour:
   projectile: {fileID: 369544534265692808, guid: 516eb83a4ede74e4ab9023633e59937a, type: 3}
   projectileTransform: {fileID: 6493789859599269049}
   delayBetweenShots: 0.15
-  shotClip: {fileID: 8300000, guid: 77996ff5c6ca140d9b60271451b7d2dd, type: 3}
+  shotClip: {fileID: 8300000, guid: 216940635a705224f9dd45253f924f2a, type: 3}
   canFire: 0
 --- !u!82 &379484179430875688
 AudioSource:
@@ -157,7 +157,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 168
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -655,13 +655,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostHeight: 10
   maxBoostFuel: 200
+  currentFuel: 200
   fuelDepletionRate: 0.25
   downwardMultiplier: 5
   upwardMultiplier: 1.5
   boostFuelUsed: 0
-  _jumpClip: {fileID: 0}
+  _boostClip: {fileID: 0}
   boosterIdleParticles: {fileID: 0}
   boosterActiveParticles: {fileID: 0}
+  fuelMeter: {fileID: 0}
+  fuelMeterLerpSpeed: 3
 --- !u!114 &7818845176373898190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,8 +690,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints:
-    maxHitPoints: 20
-    currentHitPoints: 20
+    maxHitPoints: 10
+    currentHitPoints: 10
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
 --- !u!1 &7818845177880571492
 GameObject:
@@ -880,11 +883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732272197064196757, guid: 4892b61920862463eb064587b306b876, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.79
+      value: 12.51
       objectReference: {fileID: 0}
     - target: {fileID: 1732272197064196757, guid: 4892b61920862463eb064587b306b876, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 1732272197064196757, guid: 4892b61920862463eb064587b306b876, type: 3}
       propertyPath: m_LocalPosition.z
