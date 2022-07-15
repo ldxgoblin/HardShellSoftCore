@@ -4,8 +4,6 @@ using UnityEngine;
 public class MissionTracker : MonoBehaviour
 {
     [SerializeField] private int score;
-    
-    public static event Action<int> onScoreChange;
 
     private void Awake()
     {
@@ -17,10 +15,12 @@ public class MissionTracker : MonoBehaviour
         Enemy.onEnemyKilled -= UpdateScore;
     }
 
+    public static event Action<int> onScoreChange;
+
     private void UpdateScore(int scoreValue)
     {
         score += scoreValue;
-        
+
         // notify UiManager
         onScoreChange?.Invoke(score);
     }

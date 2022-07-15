@@ -9,14 +9,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] [Range(2.5f, 5f)] private float rumbleIntensity = 2.5f;
     [SerializeField] [Range(0.25f, 1f)] private float rumbleFallOff;
 
+    [SerializeField] private Material hpDisplay;
+
     private float comboRumbleIntensity;
-    private float scoreRumbleIntensity;
-    
+
     private Vector3 comboTextBasePosition;
+    private float scoreRumbleIntensity;
     private Vector3 scoreTextBasePosition;
 
-    [SerializeField] private Material hpDisplay;
-    
     private void Awake()
     {
         comboTextBasePosition = comboCountText.transform.localPosition;
@@ -24,16 +24,8 @@ public class UIManager : MonoBehaviour
 
         ComboTracker.onCombo += UpdateComboCountText;
         ComboTracker.onComboEnded += HideComboCountText;
-        
+
         MissionTracker.onScoreChange += UpdateScoreText;
-    }
-
-    private void OnDisable()
-    {
-        ComboTracker.onCombo -= UpdateComboCountText;
-        ComboTracker.onComboEnded -= HideComboCountText;
-
-        MissionTracker.onScoreChange -= UpdateScoreText;
     }
 
     private void Update()
@@ -55,6 +47,14 @@ public class UIManager : MonoBehaviour
             RumbleCounter(scoreCountText, scoreTextBasePosition, randomDirection, scoreRumbleIntensity);
             scoreRumbleIntensity -= rumbleFallOff * Time.deltaTime;
         }
+    }
+
+    private void OnDisable()
+    {
+        ComboTracker.onCombo -= UpdateComboCountText;
+        ComboTracker.onComboEnded -= HideComboCountText;
+
+        MissionTracker.onScoreChange -= UpdateScoreText;
     }
 
     private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction,
@@ -92,4 +92,4 @@ public class UIManager : MonoBehaviour
         var segmentCount = currentHp - maxHp;
         hpDisplay.SetFloat("SegmentCount", segmentCount);
     }
- }
+}

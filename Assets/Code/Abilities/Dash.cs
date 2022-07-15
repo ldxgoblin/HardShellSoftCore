@@ -11,8 +11,6 @@ public class Dash : MonoBehaviour
     [SerializeField] [Range(1, 10)] private int dashDamage = 1;
     [SerializeField] private int damageFrames = 10;
 
-    public static event Action onDashHit;
-    
     [SerializeField] private GameObject dashImpactFX;
 
     [SerializeField] private AudioClip dashClip;
@@ -54,10 +52,8 @@ public class Dash : MonoBehaviour
         desiredDash = inputHandler.InputSource.GetDashInput();
 
         if (desiredDash)
-        {
             // get and store direction in the exact moment the input is true
             dashDirection = GetDashDirection();
-        }
 
         isOnGround = groundCheck.GetCurrentGroundState();
 
@@ -99,7 +95,9 @@ public class Dash : MonoBehaviour
             StopDashInstantly();
         }
     }
-    
+
+    public static event Action onDashHit;
+
     private Vector2 GetDashDirection()
     {
         Vector2 dashDirection = CrossHair.GetCrossHairPosition() - transform.position;

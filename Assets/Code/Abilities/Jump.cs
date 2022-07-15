@@ -11,9 +11,9 @@ public class Jump : MonoBehaviour
     [SerializeField] private AudioClip _jumpClip;
 
     [SerializeField] private bool jetPackMode;
+    private readonly float defaultGravityScale = 1f;
     private AudioSource _audioSource;
     private bool boosterRequested;
-    private readonly float defaultGravityScale = 1f;
     private GroundCheck groundCheck;
 
     private InputHandler inputHandler;

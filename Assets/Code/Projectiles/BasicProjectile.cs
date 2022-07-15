@@ -16,8 +16,7 @@ public class BasicProjectile : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log($"{gameObject.name}'s bullet hit: {col.gameObject.name} !");
-        Destroy(gameObject);
+        
     }
 
     public void SetupProjectile(Vector3 direction)

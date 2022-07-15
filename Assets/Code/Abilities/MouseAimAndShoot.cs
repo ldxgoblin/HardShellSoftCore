@@ -1,6 +1,7 @@
 using System;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class MouseAimAndShoot : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class MouseAimAndShoot : MonoBehaviour
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform projectileTransform;
     [SerializeField] private float delayBetweenShots;
+
+    [SerializeField] private VisualEffect muzzleFlash;
     [SerializeField] private AudioClip shotClip;
 
     public bool canFire;
+    private readonly float impulseModifier = 0.025f;
 
     private Vector3 aimTarget;
-    private readonly float impulseModifier = 0.025f;
     private InputSource inputSource = null;
 
     private Camera mainCamera;
@@ -53,6 +56,7 @@ public class MouseAimAndShoot : MonoBehaviour
             canFire = false;
 
             ShootAtMousePosition(transform.right);
+            muzzleFlash.Play();
 
             shotImpulseSource.GenerateImpulse(-mousePosition * impulseModifier);
             shotAudioSource.PlayOneShot(shotClip);
@@ -64,7 +68,7 @@ public class MouseAimAndShoot : MonoBehaviour
     private void ShootAtMousePosition(Vector3 direction)
     {
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
-        newProjectile.GetComponent<BasicProjectile>().SetupProjectile(direction);
+        newProjectile.GetComponent<PlayerProjectile>().SetupProjectile(direction);
     }
 
     private void AimAtMousePosition()

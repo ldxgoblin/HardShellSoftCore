@@ -16,10 +16,13 @@ public class Boost : MonoBehaviour
 
     [SerializeField] private ParticleSystem boosterIdleParticles;
     [SerializeField] private ParticleSystem boosterActiveParticles;
+
+    [SerializeField] private Image fuelMeter;
+    [SerializeField] private float fuelMeterLerpSpeed;
+    private readonly float defaultGravityScale = 1f;
     private AudioSource _audioSource;
 
     private bool boosterRequested;
-    private readonly float defaultGravityScale = 1f;
     private GroundCheck groundCheck;
 
     private InputHandler inputHandler;
@@ -29,9 +32,6 @@ public class Boost : MonoBehaviour
 
     private Rigidbody2D rigidbody2D;
     private Vector2 velocity;
-
-    [SerializeField] private Image fuelMeter;
-    [SerializeField] private float fuelMeterLerpSpeed;
 
     private void Awake()
     {
@@ -55,15 +55,11 @@ public class Boost : MonoBehaviour
         velocity = rigidbody2D.velocity;
 
         isOnGround = groundCheck.GetCurrentGroundState();
-        
+
         // reset boost counter
         if (isOnGround)
-        {
             if (currentFuel < maxBoostFuel)
-            {
                 currentFuel += 1 * fuelDepletionRate;
-            }
-        }
 
         // check if a boost was requested and perform it
         if (boosterRequested)
@@ -85,7 +81,7 @@ public class Boost : MonoBehaviour
 
 
         FuelMeterUpdate();
-        
+
         // multipliers
         if (rigidbody2D.velocity.y > 0)
             // we're going up
@@ -107,9 +103,9 @@ public class Boost : MonoBehaviour
 
     private void FuelMeterUpdate()
     {
-        fuelMeter.fillAmount = Mathf.Lerp(fuelMeter.fillAmount,currentFuel / maxBoostFuel, fuelMeterLerpSpeed);
+        fuelMeter.fillAmount = Mathf.Lerp(fuelMeter.fillAmount, currentFuel / maxBoostFuel, fuelMeterLerpSpeed);
     }
-    
+
     private void ModifyBoosterParticles(float size)
     {
         var main = boosterIdleParticles.main;

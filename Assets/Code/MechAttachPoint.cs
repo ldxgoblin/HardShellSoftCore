@@ -25,15 +25,11 @@ public class MechAttachPoint : MonoBehaviour
     {
         if (!mechInputHandler.IsInputActive()) return;
 
-        Debug.Log(mechInputHandler.InputSource);
-
         if (mechInputHandler.InputSource.GetExitInput() && mechIsOccupied) ExitMech();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        print("yooooooo");
-
         if (col.CompareTag("Player"))
         {
             currentRider = col.gameObject;
@@ -52,6 +48,9 @@ public class MechAttachPoint : MonoBehaviour
 
     private void EnterMech(InputHandler origin)
     {
+        // Sets the mech parent layer to Player, so enemy Ai can detect it
+        transform.parent.gameObject.layer = 6;
+
         currentRider.SetActive(false);
 
         mechInputHandler.SwapInputSource(origin);
@@ -60,6 +59,9 @@ public class MechAttachPoint : MonoBehaviour
 
     private void ExitMech()
     {
+        // Sets the mech parent layer to Default, so enemy Ai can not detect it
+        transform.parent.gameObject.layer = 0;
+
         playerInputHandler.SwapInputSource(mechInputHandler);
         mechIsOccupied = false;
         EjectRider();

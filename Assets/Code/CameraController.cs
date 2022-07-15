@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
@@ -7,8 +5,8 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera playerFollowCam;
     [SerializeField] private CinemachineVirtualCamera playerZoomCam;
-    
-    void Start()
+
+    private void Start()
     {
         SwitchToFollowCam();
     }
