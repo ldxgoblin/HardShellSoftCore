@@ -7,8 +7,8 @@ public class Boost : MonoBehaviour
     [SerializeField] [Range(0, 200)] private float maxBoostFuel = 200;
     [SerializeField] private float currentFuel;
     [SerializeField] [Range(0.1f, 1f)] private float fuelDepletionRate = 0.25f;
-    [SerializeField] [Range(0f, 5f)] private float downwardMultiplier = 3f;
-    [SerializeField] [Range(0f, 5f)] private float upwardMultiplier = 3f;
+    [SerializeField] [Range(5f, 20f)] private float downwardMultiplier = 5f;
+    [SerializeField] [Range(5f, 20f)] private float upwardMultiplier = 5f;
 
     [SerializeField] private float boostFuelUsed;
 

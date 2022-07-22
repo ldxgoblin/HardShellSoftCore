@@ -6,8 +6,8 @@ using UnityEngine;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private int maxDashCount = 2;
-    [SerializeField] [Range(0.25f, 0.5f)] private float dashTime = 0.5f;
-    [SerializeField] [Range(100f, 150f)] private float dashSpeed = 50f;
+    [SerializeField] [Range(0.1f, 0.25f)] private float dashTime = 0.1f;
+    [SerializeField] [Range(50f, 150f)] private float dashSpeed = 50f;
     [SerializeField] [Range(1, 10)] private int dashDamage = 1;
     [SerializeField] private int damageFrames = 10;
 

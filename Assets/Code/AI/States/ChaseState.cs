@@ -17,13 +17,13 @@ public class ChaseState : State
     {
         if (aiDetector.TargetInSight)
         {
-            Debug.Log("<color=yellow>CHASE STATE:</color> Target in sight, closing distance!");
+            // Debug.Log("<color=yellow>CHASE STATE:</color> Target in sight, closing distance!");
             Chase();
             var distance = Vector2.Distance(aiDetector.Target.transform.position, transform.position);
 
             if (distance <= aiDetector.detectorRadius / 2)
             {
-                Debug.Log("<color=yellow>CHASE STATE:</color> switching to <color=red>ATTACK!</color>");
+                // Debug.Log("<color=yellow>CHASE STATE:</color> switching to <color=red>ATTACK!</color>");
                 return nextState;
             }
 
@@ -31,12 +31,14 @@ public class ChaseState : State
         }
 
         // switch back to idle if target is lost
-        Debug.Log("<color=yellow>CHASE STATE:</color> Target lost, switching to <color=green>IDLE</color>");
+        // Debug.Log("<color=yellow>CHASE STATE:</color> Target lost, switching to <color=green>IDLE</color>");
         return previousState;
     }
 
     private void Chase()
     {
+        if (aiDetector == null) return;
+        
         var chaseDirection = aiDetector.Target.transform.position - transform.position;
 
         var chaseVelocity = chaseDirection * chaseSpeed;

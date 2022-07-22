@@ -136,7 +136,7 @@ MonoBehaviour:
   inputHandler: {fileID: 7818845176373898187}
   projectile: {fileID: 369544534265692808, guid: 516eb83a4ede74e4ab9023633e59937a, type: 3}
   projectileTransform: {fileID: 6493789859599269049}
-  delayBetweenShots: 0.15
+  delayBetweenShots: 0.08
   muzzleFlash: {fileID: 9015670642814342372}
   shotClip: {fileID: 8300000, guid: 216940635a705224f9dd45253f924f2a, type: 3}
   canFire: 0
@@ -654,12 +654,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634cf14840ea0e4459a10662bd019af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostHeight: 10
+  boostHeight: 25
   maxBoostFuel: 200
   currentFuel: 200
   fuelDepletionRate: 0.1
   downwardMultiplier: 5
-  upwardMultiplier: 1.5
+  upwardMultiplier: 5
   boostFuelUsed: 0
   _boostClip: {fileID: 0}
   boosterIdleParticles: {fileID: 0}
@@ -994,15 +994,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2426836547793904778, guid: 039cdb43e51fe3c45a3c0211ba9f2b51, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2426836547793904778, guid: 039cdb43e51fe3c45a3c0211ba9f2b51, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2426836547793904778, guid: 039cdb43e51fe3c45a3c0211ba9f2b51, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2426836547793904778, guid: 039cdb43e51fe3c45a3c0211ba9f2b51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1015,6 +1015,10 @@ PrefabInstance:
     - target: {fileID: 2426836547793904778, guid: 039cdb43e51fe3c45a3c0211ba9f2b51, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426836547793904778, guid: 039cdb43e51fe3c45a3c0211ba9f2b51, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2426836547793904820, guid: 039cdb43e51fe3c45a3c0211ba9f2b51, type: 3}
       propertyPath: m_InitialEventName

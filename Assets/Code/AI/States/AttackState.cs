@@ -22,14 +22,14 @@ public class AttackState : State
 
         if (canFire && aiDetector.TargetInSight)
         {
-            Debug.Log("<color=red>ATTACK STATE:</color> Target in Range, attacking!");
+            // Debug.Log("<color=red>ATTACK STATE:</color> Target in Range, attacking!");
             Attack();
             StartCooldown();
 
             return this;
         }
 
-        Debug.Log("<color=red>ATTACK STATE:</color> Target out of Range, switching to <color=yellow>CHASE!</color>");
+        // Debug.Log("<color=red>ATTACK STATE:</color> Target out of Range, switching to <color=yellow>CHASE!</color>");
         return nextState;
     }
 

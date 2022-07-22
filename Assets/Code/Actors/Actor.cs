@@ -4,6 +4,7 @@ using UnityEngine;
 public class Actor : MonoBehaviour
 {
     [SerializeField] protected HitPoints hitPoints;
+
     [SerializeField] protected Material hitMaterial;
 
     protected Color baseSpriteColor;
@@ -11,6 +12,7 @@ public class Actor : MonoBehaviour
     protected Rigidbody2D rigidbody2D;
 
     protected SpriteRenderer spriteRenderer;
+    public HitPoints HitPoints => hitPoints;
 
 
     protected virtual void Awake()
@@ -24,10 +26,11 @@ public class Actor : MonoBehaviour
         hitPoints.ResetHitPoints();
     }
 
-    public void Damage(int damage)
+    public virtual void Damage(int damage)
     {
         if (hitPoints.currentHitPoints - damage <= 0)
         {
+            hitPoints.currentHitPoints = 0;
             Die();
         }
         else
@@ -37,12 +40,13 @@ public class Actor : MonoBehaviour
         }
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
-    private async void HitFlash()
+    protected virtual async void HitFlash()
     {
         if (spriteRenderer == null) return;
 

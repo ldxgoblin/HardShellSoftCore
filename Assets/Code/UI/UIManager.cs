@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Material hpDisplay;
 
+    private HitPoints ballStateHp;
+    private HitPoints mechStateHp;
+
     private float comboRumbleIntensity;
 
     private Vector3 comboTextBasePosition;
@@ -19,6 +22,12 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        ballStateHp = GameObject.FindWithTag("Player").GetComponent<Player>().HitPoints;
+        if(ballStateHp == null) Debug.LogError("Ball State HP Object not found!");
+        
+        mechStateHp = GameObject.FindWithTag("Mech").GetComponent<Mech>().HitPoints;
+        if(mechStateHp == null) Debug.LogError("Mech State HP Object not found!");
+
         comboTextBasePosition = comboCountText.transform.localPosition;
         scoreTextBasePosition = scoreCountText.transform.localPosition;
 
@@ -26,6 +35,18 @@ public class UIManager : MonoBehaviour
         ComboTracker.onComboEnded += HideComboCountText;
 
         MissionTracker.onScoreChange += UpdateScoreText;
+
+        MechAttachPoint.OnMechActivation += SwitchToMechHitPointsUI;
+        MechAttachPoint.OnMechDeactivation += SwitchToBallStateHitPointsUi;
+
+        EnemyProjectile.OnBallStateDamage += () => RemoveHitPointsUiSegment(ballStateHp);
+        EnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
+    }
+
+
+    private void Start()
+    {
+        UpdateHitPointsUi(ballStateHp);
     }
 
     private void Update()
@@ -55,6 +76,9 @@ public class UIManager : MonoBehaviour
         ComboTracker.onComboEnded -= HideComboCountText;
 
         MissionTracker.onScoreChange -= UpdateScoreText;
+        
+        MechAttachPoint.OnMechActivation -= SwitchToMechHitPointsUI;
+        MechAttachPoint.OnMechDeactivation -= SwitchToBallStateHitPointsUi;
     }
 
     private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction,
@@ -81,15 +105,27 @@ public class UIManager : MonoBehaviour
         comboCountText.enabled = false;
     }
 
-    private void SetHpDisplaySegments(float segmentCount)
+    private void UpdateHitPointsUi(HitPoints hitPoints)
     {
         // changes everytime we switch from mech to ball state
-        hpDisplay.SetFloat("SegmentCount", segmentCount);
+        hpDisplay.SetFloat("_SegmentCount", hitPoints.maxHitPoints);
+        hpDisplay.SetFloat("_RemovedSegments", hitPoints.currentHitPoints - hitPoints.maxHitPoints);
     }
 
-    private void RemoveHpDisplaySegment(int currentHp, int maxHp)
+    private void SwitchToMechHitPointsUI()
     {
-        var segmentCount = currentHp - maxHp;
-        hpDisplay.SetFloat("SegmentCount", segmentCount);
+        UpdateHitPointsUi(mechStateHp);
+    }
+
+    private void SwitchToBallStateHitPointsUi()
+    {
+        UpdateHitPointsUi(ballStateHp);
+    }
+
+    private void RemoveHitPointsUiSegment(HitPoints hitPoints)
+    {
+        var removedSegments = Mathf.Abs(hitPoints.currentHitPoints - hitPoints.maxHitPoints);
+        Debug.Log($"Removing {removedSegments} Segments!");
+        hpDisplay.SetFloat("_RemovedSegments", removedSegments);
     }
 }

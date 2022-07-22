@@ -4,7 +4,18 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="" />
+    <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/AttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/Actor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/MechAttachPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Projectiles/EnemyProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Projectiles/EnemyProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +35,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/Actors/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/MissionTracker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Projectiles/EnemyProjectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/WaveSystem/WaveManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/WaveSystem/WaveTimer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -34,14 +47,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Desktop/FullAutoFluff_Prototype_v0.app/Contents/MacOS/Full Auto Fluff" />
@@ -100,7 +113,9 @@
       <workItem from="1655805599657" duration="13438000" />
       <workItem from="1655993630113" duration="20657000" />
       <workItem from="1656447517823" duration="25739000" />
-      <workItem from="1657571610652" duration="63889000" />
+      <workItem from="1657571610652" duration="65371000" />
+      <workItem from="1658354061875" duration="13853000" />
+      <workItem from="1658474517416" duration="5728000" />
     </task>
     <servers />
   </component>

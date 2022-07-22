@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ public class MechAttachPoint : MonoBehaviour
     private bool mechIsOccupied;
     private InputHandler playerInputHandler;
     private Rigidbody2D riderRigidbody2D;
+
+    public static event Action OnMechActivation;
+    public static event Action OnMechDeactivation;
+    
 
     private void Awake()
     {
@@ -46,6 +51,9 @@ public class MechAttachPoint : MonoBehaviour
         }
     }
 
+    public static event Action OnSwitchToMechState;
+    public static event Action OnSwitchToBallState;
+
     private void EnterMech(InputHandler origin)
     {
         // Sets the mech parent layer to Player, so enemy Ai can detect it
@@ -55,6 +63,8 @@ public class MechAttachPoint : MonoBehaviour
 
         mechInputHandler.SwapInputSource(origin);
         mechIsOccupied = true;
+        
+        OnMechActivation?.Invoke();
     }
 
     private void ExitMech()
@@ -65,6 +75,8 @@ public class MechAttachPoint : MonoBehaviour
         playerInputHandler.SwapInputSource(mechInputHandler);
         mechIsOccupied = false;
         EjectRider();
+        
+        OnMechDeactivation?.Invoke();
     }
 
     private void EjectRider()
