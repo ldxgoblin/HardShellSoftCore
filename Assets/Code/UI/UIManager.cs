@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,14 +11,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] [Range(0.25f, 1f)] private float rumbleFallOff;
 
     [SerializeField] private Material hpDisplay;
+    
+    [SerializeField] private Image hpDisplayPortrait;
+    [SerializeField] private Sprite[] hpDisplayPortraitSprites;
 
     private HitPoints ballStateHp;
     private HitPoints mechStateHp;
 
     private float comboRumbleIntensity;
-
-    private Vector3 comboTextBasePosition;
     private float scoreRumbleIntensity;
+    
+    private Vector3 comboTextBasePosition;
     private Vector3 scoreTextBasePosition;
 
     private void Awake()
@@ -38,11 +42,12 @@ public class UIManager : MonoBehaviour
 
         MechAttachPoint.OnMechActivation += SwitchToMechHitPointsUI;
         MechAttachPoint.OnMechDeactivation += SwitchToBallStateHitPointsUi;
-
+        
+        // TODO: not optimal, needs references to the lambdas in order to unsubscribe later but i wanted to try the syntax lol
         EnemyProjectile.OnBallStateDamage += () => RemoveHitPointsUiSegment(ballStateHp);
         EnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
+        
     }
-
 
     private void Start()
     {
@@ -110,6 +115,8 @@ public class UIManager : MonoBehaviour
         // changes everytime we switch from mech to ball state
         hpDisplay.SetFloat("_SegmentCount", hitPoints.maxHitPoints);
         hpDisplay.SetFloat("_RemovedSegments", hitPoints.currentHitPoints - hitPoints.maxHitPoints);
+
+        RemoveHitPointsUiSegment(hitPoints);
     }
 
     private void SwitchToMechHitPointsUI()
@@ -124,8 +131,46 @@ public class UIManager : MonoBehaviour
 
     private void RemoveHitPointsUiSegment(HitPoints hitPoints)
     {
-        var removedSegments = Mathf.Abs(hitPoints.currentHitPoints - hitPoints.maxHitPoints);
-        Debug.Log($"Removing {removedSegments} Segments!");
+        var current = hitPoints.currentHitPoints;
+        var max = hitPoints.maxHitPoints;
+        
+        UpdateHitPointsPortrait(current, max);
+        
+        var removedSegments = Mathf.Abs(current - max);
         hpDisplay.SetFloat("_RemovedSegments", removedSegments);
+    }
+
+    private void UpdateHitPointsPortrait(int current, int max)
+    {
+        var percentage = 100 * ((float) current / max);
+        
+        Debug.Log($"{percentage}% of MaxHealth left!");
+        
+        // TODO refactor this mess
+        if (percentage > 80)
+        {
+            // 100percentSprite
+            hpDisplayPortrait.sprite = hpDisplayPortraitSprites[4];
+        }
+        else if (percentage is <= 80 and > 60)
+        {
+            // 75percentSprite
+            hpDisplayPortrait.sprite = hpDisplayPortraitSprites[3];
+        }
+        else if (percentage is <= 60 and >= 40)
+        {
+            // 50percentSprite
+            hpDisplayPortrait.sprite = hpDisplayPortraitSprites[2];
+        }
+        else if (percentage is < 40 and > 0)
+        {
+            // 25percentSprite
+            hpDisplayPortrait.sprite = hpDisplayPortraitSprites[1];
+        }
+        else if (percentage == 0)
+        {
+            // 0percentSprite
+            hpDisplayPortrait.sprite = hpDisplayPortraitSprites[0];
+        }
     }
 }

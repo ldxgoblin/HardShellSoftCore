@@ -5,8 +5,8 @@ public class Jump : MonoBehaviour
 {
     [SerializeField] [Range(0f, 100f)] private float jumpHeight = 4f;
     [SerializeField] [Range(0, 5)] private int maxJumpCount = 2;
-    [SerializeField] [Range(0f, 5f)] private float downwardMultiplier = 3f;
-    [SerializeField] [Range(0f, 5f)] private float upwardMultiplier = 3f;
+    [SerializeField] [Range(1f, 15f)] private float downwardMultiplier = 3f;
+    [SerializeField] [Range(1f, 15f)] private float upwardMultiplier = 3f;
 
     [SerializeField] private AudioClip _jumpClip;
 

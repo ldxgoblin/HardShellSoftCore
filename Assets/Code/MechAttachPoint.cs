@@ -18,7 +18,6 @@ public class MechAttachPoint : MonoBehaviour
 
     public static event Action OnMechActivation;
     public static event Action OnMechDeactivation;
-    
 
     private void Awake()
     {
@@ -51,8 +50,7 @@ public class MechAttachPoint : MonoBehaviour
         }
     }
 
-    public static event Action OnSwitchToMechState;
-    public static event Action OnSwitchToBallState;
+
 
     private void EnterMech(InputHandler origin)
     {

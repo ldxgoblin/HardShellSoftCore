@@ -43,12 +43,15 @@ public class Actor : MonoBehaviour
     protected virtual void Die()
     {
         //Destroy(gameObject);
+        
+        // TODO: Object Pooling
         gameObject.SetActive(false);
     }
 
     protected virtual async void HitFlash()
     {
-        if (spriteRenderer == null) return;
+        // TODO: sometimes causes a nullref when this method returns to
+        // the main thread and the associated gameobject is inactive
 
         spriteRenderer.color = Color.white;
         spriteRenderer.material = hitMaterial;

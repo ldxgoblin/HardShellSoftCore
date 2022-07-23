@@ -10,10 +10,12 @@ public class PlayerProjectile : BasicProjectile
         if (col.gameObject.CompareTag("Enemy"))
         {
             var enemyActor = col.gameObject.GetComponent<Enemy>();
-            Instantiate(projectileEnemyImpactFX, transform.position, transform.rotation);
-            enemyActor.Damage(projectileDamage);
-
-            OnPlayerProjectileHit?.Invoke();
+            if (enemyActor != null)
+            {
+                Instantiate(projectileEnemyImpactFX, transform.position, transform.rotation);
+                enemyActor.Damage(projectileDamage);
+                OnPlayerProjectileHit?.Invoke();
+            }
         }
 
         base.OnTriggerEnter2D(col);

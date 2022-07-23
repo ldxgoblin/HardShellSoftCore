@@ -14,7 +14,7 @@ public class EnemyProjectile : BasicProjectile
             var playerActor = col.gameObject.GetComponent<Player>();
             playerActor.Damage(projectileDamage);
             
-            OnBallStateDamage.Invoke();
+            OnBallStateDamage?.Invoke();
 
             Destroy(gameObject);
         }
@@ -22,10 +22,11 @@ public class EnemyProjectile : BasicProjectile
         if (col.gameObject.CompareTag("Mech"))
         {
             var mechActor = col.gameObject.GetComponent<Mech>();
+            
             mechActor.Damage(projectileDamage);
             
-            OnMechStateDamage.Invoke();
-
+            OnMechStateDamage?.Invoke();
+            
             Destroy(gameObject);
         }
     }
