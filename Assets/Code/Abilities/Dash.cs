@@ -13,10 +13,11 @@ public class Dash : MonoBehaviour
 
     [SerializeField] private GameObject dashImpactFX;
 
+    [SerializeField] private AudioClip dashHitClip;
     [SerializeField] private AudioClip dashClip;
     private AudioSource audioSource;
+    
     private bool canDamage;
-
     private bool canDash = true;
 
     private Vector2 dashDirection;
@@ -34,6 +35,8 @@ public class Dash : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private TrailRenderer trailRenderer;
 
+    public static event Action onDashHit;
+    
     private void Awake()
     {
         inputHandler = GetComponent<InputHandler>();
@@ -42,7 +45,8 @@ public class Dash : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
         trailRenderer = GetComponent<TrailRenderer>();
-        audioSource = GetComponent<AudioSource>();
+        
+        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -67,6 +71,8 @@ public class Dash : MonoBehaviour
                 dashPhase += 1;
                 isDashing = true;
                 canDash = false;
+                
+                audioSource.PlayOneShot(dashClip);
             }
 
             EndDash();
@@ -90,13 +96,13 @@ public class Dash : MonoBehaviour
                 Instantiate(dashImpactFX, transform.position, Quaternion.identity);
 
                 onDashHit?.Invoke();
+                
+                audioSource.PlayOneShot(dashHitClip);
             }
 
             StopDashInstantly();
         }
     }
-
-    public static event Action onDashHit;
 
     private Vector2 GetDashDirection()
     {

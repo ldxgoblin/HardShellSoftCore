@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634cf14840ea0e4459a10662bd019af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostHeight: 25
+  boostHeight: 35
   maxBoostFuel: 200
   currentFuel: 200
   fuelDepletionRate: 0.1
@@ -582,9 +582,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints:
-    maxHitPoints: 10
-    currentHitPoints: 10
+    maxHitPoints: 20
+    currentHitPoints: 20
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
+  mechActivationClip: {fileID: 8300000, guid: 665acec0af625d64e85afc83d17c3319, type: 3}
+  mechDeactivationClip: {fileID: 8300000, guid: fefe525b403fcab4890896f1c947e750, type: 3}
 --- !u!1 &7818845177880571492
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7818845177880571492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: 1.29, z: 0}
+  m_LocalPosition: {x: -0.03, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -633,7 +635,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.6104815, y: 0}
   serializedVersion: 2
-  m_Radius: 1.25
+  m_Radius: 2.25
 --- !u!114 &7818845177880571489
 MonoBehaviour:
   m_ObjectHideFlags: 0

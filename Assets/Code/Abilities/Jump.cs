@@ -12,7 +12,7 @@ public class Jump : MonoBehaviour
 
     [SerializeField] private bool jetPackMode;
     private readonly float defaultGravityScale = 1f;
-    private AudioSource _audioSource;
+    private AudioSource audioSource;
     private bool boosterRequested;
     private GroundCheck groundCheck;
 
@@ -35,7 +35,7 @@ public class Jump : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
 
-        _audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
     }
 
     private void Update()

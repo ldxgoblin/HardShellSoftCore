@@ -12,7 +12,7 @@ public class Enemy : Actor
 
     [Header("Sound FX")] [SerializeField] private AudioClip enemyDeathClip;
 
-    private AudioSource enemyAudioSource;
+    private AudioSource audioSource;
     private CinemachineImpulseSource enemyImpulseSource;
     
     public static event Action<int> onEnemyKilled;
@@ -20,7 +20,7 @@ public class Enemy : Actor
     protected override void Awake()
     {
         enemyImpulseSource = GetComponent<CinemachineImpulseSource>();
-        enemyAudioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
+        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
         
         base.Awake();
     }
@@ -32,7 +32,7 @@ public class Enemy : Actor
         Instantiate(enemyDeathFX, transform.position, Quaternion.identity);
         
         //TODO detach the audiosource from the enemy, otherwise no sound is played because the object its attached to is deactivated
-        enemyAudioSource.PlayOneShot(enemyDeathClip);
+        audioSource.PlayOneShot(enemyDeathClip);
 
         enemyImpulseSource.GenerateImpulse(transform.position);
 

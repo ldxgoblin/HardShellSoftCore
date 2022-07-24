@@ -140,18 +140,18 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: -4.775719
+        outSlope: -4.775719
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.1648122
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.0603773, b: 0.37701347, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbd09cc1f4984ac19fb5995f2b7375a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 50
-  maxJumpCount: 2
+  jumpHeight: 75
+  maxJumpCount: 3
   downwardMultiplier: 5
   upwardMultiplier: 5
   _jumpClip: {fileID: 0}
@@ -370,12 +370,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51361f22b3a84af5aca3712f416f61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDashCount: 3
+  maxDashCount: 50
   dashTime: 0.25
   dashSpeed: 150
   dashDamage: 1
   damageFrames: 15
   dashImpactFX: {fileID: 5024009746357069194, guid: afff8bf5e70dd5a46b5eb1efe033c8b8, type: 3}
+  dashHitClip: {fileID: 8300000, guid: bd346bbf96541a34d8ea54cabbb4e97d, type: 3}
   dashClip: {fileID: 8300000, guid: 203e685917093154c808a29e9341e464, type: 3}
 --- !u!1 &7252375147167346626
 GameObject:

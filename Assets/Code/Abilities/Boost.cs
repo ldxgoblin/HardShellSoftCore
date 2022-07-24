@@ -20,7 +20,8 @@ public class Boost : MonoBehaviour
     [SerializeField] private Image fuelMeter;
     [SerializeField] private float fuelMeterLerpSpeed;
     private readonly float defaultGravityScale = 1f;
-    private AudioSource _audioSource;
+    
+    private AudioSource audioSource;
 
     private bool boosterRequested;
     private GroundCheck groundCheck;
@@ -41,7 +42,7 @@ public class Boost : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         groundCheck = GetComponent<GroundCheck>();
 
-        _audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
 
         currentFuel = maxBoostFuel;
     }

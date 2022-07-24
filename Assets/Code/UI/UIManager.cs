@@ -142,6 +142,8 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHitPointsPortrait(int current, int max)
     {
+        if (current <= 0) return;
+        
         var percentage = 100 * ((float) current / max);
         
         Debug.Log($"{percentage}% of MaxHealth left!");

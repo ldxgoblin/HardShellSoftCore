@@ -22,7 +22,7 @@ public class MouseAimAndShoot : MonoBehaviour
 
     private Camera mainCamera;
     private Vector3 mousePosition;
-    private AudioSource shotAudioSource;
+    private AudioSource audioSource;
     private float shotCooldown;
 
     private CinemachineImpulseSource shotImpulseSource;
@@ -31,7 +31,7 @@ public class MouseAimAndShoot : MonoBehaviour
     {
         mainCamera = Camera.main;
 
-        shotAudioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
         shotImpulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
@@ -59,7 +59,7 @@ public class MouseAimAndShoot : MonoBehaviour
             muzzleFlash.Play();
 
             shotImpulseSource.GenerateImpulse(-mousePosition * impulseModifier);
-            shotAudioSource.PlayOneShot(shotClip);
+            audioSource.PlayOneShot(shotClip);
         }
     }
 
