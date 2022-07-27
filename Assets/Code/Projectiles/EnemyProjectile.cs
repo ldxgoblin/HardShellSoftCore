@@ -22,12 +22,15 @@ public class EnemyProjectile : BasicProjectile
         if (col.gameObject.CompareTag("Mech"))
         {
             var mechActor = col.gameObject.GetComponent<Mech>();
+
+            if(mechActor.MechIsActive)
+            {
+                mechActor.Damage(projectileDamage);
             
-            mechActor.Damage(projectileDamage);
+                OnMechStateDamage?.Invoke();
             
-            OnMechStateDamage?.Invoke();
-            
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

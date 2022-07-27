@@ -14,6 +14,8 @@ public class Actor : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     public HitPoints HitPoints => hitPoints;
 
+    protected AudioSource audioSource;
+
 
     protected virtual void Awake()
     {
@@ -42,7 +44,7 @@ public class Actor : MonoBehaviour
 
     protected virtual void Die()
     {
-        //Destroy(gameObject);
+        // Destroy(gameObject, audioSource.clip.length/audioSource.pitch);
         
         // TODO: Object Pooling
         gameObject.SetActive(false);

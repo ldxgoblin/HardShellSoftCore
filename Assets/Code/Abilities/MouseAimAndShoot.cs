@@ -2,6 +2,7 @@ using System;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.VFX;
+using Random = UnityEngine.Random;
 
 public class MouseAimAndShoot : MonoBehaviour
 {
@@ -11,9 +12,13 @@ public class MouseAimAndShoot : MonoBehaviour
     [SerializeField] private Transform projectileTransform;
     [SerializeField] private float delayBetweenShots;
 
-    [SerializeField] private VisualEffect muzzleFlash;
-    [SerializeField] private AudioClip shotClip;
+    [SerializeField] private float projectileSpread = 1f;
 
+    [SerializeField] private VisualEffect muzzleFlash;
+
+    [SerializeField] private AudioEvent shotAudioEvent;
+    private AudioSource audioSource;
+    
     public bool canFire;
     private readonly float impulseModifier = 0.025f;
 
@@ -22,7 +27,7 @@ public class MouseAimAndShoot : MonoBehaviour
 
     private Camera mainCamera;
     private Vector3 mousePosition;
-    private AudioSource audioSource;
+
     private float shotCooldown;
 
     private CinemachineImpulseSource shotImpulseSource;
@@ -31,7 +36,7 @@ public class MouseAimAndShoot : MonoBehaviour
     {
         mainCamera = Camera.main;
 
-        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         shotImpulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
@@ -59,7 +64,8 @@ public class MouseAimAndShoot : MonoBehaviour
             muzzleFlash.Play();
 
             shotImpulseSource.GenerateImpulse(-mousePosition * impulseModifier);
-            audioSource.PlayOneShot(shotClip);
+            
+            shotAudioEvent.Play(audioSource);
         }
     }
 
@@ -68,7 +74,9 @@ public class MouseAimAndShoot : MonoBehaviour
     private void ShootAtMousePosition(Vector3 direction)
     {
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
-        newProjectile.GetComponent<PlayerProjectile>().SetupProjectile(direction);
+
+        Vector3 spread = new Vector3(0,Random.Range(-projectileSpread, projectileSpread), 0);
+        newProjectile.GetComponent<PlayerProjectile>().SetupProjectile(direction + spread);
     }
 
     private void AimAtMousePosition()

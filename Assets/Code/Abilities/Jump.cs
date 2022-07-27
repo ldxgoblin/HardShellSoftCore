@@ -8,12 +8,10 @@ public class Jump : MonoBehaviour
     [SerializeField] [Range(1f, 15f)] private float downwardMultiplier = 3f;
     [SerializeField] [Range(1f, 15f)] private float upwardMultiplier = 3f;
 
-    [SerializeField] private AudioClip _jumpClip;
-
-    [SerializeField] private bool jetPackMode;
+    [SerializeField] private AudioClip jumpClip;
+    
     private readonly float defaultGravityScale = 1f;
     private AudioSource audioSource;
-    private bool boosterRequested;
     private GroundCheck groundCheck;
 
     private InputHandler inputHandler;
@@ -43,10 +41,8 @@ public class Jump : MonoBehaviour
         if (!inputHandler.IsInputActive()) return;
 
         // using the OR Operator this value remains set until we change it to false manually
-        if (!jetPackMode)
-            jumpRequested |= inputHandler.InputSource.GetJumpInput();
-        else
-            boosterRequested = inputHandler.InputSource.GetBoosterInput();
+        jumpRequested |= inputHandler.InputSource.GetJumpInput();
+
     }
 
     private void FixedUpdate()

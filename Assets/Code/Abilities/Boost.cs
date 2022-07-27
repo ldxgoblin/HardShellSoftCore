@@ -12,7 +12,7 @@ public class Boost : MonoBehaviour
 
     [SerializeField] private float boostFuelUsed;
 
-    [SerializeField] private AudioClip _boostClip;
+    [SerializeField] private AudioClip boostClip;
 
     [SerializeField] private ParticleSystem boosterIdleParticles;
     [SerializeField] private ParticleSystem boosterActiveParticles;
