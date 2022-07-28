@@ -16,7 +16,7 @@ public class MouseAimAndShoot : MonoBehaviour
 
     [SerializeField] private VisualEffect muzzleFlash;
 
-    [SerializeField] private AudioEvent shotAudioEvent;
+    [SerializeField] private SimpleAudioEvent shotAudioEvent;
     private AudioSource audioSource;
     
     public bool canFire;
