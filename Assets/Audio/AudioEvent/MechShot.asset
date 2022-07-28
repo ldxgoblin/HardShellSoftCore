@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40cfd06156d59f4da40d1b1d0f8720e, type: 3}
+  m_Name: MechShot
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 216940635a705224f9dd45253f924f2a, type: 3}
+  volumeRange:
+    minValue: 0.5431846
+    maxValue: 0.7782021
+  pitchRange:
+    minValue: 0.86662716
+    maxValue: 1.1897765

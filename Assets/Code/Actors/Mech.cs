@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class Mech : Player
 {
-    private bool mechIsActive = false;
-    public bool MechIsActive { get; }
+    public bool MechIsActive { get; private set; } = false;
 
     [SerializeField] private AudioClip mechActivationClip;
     [SerializeField] private AudioClip mechDeactivationClip;
 
-    private AudioSource audioSource;
-    
     protected override void Awake()
     {
         base.Awake();
@@ -17,7 +14,7 @@ public class Mech : Player
         MechAttachPoint.OnMechActivation += SetMechActive;
         MechAttachPoint.OnMechDeactivation += SetMechInActive;
         
-        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected void OnDestroy()
@@ -29,7 +26,7 @@ public class Mech : Player
     private void SetMechActive()
     {
         Debug.Log("Mech activated!");
-        mechIsActive = true;
+        MechIsActive = true;
         
         audioSource.PlayOneShot(mechActivationClip);
     }
@@ -37,7 +34,7 @@ public class Mech : Player
     private void SetMechInActive()
     {
         Debug.Log("Mech deactivated!");
-        mechIsActive = false;
+        MechIsActive = false;
         
         audioSource.PlayOneShot(mechDeactivationClip);
     }

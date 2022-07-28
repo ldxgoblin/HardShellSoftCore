@@ -131,6 +131,8 @@ public class UIManager : MonoBehaviour
 
     private void RemoveHitPointsUiSegment(HitPoints hitPoints)
     {
+        if (hitPoints == null) return;
+        
         var current = hitPoints.currentHitPoints;
         var max = hitPoints.maxHitPoints;
         
@@ -142,7 +144,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHitPointsPortrait(int current, int max)
     {
-        if (current <= 0) return;
+        // TODO can sometimes produce a nullref when the player object has been deactivated
         
         var percentage = 100 * ((float) current / max);
         

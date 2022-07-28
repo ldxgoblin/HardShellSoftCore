@@ -137,8 +137,9 @@ MonoBehaviour:
   projectile: {fileID: 369544534265692808, guid: 516eb83a4ede74e4ab9023633e59937a, type: 3}
   projectileTransform: {fileID: 6493789859599269049}
   delayBetweenShots: 0.08
+  projectileSpread: 0.08
   muzzleFlash: {fileID: 9015670642814342372}
-  shotClip: {fileID: 8300000, guid: 216940635a705224f9dd45253f924f2a, type: 3}
+  shotAudioEvent: {fileID: 11400000, guid: 3cf77d53e3c6b3d488af2cda70c87399, type: 2}
   canFire: 0
 --- !u!82 &379484179430875688
 AudioSource:
@@ -390,6 +391,7 @@ GameObject:
   - component: {fileID: 2461007897361601653}
   - component: {fileID: 7818845176373898190}
   - component: {fileID: 3544188008135532197}
+  - component: {fileID: 1567371736}
   m_Layer: 0
   m_Name: HoverMechNew
   m_TagString: Mech
@@ -529,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300f4f5460ff849b48da85dbba905b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 25
+  maxSpeed: 40
   maxAcceleration: 35
   maxAirAcceleration: 35
   isFacingLeft: 0
@@ -545,14 +547,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634cf14840ea0e4459a10662bd019af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostHeight: 35
+  boostHeight: 45
   maxBoostFuel: 200
   currentFuel: 200
   fuelDepletionRate: 0.1
   downwardMultiplier: 5
   upwardMultiplier: 5
   boostFuelUsed: 0
-  _boostClip: {fileID: 0}
+  boostClip: {fileID: 0}
   boosterIdleParticles: {fileID: 0}
   boosterActiveParticles: {fileID: 0}
   fuelMeter: {fileID: 0}
@@ -587,6 +589,102 @@ MonoBehaviour:
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
   mechActivationClip: {fileID: 8300000, guid: 665acec0af625d64e85afc83d17c3319, type: 3}
   mechDeactivationClip: {fileID: 8300000, guid: fefe525b403fcab4890896f1c947e750, type: 3}
+--- !u!82 &1567371736
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818845176373898192}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7818845177880571492
 GameObject:
   m_ObjectHideFlags: 0
