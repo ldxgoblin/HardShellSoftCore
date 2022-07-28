@@ -3196,6 +3196,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1da4e3713fbd7d4caa8faddacb0f67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavesAvailable:
+  - enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
+    enemyCountPerSpawnPoint: 5
+    isCleared: 0
+  - enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
+    enemyCountPerSpawnPoint: 5
+    isCleared: 0
+  - enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
+    enemyCountPerSpawnPoint: 10
+    isCleared: 0
   spawnPoints:
   - {fileID: 652557258}
   - {fileID: 1839400298}
@@ -3206,19 +3216,6 @@ MonoBehaviour:
   - {fileID: 328230011}
   activeEnemies: []
   enemyTransform: {fileID: 289334905}
-  waves:
-  - enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
-    enemyCountPerSpawnPoint: 5
-    isCleared: 0
-  - enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
-    enemyCountPerSpawnPoint: 10
-    isCleared: 0
-  - enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
-    enemyCountPerSpawnPoint: 15
-    isCleared: 0
-  - enemyType: {fileID: 4471476433685449031, guid: c549a3f9d4df24640a262b1e17e2e32b, type: 3}
-    enemyCountPerSpawnPoint: 1
-    isCleared: 0
 --- !u!1 &1617363855
 GameObject:
   m_ObjectHideFlags: 3

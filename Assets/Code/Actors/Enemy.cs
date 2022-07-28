@@ -1,6 +1,7 @@
 using System;
 using Cinemachine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : Actor
 {
@@ -36,5 +37,11 @@ public class Enemy : Actor
         enemyImpulseSource.GenerateImpulse(transform.position);
 
         base.Die();
+    }
+
+    public void Bump()
+    {
+        Vector2 force = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
+        rigidbody2D.AddForce(force * 100, ForceMode2D.Impulse);
     }
 }

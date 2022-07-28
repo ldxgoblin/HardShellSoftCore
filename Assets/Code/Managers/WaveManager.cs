@@ -6,91 +6,109 @@ using Random = System.Random;
 
 public class WaveManager : MonoBehaviour
 {
-    private int waveCount;
-    private float secondsBetweenWaves;
+    [SerializeField] private Wave[] wavesAvailable;             // contains all waves to choose from, set in inspector
+    private Wave currentWave;                                   // contains the currently selected wave to run
+    private int currentWaveIndex;                               // wave index
+    private int wavesCleared;                                   // counter used to check whether all available waves are cleared
     
-    private WaveTimer waveTimer;
+    private int totalWaveCount;                                 // number of total waves available
+    private float timeBetweenWaves;                             // brief respite between the last cleared wave and the next in seconds
     
-    [SerializeField] private List<SpawnPoint> spawnPoints;
-    [SerializeField] private List<GameObject> activeEnemies;
-    [SerializeField] private Transform enemyTransform;
-
-    [SerializeField] private Wave[] waves;
+    private WaveTimer waveClearTimer;                           // records the total time from start to finish (i.e. boss kill) used for mission ranking
     
-    private int currentWaveNumber;
-
-    private Wave currentWave;
+    [SerializeField] private List<SpawnPoint> spawnPoints;      // all spawnpoints in the current scene to choose from
+    private List<SpawnPoint> currentSpawnPointSelection;        // the current set of n randomly selected spawnpoints
+    
+    [SerializeField] private List<GameObject> activeEnemies;    // all currently non-dead enemies used to determined when a wave is cleared
+    [SerializeField] private Transform enemyTransform;          // just an empty transform containing all spawned enemies in the scene
     
     private void Awake()
     {
-        waveCount = waves.Length;
+        totalWaveCount = wavesAvailable.Length;
         
-        currentWaveNumber = 0;
-        currentWave = waves[currentWaveNumber];
+        // Initialize System with first Wave
+        currentWaveIndex = 0;
+        currentWave = GetNextWave(currentWaveIndex);
     }
 
     private void Start()
     {
-        // First Wave
+        // Run First Wave
         RunWave(currentWave);
     }
 
     private void Update()
     {
-
         if (!currentWave.isCleared) return;
         
-        // Start next Wave
-        currentWaveNumber++;
-        currentWave = GetNextWave(currentWaveNumber);
-        var spawners = GetRandomSpawnPoints(currentWaveNumber);
-        SpawnEnemies(currentWave, spawners);
+        IncrementWave();
+        SetNextWave(currentWaveIndex);
+        RunWave(currentWave);
     }
     
     private Wave GetNextWave(int waveNumber)
     {
-        return waves[waveNumber];
+        return wavesAvailable[waveNumber];
+    }
+    
+    private void SetNextWave(int waveNumber)
+    {
+        if(waveNumber <= wavesAvailable.Length)
+        {
+            Debug.Log($"Attempting to set INDEX: {waveNumber} from total {wavesAvailable.Length}");
+            currentWave = wavesAvailable[waveNumber -1];
+        }
     }
     
     private void RunWave(Wave wave)
     {
-        currentWaveNumber++;
-        var spawners = GetRandomSpawnPoints(currentWaveNumber);
+        var spawners = GetRandomSpawnPoints();
         Debug.Log(
-            $"Starting Wave {currentWave}! Activating {spawners.Count} SpawnPoints, spawning {currentWave.enemyCountPerSpawnPoint} enemies");
-        SpawnEnemies(wave, spawners);
+            $"Starting Wave {currentWaveIndex}! Activating {spawners.Count} SpawnPoints, spawning {currentWave.enemyCountPerSpawnPoint} enemies");
+        
+        SpawnEnemiesDelayed(wave, spawners);
     }
 
+    private void IncrementWave()
+    {
+        if (currentWaveIndex < totalWaveCount)
+        {
+            currentWaveIndex++;
+        }
+        else
+        {
+            Debug.Log("All Waves CLEARED!");
+        }
+    }
+    
     private List<SpawnPoint> SelectRandomSpawnPoints(int count)
     {
         return spawnPoints.OrderBy(point => Guid.NewGuid()).Take(count).ToList();
     }
 
-    private List<SpawnPoint> GetRandomSpawnPoints(int count)
+    private List<SpawnPoint> GetRandomSpawnPoints()
     {
+        int randomCount = UnityEngine.Random.Range(1, spawnPoints.Count);
+
         var random = new Random();
         var randomSpawnPoints = new List<SpawnPoint>();
         
         // shuffle the original list
         spawnPoints.OrderBy(point => random.Next());
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < randomCount; i++)
         {
             randomSpawnPoints.Add(spawnPoints[i]);
         }
         
         return randomSpawnPoints;
     }
-    
-    private void SpawnEnemies(Wave wave, List<SpawnPoint> spawners)
+
+    private void SpawnEnemiesDelayed(Wave wave, List<SpawnPoint> spawners)
     {
         foreach (var point in spawners)
         {
-            for (int i = 0; i < wave.enemyCountPerSpawnPoint; i++)
-            {
-                var enemy = point.Spawn(wave.enemyType, enemyTransform);
-                activeEnemies.Add(enemy);
-            }
+            point.SpawnMultipleWithDelay(wave, enemyTransform);
         }
     }
 }
