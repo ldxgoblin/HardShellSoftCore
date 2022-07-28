@@ -356,8 +356,7 @@ MonoBehaviour:
   maxJumpCount: 3
   downwardMultiplier: 5
   upwardMultiplier: 5
-  _jumpClip: {fileID: 0}
-  jetPackMode: 0
+  jumpClip: {fileID: 0}
 --- !u!114 &7047894155724562833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,8 +375,9 @@ MonoBehaviour:
   dashDamage: 1
   damageFrames: 15
   dashImpactFX: {fileID: 5024009746357069194, guid: afff8bf5e70dd5a46b5eb1efe033c8b8, type: 3}
-  dashHitClip: {fileID: 8300000, guid: bd346bbf96541a34d8ea54cabbb4e97d, type: 3}
   dashClip: {fileID: 8300000, guid: 203e685917093154c808a29e9341e464, type: 3}
+  dashAudioEvent: {fileID: 11400000, guid: 3ad83ded6988112439226fb75815e6c9, type: 2}
+  dashHitAudioEvent: {fileID: 11400000, guid: 7dbd6622f702980489f577e3af2baad6, type: 2}
 --- !u!1 &7252375147167346626
 GameObject:
   m_ObjectHideFlags: 0

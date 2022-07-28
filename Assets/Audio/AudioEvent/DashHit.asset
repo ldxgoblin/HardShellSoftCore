@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f40cfd06156d59f4da40d1b1d0f8720e, type: 3}
-  m_Name: MechShot
+  m_Name: DashHit
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 216940635a705224f9dd45253f924f2a, type: 3}
+  - {fileID: 8300000, guid: bd346bbf96541a34d8ea54cabbb4e97d, type: 3}
   volumeRange:
-    minValue: 0.42643034
-    maxValue: 0.66144776
+    minValue: 0.875657
+    maxValue: 1
   pitchRange:
-    minValue: 0.86662716
-    maxValue: 1.1897765
+    minValue: 0.77349687
+    maxValue: 1.3572685

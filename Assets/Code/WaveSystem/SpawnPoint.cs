@@ -1,11 +1,11 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public bool canSpawn;
     public float spawnRate;
+    public static event Action<GameObject> onEnemyBirth;
     
     public GameObject Spawn(GameObject enemy, Transform parent)
     {
@@ -23,12 +23,15 @@ public class SpawnPoint : MonoBehaviour
         
         for (int i = 0; i < wave.enemyCountPerSpawnPoint; i++)
         {
+            // TODO Object Pooling
             var enemyGo = Instantiate(enemyType, transform.position, Quaternion.identity, parent);
             var enemy = enemyGo.gameObject.GetComponent<Enemy>();
             
             // bump enemy away from spawnpoint to prevent overlapping
             enemy.Bump();
 
+            onEnemyBirth?.Invoke(enemyGo);
+            
             yield return new WaitForSeconds(spawnRate);
         }
 

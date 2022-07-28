@@ -12,9 +12,11 @@ public class Dash : MonoBehaviour
     [SerializeField] private int damageFrames = 10;
 
     [SerializeField] private GameObject dashImpactFX;
-
-    [SerializeField] private AudioClip dashHitClip;
+    
     [SerializeField] private AudioClip dashClip;
+    [SerializeField] private SimpleAudioEvent dashAudioEvent;
+    [SerializeField] private SimpleAudioEvent dashHitAudioEvent;
+    
     private AudioSource audioSource;
     
     private bool canDamage;
@@ -46,7 +48,7 @@ public class Dash : MonoBehaviour
         groundCheck = GetComponent<GroundCheck>();
         trailRenderer = GetComponent<TrailRenderer>();
         
-        audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -72,7 +74,7 @@ public class Dash : MonoBehaviour
                 isDashing = true;
                 canDash = false;
                 
-                audioSource.PlayOneShot(dashClip);
+                dashAudioEvent.Play(audioSource);
             }
 
             EndDash();
@@ -97,7 +99,7 @@ public class Dash : MonoBehaviour
 
                 onDashHit?.Invoke();
                 
-                audioSource.PlayOneShot(dashHitClip);
+                dashHitAudioEvent.Play(audioSource);
             }
 
             StopDashInstantly();

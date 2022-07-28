@@ -6,22 +6,22 @@ using Random = UnityEngine.Random;
 public class Enemy : Actor
 {
     [Header("General Values")] [SerializeField]
-    private int score = 100;
+    private int score = 100;                                        // enemy base score value
 
     [Header("Splatter VFX")] [SerializeField]
-    private GameObject enemyDeathFX;
+    private GameObject enemyDeathFX;                                // blood splatter vfx prefab
 
     [Header("Sound FX")]
-    [SerializeField] private AudioEvent enemyDeathAudioEvent;
+    [SerializeField] private SimpleAudioEvent enemyDeathAudioEvent; // sploosh!
     
-    private CinemachineImpulseSource enemyImpulseSource;
-    
-    public static event Action<int> onEnemyKilled;
+    private CinemachineImpulseSource enemyImpulseSource;            // camera shake
+    public static event Action<int> onEnemyKilled;                  // tells UIManager to update its score display
+    public static event Action<GameObject> onEnemyDeath;            // tells WaveMananger to delete the current Enemy from its activeEnemies list
 
     protected override void Awake()
     {
         base.Awake();
-        
+
         enemyImpulseSource = GetComponent<CinemachineImpulseSource>();
         audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
     }
@@ -29,6 +29,7 @@ public class Enemy : Actor
     protected override void Die()
     {
         onEnemyKilled?.Invoke(score);
+        onEnemyDeath?.Invoke(gameObject);
 
         Instantiate(enemyDeathFX, transform.position, Quaternion.identity);
         

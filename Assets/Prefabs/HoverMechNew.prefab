@@ -533,7 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 40
   maxAcceleration: 35
-  maxAirAcceleration: 35
+  maxAirAcceleration: 60
   isFacingLeft: 0
 --- !u!114 &2461007897361601653
 MonoBehaviour:
