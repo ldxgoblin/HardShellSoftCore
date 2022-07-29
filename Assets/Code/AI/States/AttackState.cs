@@ -12,6 +12,7 @@ public class AttackState : State
     [SerializeField] private float fireCooldown;
 
     [SerializeField] private bool doesContactDamage;
+
     private bool canFire;
 
     public override State RunCurrentState()
@@ -22,20 +23,20 @@ public class AttackState : State
 
         if (canFire && aiDetector.TargetInSight)
         {
-            // Debug.Log("<color=red>ATTACK STATE:</color> Target in Range, attacking!");
             Attack();
             StartCooldown();
 
             return this;
         }
-
-        // Debug.Log("<color=red>ATTACK STATE:</color> Target out of Range, switching to <color=yellow>CHASE!</color>");
+        
         return nextState;
     }
 
     private void Attack()
     {
         var targetDirection = aiDetector.Target.transform.position - transform.position;
+        targetDirection.Normalize();
+        
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
         newProjectile.GetComponent<EnemyProjectile>().SetupProjectile(targetDirection);

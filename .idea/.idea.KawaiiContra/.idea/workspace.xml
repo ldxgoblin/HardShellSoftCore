@@ -6,12 +6,39 @@
   <component name="ChangeListManager">
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/GroundCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/GroundCheck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/AudioEvent/EnemyDeath.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/AudioEvent/EnemyDeath.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/AudioEvent/MechShot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/AudioEvent/MechShot.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/AttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseFOVState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseFOVState.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/AudioEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/AudioEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/Editor/AudioEventEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/Editor/AudioEventEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/Editor/RangedFloatDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/Editor/RangedFloatDrawer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/ScriptableObjects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/ScriptableObjects/TestAudioEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/ScriptableObjects/TestAudioEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/SimpleAudioEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Audio/SimpleAudioEvent.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/WaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/WaveManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/WaveSystem/SpawnPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/WaveSystem/SpawnPoint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PhysicsMaterials/SlideyBouncey.physicsMaterial2D" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PhysicsMaterials/SlideyBouncey.physicsMaterial2D.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BasicArena.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BasicArena.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EnemyProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EnemyProjectile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMechNew.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HoverMechNew.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +57,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/AI/AIDetectorBox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Abilities/Boost.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Actors/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Audio/AudioEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Audio/Editor/AudioEventEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Audio/Editor/RangedFloatDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Helper/MinMaxRangeAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Projectiles/EnemyProjectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/WaveSystem/WaveTimer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -46,15 +70,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "rider.run.widget.enabled.cache": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Desktop/FullAutoFluff_Prototype_v0.app/Contents/MacOS/Full Auto Fluff" />
@@ -119,6 +144,7 @@
       <workItem from="1658767449091" duration="347000" />
       <workItem from="1658825140417" duration="9487000" />
       <workItem from="1658842366858" duration="30938000" />
+      <workItem from="1658992198753" duration="20470000" />
     </task>
     <servers />
   </component>
