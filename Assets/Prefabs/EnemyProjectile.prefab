@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 1
-  projectileSpeed: 15
+  projectileSpeed: 30
   destroyAfterSeconds: 2
   projectileImpactFX: {fileID: 0}
 --- !u!1 &2469154771428581529

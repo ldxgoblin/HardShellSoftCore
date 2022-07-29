@@ -18,12 +18,16 @@ public class Enemy : Actor
     public static event Action<int> onEnemyKilled;                  // tells UIManager to update its score display
     public static event Action<GameObject> onEnemyDeath;            // tells WaveMananger to delete the current Enemy from its activeEnemies list
 
+    public static event Action<Transform> onEnemyAddToGroup, onEnemyRemoveFromGroup; 
+    
     protected override void Awake()
     {
         base.Awake();
 
         enemyImpulseSource = GetComponent<CinemachineImpulseSource>();
         audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
+        
+        onEnemyAddToGroup?.Invoke(transform);
     }
 
     protected override void Die()
@@ -37,6 +41,8 @@ public class Enemy : Actor
 
         enemyImpulseSource.GenerateImpulse(transform.position);
 
+        onEnemyRemoveFromGroup?.Invoke(transform);
+        
         base.Die();
     }
 

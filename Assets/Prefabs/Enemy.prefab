@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints:
-    maxHitPoints: 10
-    currentHitPoints: 10
+    maxHitPoints: 5
+    currentHitPoints: 5
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
   score: 999
   enemyDeathFX: {fileID: 7650888637837580235, guid: 34eea1aa2d8c2a044a1a1c6a99cd95b5, type: 3}

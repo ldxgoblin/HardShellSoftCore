@@ -1,11 +1,14 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreCountText;
     [SerializeField] private TextMeshProUGUI comboCountText;
+    [SerializeField] private TextMeshProUGUI comboMessageText;
 
     [SerializeField] [Range(2.5f, 5f)] private float rumbleIntensity = 2.5f;
     [SerializeField] [Range(0.25f, 1f)] private float rumbleFallOff;
@@ -22,7 +25,10 @@ public class UIManager : MonoBehaviour
     private float scoreRumbleIntensity;
     
     private Vector3 comboTextBasePosition;
+    private Vector3 comboMessageBasePosition;
     private Vector3 scoreTextBasePosition;
+    
+    [SerializeField] private ComboMessage[] comboMessages;
 
     private void Awake()
     {
@@ -33,6 +39,7 @@ public class UIManager : MonoBehaviour
         if(mechStateHp == null) Debug.LogError("Mech State HP Object not found!");
 
         comboTextBasePosition = comboCountText.transform.localPosition;
+        comboMessageBasePosition = comboMessageText.transform.localPosition;
         scoreTextBasePosition = scoreCountText.transform.localPosition;
 
         ComboTracker.onCombo += UpdateComboCountText;
@@ -61,6 +68,7 @@ public class UIManager : MonoBehaviour
         if (comboRumbleIntensity > 0)
         {
             RumbleCounter(comboCountText, comboTextBasePosition, randomDirection, comboRumbleIntensity);
+            RumbleCounter(comboMessageText, comboMessageBasePosition, randomDirection, comboRumbleIntensity);
             comboRumbleIntensity -= rumbleFallOff * Time.deltaTime;
         }
         else
@@ -101,6 +109,8 @@ public class UIManager : MonoBehaviour
     private void UpdateComboCountText(int hits)
     {
         comboCountText.enabled = true;
+        comboMessageText.enabled = true;
+        
         comboRumbleIntensity = rumbleIntensity;
         comboCountText.SetText($"{hits}HIT");
     }
@@ -108,6 +118,7 @@ public class UIManager : MonoBehaviour
     private void HideComboCountText()
     {
         comboCountText.enabled = false;
+        comboMessageText.enabled = false;
     }
 
     private void UpdateHitPointsUi(HitPoints hitPoints)
@@ -144,12 +155,8 @@ public class UIManager : MonoBehaviour
 
     private void UpdateHitPointsPortrait(int current, int max)
     {
-        // TODO can sometimes produce a nullref when the player object has been deactivated
-        
         var percentage = 100 * ((float) current / max);
-        
-        Debug.Log($"{percentage}% of MaxHealth left!");
-        
+
         // TODO refactor this mess
         if (percentage > 80)
         {
@@ -177,4 +184,11 @@ public class UIManager : MonoBehaviour
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[0];
         }
     }
+}
+
+[Serializable]
+public class ComboMessage
+{
+    public int hits;
+    public string message;
 }

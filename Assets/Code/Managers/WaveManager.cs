@@ -6,6 +6,8 @@ using Random = System.Random;
 
 public class WaveManager : MonoBehaviour
 {
+    public bool waveManagerRunning;
+    
     [SerializeField] private Wave[] wavesAvailable;             // contains all waves to choose from, set in inspector
 
     private Wave currentWave;                                   // contains the currently selected wave to run
@@ -26,7 +28,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Transform enemyTransform;          // just an empty transform containing all spawned enemies in the scene
 
     private bool allWavesCleared;
-    public bool waveManagerRunning;
+
     
     private enum WaveState
     {
@@ -44,7 +46,7 @@ public class WaveManager : MonoBehaviour
         
         // Initialize System with first Wave
         currentWaveIndex = 0;
-        currentWave = GetNextWave(currentWaveIndex);
+        SetNextWave(currentWaveIndex);
     }
 
     private void OnDestroy()
@@ -97,8 +99,9 @@ public class WaveManager : MonoBehaviour
 
     private void WaveCleared()
     {
-        Debug.Log("<color=red>Wave " + (currentWaveIndex + 1) +" Cleared!</color>");
-        
+        Debug.Log($"Current Wave: {currentWave.waveUIMessage} cleared");
+        currentWave.isCleared = true;
+
         waveState = WaveState.COUNTDOWN;
         waveCountDown = timeBetweenWaves;
         
@@ -115,24 +118,17 @@ public class WaveManager : MonoBehaviour
             enemySearchCountdown = 1f;
             if (activeEnemies.Count == 0)
             {
-                currentWave.isCleared = true;
                 return true;
             }
         }
-        Debug.Log(activeEnemies.Count +" Enemies left alive!");
         return false;
     }
-    
-    private Wave GetNextWave(int waveNumber)
-    {
-        return wavesAvailable[waveNumber];
-    }
-    
+
     private void SetNextWave(int waveNumber)
     {
         if(waveNumber <= wavesAvailable.Length)
         {
-            currentWave = wavesAvailable[waveNumber -1];
+            currentWave = wavesAvailable[waveNumber];
         }
     }
     
@@ -148,7 +144,7 @@ public class WaveManager : MonoBehaviour
 
     private void IncrementWave()
     {
-        if (currentWaveIndex < totalWaveCount)
+        if (currentWaveIndex < totalWaveCount -1)
         {
             currentWaveIndex++;
         }
@@ -187,7 +183,7 @@ public class WaveManager : MonoBehaviour
     {
         foreach (var point in spawners)
         {
-            point.SpawnMultipleWithDelay(wave, enemyTransform);
+            point.SpawnMultipleWithDelay(wave, enemyTransform, wave.spawnRate);
         }
     }
 
@@ -214,6 +210,6 @@ public class Wave
     public string waveUIMessage;
     public GameObject enemyType;
     public int enemyCountPerSpawnPoint;
-
+    public float spawnRate;
     public bool isCleared;
 }

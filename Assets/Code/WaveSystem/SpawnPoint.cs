@@ -12,12 +12,12 @@ public class SpawnPoint : MonoBehaviour
         return Instantiate(enemy, transform.position, Quaternion.identity, parent);
     }
 
-    public void SpawnMultipleWithDelay(Wave wave, Transform parent)
+    public void SpawnMultipleWithDelay(Wave wave, Transform parent, float rate)
     {
-        StartCoroutine(Spawn(wave, parent));
+        StartCoroutine(Spawn(wave, parent, rate));
     }
 
-    private IEnumerator Spawn(Wave wave, Transform parent)
+    private IEnumerator Spawn(Wave wave, Transform parent, float rate)
     {
         GameObject enemyType = wave.enemyType;
         
@@ -32,7 +32,7 @@ public class SpawnPoint : MonoBehaviour
 
             onEnemyBirth?.Invoke(enemyGo);
             
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(rate);
         }
 
     }

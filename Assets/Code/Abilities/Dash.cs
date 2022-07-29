@@ -17,6 +17,9 @@ public class Dash : MonoBehaviour
     [SerializeField] private SimpleAudioEvent dashAudioEvent;
     [SerializeField] private SimpleAudioEvent dashHitAudioEvent;
     
+    [SerializeField] private SlowMotion slowMotion;
+    [SerializeField] float slowMotionDuration = 0.5f;
+    
     private AudioSource audioSource;
     
     private bool canDamage;
@@ -100,6 +103,8 @@ public class Dash : MonoBehaviour
                 onDashHit?.Invoke();
                 
                 dashHitAudioEvent.Play(audioSource);
+                
+                slowMotion.SlowDown(slowMotionDuration, 0.1f);
             }
 
             StopDashInstantly();

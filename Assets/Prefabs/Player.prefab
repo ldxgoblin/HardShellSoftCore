@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7047894155724562845}
   - component: {fileID: 7047894155724562847}
   - component: {fileID: 7047894155724562833}
+  - component: {fileID: 7536536217481098971}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -373,11 +374,25 @@ MonoBehaviour:
   dashTime: 0.25
   dashSpeed: 150
   dashDamage: 1
-  damageFrames: 15
+  damageFrames: 25
   dashImpactFX: {fileID: 5024009746357069194, guid: afff8bf5e70dd5a46b5eb1efe033c8b8, type: 3}
   dashClip: {fileID: 8300000, guid: 203e685917093154c808a29e9341e464, type: 3}
   dashAudioEvent: {fileID: 11400000, guid: 3ad83ded6988112439226fb75815e6c9, type: 2}
   dashHitAudioEvent: {fileID: 11400000, guid: 7dbd6622f702980489f577e3af2baad6, type: 2}
+  slowMotion: {fileID: 7536536217481098971}
+  slowMotionDuration: 0.1
+--- !u!114 &7536536217481098971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047894155724562821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc60881a4a592b48bb9c2462df29205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7252375147167346626
 GameObject:
   m_ObjectHideFlags: 0
