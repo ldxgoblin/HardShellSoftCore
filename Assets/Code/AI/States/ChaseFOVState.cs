@@ -8,7 +8,7 @@ public class ChaseFOVState : State
     [SerializeField] private State previousState;
 
     [SerializeField] private float chaseSpeed;
-    [MinMaxRange(-5,5)]
+    [MinMaxRange(-15,50)]
     [SerializeField] private RangedFloat chaseSpeedMutationRange;
     
     [SerializeField, Range(0.1f, 0.25f)] private float gapFactor = 0.25f;
@@ -61,7 +61,8 @@ public class ChaseFOVState : State
         var chaseDirection = GetDirectionToTarget();
         
         var chaseVelocity = chaseDirection * chaseSpeed;
-        rigidbody2D.velocity = chaseVelocity;
+        rigidbody2D.AddForce(chaseVelocity, ForceMode2D.Force);
+        //rigidbody2D.velocity = chaseVelocity;
 
         //rotate towards angle of target, but looks weird lol
         //var angle = Mathf.Atan2(chaseDirection.y, chaseDirection.x) * Mathf.Rad2Deg;

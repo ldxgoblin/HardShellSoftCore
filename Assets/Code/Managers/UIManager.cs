@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
     private Vector3 scoreTextBasePosition;
     
     [SerializeField] private ComboMessage[] comboMessages;
+    [SerializeField] private RectTransform comboPanel;
 
     private void Awake()
     {
@@ -58,6 +60,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        DOTween.Init();
         UpdateHitPointsUi(ballStateHp);
     }
 
@@ -108,8 +111,9 @@ public class UIManager : MonoBehaviour
 
     private void UpdateComboCountText(int hits)
     {
-        comboCountText.enabled = true;
-        comboMessageText.enabled = true;
+        comboPanel.DOAnchorPos(new Vector2(-50, -70), 0.25f);
+        // comboCountText.enabled = true;
+        // comboMessageText.enabled = true;
         
         comboRumbleIntensity = rumbleIntensity;
         comboCountText.SetText($"{hits}HIT");
@@ -117,8 +121,9 @@ public class UIManager : MonoBehaviour
 
     private void HideComboCountText()
     {
-        comboCountText.enabled = false;
-        comboMessageText.enabled = false;
+        comboPanel.DOAnchorPos(new Vector2(500, -70), 0.25f);
+        // comboCountText.enabled = false;
+        // comboMessageText.enabled = false;
     }
 
     private void UpdateHitPointsUi(HitPoints hitPoints)

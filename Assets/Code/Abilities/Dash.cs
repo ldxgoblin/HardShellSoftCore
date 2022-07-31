@@ -7,7 +7,7 @@ public class Dash : MonoBehaviour
 {
     [SerializeField] private int maxDashCount = 2;
     [SerializeField] [Range(0.1f, 0.25f)] private float dashTime = 0.1f;
-    [SerializeField] [Range(50f, 150f)] private float dashSpeed = 50f;
+    [SerializeField] [Range(10f, 150f)] private float dashSpeed = 50f;
     [SerializeField] [Range(1, 10)] private int dashDamage = 1;
     [SerializeField] private int damageFrames = 10;
 
@@ -40,7 +40,7 @@ public class Dash : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private TrailRenderer trailRenderer;
 
-    public static event Action onDashHit;
+    public static event Action OnDashHit;
     
     private void Awake()
     {
@@ -61,7 +61,6 @@ public class Dash : MonoBehaviour
         desiredDash = inputHandler.InputSource.GetDashInput();
 
         if (desiredDash)
-            // get and store direction in the exact moment the input is true
             dashDirection = GetDashDirection();
 
         isOnGround = groundCheck.GetCurrentGroundState();
@@ -100,7 +99,7 @@ public class Dash : MonoBehaviour
 
                 Instantiate(dashImpactFX, transform.position, Quaternion.identity);
 
-                onDashHit?.Invoke();
+                OnDashHit?.Invoke();
                 
                 dashHitAudioEvent.Play(audioSource);
                 
@@ -121,9 +120,10 @@ public class Dash : MonoBehaviour
     {
         trailRenderer.emitting = true;
 
-        var dashVelocity = dashDirection * dashSpeed;
-
-        rigidbody2D.velocity = dashVelocity;
+        var dashForce = dashDirection * dashSpeed;
+        rigidbody2D.AddForce(dashForce, ForceMode2D.Impulse);
+        
+        //rigidbody2D.velocity = dashVelocity;
 
         StartCoroutine(DamageFrames(damageFrames));
     }

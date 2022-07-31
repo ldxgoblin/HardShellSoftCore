@@ -2002,7 +2002,7 @@ Transform:
   - {fileID: 1063869541}
   - {fileID: 1908959807}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120220183
 GameObject:
@@ -2175,7 +2175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -49, y: -73}
+  m_AnchoredPosition: {x: -50, y: -70}
   m_SizeDelta: {x: 451.50024, y: 167.59998}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1192047937
@@ -3183,6 +3183,7 @@ MonoBehaviour:
   comboMessages:
   - hits: 0
     message: 
+  comboPanel: {fileID: 1190874865}
 --- !u!1 &1514360659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4844,6 +4845,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
+      propertyPath: dashTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
+      propertyPath: dashSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
+      propertyPath: damageFrames
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
+      propertyPath: slowMotionDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047894155724562840, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047894155724562840, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
 --- !u!1001 &7363861168107538542
@@ -4916,7 +4941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8590080056266829106, guid: 4cdfe9cd38eb9004491a4f333660419a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8590080056266829106, guid: 4cdfe9cd38eb9004491a4f333660419a, type: 3}
       propertyPath: m_LocalPosition.x

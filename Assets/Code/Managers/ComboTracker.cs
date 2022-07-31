@@ -12,7 +12,7 @@ public class ComboTracker : MonoBehaviour
 
     private void Awake()
     {
-        Dash.onDashHit += RegisterHit;
+        Dash.OnDashHit += RegisterHit;
         PlayerProjectile.OnPlayerProjectileHit += RegisterHit;
 
         ResetHitCounter();
@@ -36,7 +36,7 @@ public class ComboTracker : MonoBehaviour
 
     private void OnDisable()
     {
-        Dash.onDashHit -= RegisterHit;
+        Dash.OnDashHit -= RegisterHit;
         PlayerProjectile.OnPlayerProjectileHit -= RegisterHit;
     }
 
