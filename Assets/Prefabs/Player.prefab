@@ -55,11 +55,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 5
+  m_LinearDrag: 2.5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
+  m_GravityScale: 5
+  m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -185,7 +185,7 @@ TrailRenderer:
     textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.5
   m_Autodestruct: 0
   m_Emitting: 0
 --- !u!82 &4913631893367317298
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300f4f5460ff849b48da85dbba905b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 100
   maxAcceleration: 100
   maxAirAcceleration: 100
   isFacingLeft: 0
@@ -353,10 +353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbd09cc1f4984ac19fb5995f2b7375a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 75
+  jumpHeight: 400
   maxJumpCount: 3
-  downwardMultiplier: 5
-  upwardMultiplier: 5
+  downwardMultiplier: 20
+  upwardMultiplier: 3
   jumpClip: {fileID: 0}
 --- !u!114 &7047894155724562833
 MonoBehaviour:
@@ -370,17 +370,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51361f22b3a84af5aca3712f416f61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDashCount: 50
-  dashTime: 0.25
-  dashSpeed: 150
+  dashTime: 0.075
+  dashRate: 0.25
+  dashSpeed: 20000
   dashDamage: 1
-  damageFrames: 25
+  invincibilityFrames: 360
   dashImpactFX: {fileID: 5024009746357069194, guid: afff8bf5e70dd5a46b5eb1efe033c8b8, type: 3}
-  dashClip: {fileID: 8300000, guid: 203e685917093154c808a29e9341e464, type: 3}
   dashAudioEvent: {fileID: 11400000, guid: 3ad83ded6988112439226fb75815e6c9, type: 2}
   dashHitAudioEvent: {fileID: 11400000, guid: 7dbd6622f702980489f577e3af2baad6, type: 2}
   slowMotion: {fileID: 7536536217481098971}
-  slowMotionDuration: 0.1
+  slowMotionDuration: 0.2
+  canDamage: 0
+  playerSprite: {fileID: 3427042484931333943}
 --- !u!114 &7536536217481098971
 MonoBehaviour:
   m_ObjectHideFlags: 0

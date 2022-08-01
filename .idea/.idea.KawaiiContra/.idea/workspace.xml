@@ -8,114 +8,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseFOVState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/ChaseFOVState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/ComboTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/ComboTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PhysicsMaterials/Slidey.physicsMaterial2D" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PhysicsMaterials/Slidey.physicsMaterial2D" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PhysicsMaterials/SuperBouncey.physicsMaterial2D" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PhysicsMaterials/SuperBouncey.physicsMaterial2D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/MouseAimAndShoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/Actor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BasicArena.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BasicArena.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/VFXandParticles/BasicHitVFX.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/VFXandParticles/BasicHitVFX.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/RadialHPDisplay.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/RadialHPDisplay.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Hit Impact Effects - Demo Scene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Hit Impact Effects - Demo Scene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Materials/HitImpactEffects_Floor.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Materials/HitImpactEffects_Floor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Scripts/HitImpactEffectsPreview.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Scripts/HitImpactEffectsPreview.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_Floor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_Floor.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_FloorIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_FloorIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_RotationIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_RotationIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_SpeedIcon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/HitImpactEffects_SpeedIcon.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/NextPrevArrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Demo Scene/Textures/NextPrevArrow.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Guards.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Guards/HIE_Guard_01_TrailGlow_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Guards/HIE_Guard_01_TrailGlow_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Flash_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Flash_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_PointGlow_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_PointGlow_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Shockwave_2x2_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Shockwave_2x2_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Smoke_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Smoke_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Smoke_02.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_01_Smoke_02.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_Flash_4x2_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_Flash_4x2_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_HazeBlur_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_HazeBlur_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_HazeGlow_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_HazeGlow_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_TrailGlow_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_02_TrailGlow_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_03_Flash_2x2_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_03_Flash_2x2_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_03_PointGlow_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_03_PointGlow_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_03_Shockwave_2x2_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_03_Shockwave_2x2_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_FlashRays_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_FlashRays_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_PointBlur_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_PointBlur_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_PointGlow_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_PointGlow_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_Shockwave_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Materials/Hits/HIE_Hit_04_Shockwave_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Guards.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Guards/Guard_01.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Guards/Guard_01.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_01.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_01.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_02.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_02.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_03.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_03.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_04.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Prefabs/Hits/Hit_04.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Haze_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Haze_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_01_Flash_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_01_Flash_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_01_Shockwave_2x2_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_01_Shockwave_2x2_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_02_Flash_4x2_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_02_Flash_4x2_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_03_Flash_2x2_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_03_Flash_2x2_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_03_Shockwave_2x2_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_03_Shockwave_2x2_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_04_FlashRays_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Hit_04_FlashRays_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_PointBlur_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_PointBlur_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_PointGlow_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_PointGlow_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Shockwave_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Shockwave_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Smoke_01.tga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Travis Game Assets/Hit Impact Effects/Textures/HIE_Smoke_01.tga.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +127,8 @@
       <workItem from="1658825140417" duration="9487000" />
       <workItem from="1658842366858" duration="30938000" />
       <workItem from="1658992198753" duration="33565000" />
-      <workItem from="1659182878404" duration="3069000" />
+      <workItem from="1659182878404" duration="3666000" />
+      <workItem from="1659375738483" duration="12398000" />
     </task>
     <servers />
   </component>

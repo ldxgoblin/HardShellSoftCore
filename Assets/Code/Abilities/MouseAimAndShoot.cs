@@ -18,7 +18,7 @@ public class MouseAimAndShoot : MonoBehaviour
 
     [SerializeField] private SimpleAudioEvent shotAudioEvent;
     private AudioSource audioSource;
-    
+
     public bool canFire;
     private readonly float impulseModifier = 0.025f;
 
@@ -31,6 +31,8 @@ public class MouseAimAndShoot : MonoBehaviour
     private float shotCooldown;
 
     private CinemachineImpulseSource shotImpulseSource;
+    
+    public static event Action<bool> OnLookDirectionChange;
 
     private void Awake()
     {
@@ -64,18 +66,16 @@ public class MouseAimAndShoot : MonoBehaviour
             muzzleFlash.Play();
 
             shotImpulseSource.GenerateImpulse(-mousePosition * impulseModifier);
-            
+
             shotAudioEvent.Play(audioSource);
         }
     }
-
-    public static event Action<bool> onLookDirectionChange;
-
+    
     private void ShootAtMousePosition(Vector3 direction)
     {
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
-        Vector3 spread = new Vector3(0,Random.Range(-projectileSpread, projectileSpread), 0);
+        var spread = new Vector3(0, Random.Range(-projectileSpread, projectileSpread), 0);
         newProjectile.GetComponent<PlayerProjectile>().SetupProjectile(direction + spread);
     }
 
@@ -97,12 +97,12 @@ public class MouseAimAndShoot : MonoBehaviour
         if (angle > 90 || angle < -90)
         {
             aimLocalScale.y = -1f;
-            onLookDirectionChange?.Invoke(true);
+            OnLookDirectionChange?.Invoke(true);
         }
         else
         {
             aimLocalScale.y = 1f;
-            onLookDirectionChange?.Invoke(false);
+            OnLookDirectionChange?.Invoke(false);
         }
 
         transform.localScale = aimLocalScale;

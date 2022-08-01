@@ -12,8 +12,7 @@ public class ChaseFOVState : State
     [SerializeField] private RangedFloat chaseSpeedMutationRange;
     
     [SerializeField, Range(0.1f, 0.25f)] private float gapFactor = 0.25f;
-    [SerializeField, Range(0f, 1f)] private float decelerationFactor = 0.95f;
-    
+
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private AIDetectorCircle aiDetector;
 

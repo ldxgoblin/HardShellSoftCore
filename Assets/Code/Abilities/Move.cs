@@ -25,9 +25,12 @@ public class Move : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 velocity;
 
+    [SerializeField] private bool isMoving;
+
     private void Awake()
     {
-        MouseAimAndShoot.onLookDirectionChange += FlipSpriteX;
+        MouseAimAndShoot.OnLookDirectionChange += FlipSpriteX;
+        Dash.OnLookDirectionChange += FlipSpriteX;
 
         inputHandler = GetComponent<InputHandler>();
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -44,6 +47,9 @@ public class Move : MonoBehaviour
         if (!inputHandler.IsInputActive()) return;
 
         direction.x = inputHandler.InputSource.GetHorizontalInput();
+
+        if (direction.x == 0) isMoving = false;
+        else isMoving = true;
 
         // this way we always have a velocity value above 0
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - groundCheck.GetFriction(), 0f);
@@ -65,7 +71,10 @@ public class Move : MonoBehaviour
 
         if (direction.x < 0 && !isFacingLeft) isFacingLeft = true;
 
-        FlipSpriteX(isFacingLeft);
+        if (isMoving)
+        {
+            FlipSpriteX(isFacingLeft);
+        }
         rigidbody2D.velocity = velocity;
 
         //animator.SetFloat("Speed", velocity.x);
@@ -73,7 +82,8 @@ public class Move : MonoBehaviour
 
     private void OnDestroy()
     {
-        MouseAimAndShoot.onLookDirectionChange -= FlipSpriteX;
+        MouseAimAndShoot.OnLookDirectionChange -= FlipSpriteX;
+        Dash.OnLookDirectionChange -= FlipSpriteX;
     }
 
     private void FlipSpriteX(bool flipX)

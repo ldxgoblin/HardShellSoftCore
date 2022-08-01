@@ -3544,7 +3544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1da4e3713fbd7d4caa8faddacb0f67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveManagerRunning: 1
+  waveManagerRunning: 0
   wavesAvailable:
   - waveUIMessage: FIRST WAVE
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
@@ -4845,30 +4845,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
-      propertyPath: dashTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
-      propertyPath: dashSpeed
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
-      propertyPath: damageFrames
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
-      propertyPath: slowMotionDuration
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7047894155724562840, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
-      propertyPath: m_Mass
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7047894155724562840, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: a82f6270e5b1244b3b5c3ae1b1a37609, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
 --- !u!1001 &7363861168107538542

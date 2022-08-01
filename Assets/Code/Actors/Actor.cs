@@ -4,19 +4,19 @@ using UnityEngine;
 public class Actor : MonoBehaviour
 {
     [SerializeField] protected HitPoints hitPoints;
-
     [SerializeField] protected Material hitMaterial;
 
-    protected Color baseSpriteColor;
-    protected Material baseSpriteMaterial;
+    private Color baseSpriteColor;
+    private Material baseSpriteMaterial;
     protected Rigidbody2D rigidbody2D;
 
-    protected SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public HitPoints HitPoints => hitPoints;
 
     protected AudioSource audioSource;
 
-
+    protected bool isInvincible;
+    
     protected virtual void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -30,15 +30,18 @@ public class Actor : MonoBehaviour
 
     public virtual void Damage(int damage)
     {
-        if (hitPoints.currentHitPoints - damage <= 0)
+        if (!isInvincible)
         {
-            hitPoints.currentHitPoints = 0;
-            Die();
-        }
-        else
-        {
-            hitPoints.DecreaseHitPoints(damage);
-            HitFlash();
+            if (hitPoints.currentHitPoints - damage <= 0)
+            {
+                hitPoints.currentHitPoints = 0;
+                Die();
+            }
+            else
+            {
+                hitPoints.DecreaseHitPoints(damage);
+                HitFlash();
+            }
         }
     }
 

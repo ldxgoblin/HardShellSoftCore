@@ -5,31 +5,33 @@ using UnityEngine;
 [RequireComponent(typeof(TrailRenderer), typeof(InputHandler))]
 public class Dash : MonoBehaviour
 {
-    [SerializeField] private int maxDashCount = 2;
-    [SerializeField] [Range(0.1f, 0.25f)] private float dashTime = 0.1f;
-    [SerializeField] [Range(10f, 150f)] private float dashSpeed = 50f;
+    [SerializeField] [Range(0.05f, 0.1f)] private float dashTime = 0.1f;
+    [SerializeField] private float dashRate = 1f;
+    [SerializeField] private float dashSpeed = 450f;
     [SerializeField] [Range(1, 10)] private int dashDamage = 1;
-    [SerializeField] private int damageFrames = 10;
+    [SerializeField] private int invincibilityFrames = 60;
+
+    private float dashTrailTime = 0.5f;
+    private float dashCoolDown;
 
     [SerializeField] private GameObject dashImpactFX;
-    
-    [SerializeField] private AudioClip dashClip;
+
     [SerializeField] private SimpleAudioEvent dashAudioEvent;
     [SerializeField] private SimpleAudioEvent dashHitAudioEvent;
-    
+
     [SerializeField] private SlowMotion slowMotion;
-    [SerializeField] float slowMotionDuration = 0.5f;
-    
+    [SerializeField] private float slowMotionDuration = 0.5f;
+
     private AudioSource audioSource;
-    
-    private bool canDamage;
+
+    [SerializeField] private bool canDamage;
     private bool canDash = true;
 
     private Vector2 dashDirection;
 
-    private int dashPhase;
     private bool desiredDash;
-    private GroundCheck groundCheck;
+    private Player player;
+    [SerializeField] private SpriteRenderer playerSprite;
 
     private InputHandler inputHandler;
     private InputSource inputSource;
@@ -38,54 +40,69 @@ public class Dash : MonoBehaviour
     private bool isOnGround;
 
     private Rigidbody2D rigidbody2D;
+    private CircleCollider2D collider2D;
+
     private TrailRenderer trailRenderer;
 
     public static event Action OnDashHit;
-    
+
+    public static event Action<bool> OnLookDirectionChange;
+
     private void Awake()
     {
+        dashCoolDown = 0;
+
         inputHandler = GetComponent<InputHandler>();
         if (inputHandler.InputSource != null) inputSource = inputHandler.InputSource;
 
         rigidbody2D = GetComponent<Rigidbody2D>();
-        groundCheck = GetComponent<GroundCheck>();
+        collider2D = GetComponent<CircleCollider2D>();
+
+        player = GetComponent<Player>();
         trailRenderer = GetComponent<TrailRenderer>();
-        
+
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        ResetDashCoolDown();
     }
 
     private void Update()
     {
         if (!inputHandler.IsInputActive()) return;
-
+        
         desiredDash = inputHandler.InputSource.GetDashInput();
 
         if (desiredDash)
             dashDirection = GetDashDirection();
 
-        isOnGround = groundCheck.GetCurrentGroundState();
-
-        // reset dash counter
-        if (isOnGround) dashPhase = 0;
-
         if (desiredDash && canDash)
         {
-            if (dashPhase < maxDashCount)
+            if (dashCoolDown <= 0)
             {
-                dashPhase += 1;
+                rigidbody2D.velocity = Vector2.zero;
+
                 isDashing = true;
                 canDash = false;
+                canDamage = true;
                 
                 dashAudioEvent.Play(audioSource);
-            }
 
+                ResetDashCoolDown();
+            }
             EndDash();
         }
+        if (dashCoolDown > 0) dashCoolDown -= Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
-        if (isDashing) PerformDash();
+        if (isDashing)
+        {
+            PerformDash();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -100,32 +117,37 @@ public class Dash : MonoBehaviour
                 Instantiate(dashImpactFX, transform.position, Quaternion.identity);
 
                 OnDashHit?.Invoke();
-                
                 dashHitAudioEvent.Play(audioSource);
-                
                 slowMotion.SlowDown(slowMotionDuration, 0.1f);
+                
+                // TODO maybe add some kind of bonus here?
             }
-
+            
             StopDashInstantly();
         }
+
+    }
+
+    private void ResetDashCoolDown()
+    {
+        dashCoolDown = dashRate;
     }
 
     private Vector2 GetDashDirection()
     {
-        Vector2 dashDirection = CrossHair.GetCrossHairPosition() - transform.position;
-        return dashDirection.normalized;
+        Vector2 crossHairPosition = CrossHair.GetCrossHairPosition() - transform.position;
+        LookAtTarget(crossHairPosition);
+        return crossHairPosition.normalized;
     }
 
     private void PerformDash()
     {
         trailRenderer.emitting = true;
 
-        var dashForce = dashDirection * dashSpeed;
-        rigidbody2D.AddForce(dashForce, ForceMode2D.Impulse);
-        
-        //rigidbody2D.velocity = dashVelocity;
+        var force = dashDirection * (dashSpeed * Time.deltaTime);
+        rigidbody2D.AddForce(force, ForceMode2D.Impulse);
 
-        StartCoroutine(DamageFrames(damageFrames));
+        StartCoroutine(GrantDamageAndIFrames(invincibilityFrames));
     }
 
     private void EndDash()
@@ -142,27 +164,40 @@ public class Dash : MonoBehaviour
 
     public void StopDashInstantly()
     {
+        // failsafe
         isDashing = false;
         canDash = true;
+        player.SetInvincibility(false);
     }
 
-    private IEnumerator DamageFrames(int frames)
+    private IEnumerator GrantDamageAndIFrames(int frames)
     {
+        player.SetInvincibility(true);
         canDamage = true;
 
         for (var i = 0; i < frames; i++) yield return new WaitForEndOfFrame();
 
+        player.SetInvincibility(false);
         canDamage = false;
     }
 
     private IEnumerator ClearDashTrailDelayed()
     {
-        yield return new WaitForSeconds(dashTime);
+        yield return new WaitForSeconds(dashTrailTime);
         ClearDashTrailInstantly();
     }
 
     private void ClearDashTrailInstantly()
     {
         trailRenderer.emitting = false;
+    }
+    
+    private void LookAtTarget(Vector2 lookdir)
+    {
+        var lookDirection = lookdir;
+            
+        if (lookDirection.x > 0)
+            OnLookDirectionChange?.Invoke(false);
+        else if (lookDirection.x < 0) OnLookDirectionChange?.Invoke(true);
     }
 }
