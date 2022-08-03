@@ -535,6 +535,7 @@ MonoBehaviour:
   maxAcceleration: 35
   maxAirAcceleration: 60
   isFacingLeft: 0
+  isMoving: 0
 --- !u!114 &2461007897361601653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a364ca184563247eea8d5efa7f1274f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ejectionForce: 15
+  ejectionForce: 200
   postEjectionCooldown: 1
 --- !u!1001 &1310066387079396631
 PrefabInstance:

@@ -11,9 +11,6 @@ public class Dash : MonoBehaviour
     [SerializeField] [Range(1, 10)] private int dashDamage = 1;
     [SerializeField] private int invincibilityFrames = 60;
 
-    private float dashTrailTime = 0.5f;
-    private float dashCoolDown;
-
     [SerializeField] private GameObject dashImpactFX;
 
     [SerializeField] private SimpleAudioEvent dashAudioEvent;
@@ -22,31 +19,30 @@ public class Dash : MonoBehaviour
     [SerializeField] private SlowMotion slowMotion;
     [SerializeField] private float slowMotionDuration = 0.5f;
 
-    private AudioSource audioSource;
-
     [SerializeField] private bool canDamage;
+    [SerializeField] private SpriteRenderer playerSprite;
+
+    private AudioSource audioSource;
     private bool canDash = true;
+    private CircleCollider2D collider2D;
+    private float dashCoolDown;
 
     private Vector2 dashDirection;
 
+    private readonly float dashTrailTime = 0.5f;
+
     private bool desiredDash;
-    private Player player;
-    [SerializeField] private SpriteRenderer playerSprite;
 
     private InputHandler inputHandler;
     private InputSource inputSource;
 
     private bool isDashing;
     private bool isOnGround;
+    private Player player;
 
     private Rigidbody2D rigidbody2D;
-    private CircleCollider2D collider2D;
 
     private TrailRenderer trailRenderer;
-
-    public static event Action OnDashHit;
-
-    public static event Action<bool> OnLookDirectionChange;
 
     private void Awake()
     {
@@ -64,15 +60,10 @@ public class Dash : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnEnable()
-    {
-        ResetDashCoolDown();
-    }
-
     private void Update()
     {
         if (!inputHandler.IsInputActive()) return;
-        
+
         desiredDash = inputHandler.InputSource.GetDashInput();
 
         if (desiredDash)
@@ -87,22 +78,26 @@ public class Dash : MonoBehaviour
                 isDashing = true;
                 canDash = false;
                 canDamage = true;
-                
+
                 dashAudioEvent.Play(audioSource);
 
                 ResetDashCoolDown();
             }
+
             EndDash();
         }
+
         if (dashCoolDown > 0) dashCoolDown -= Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
-        if (isDashing)
-        {
-            PerformDash();
-        }
+        if (isDashing) PerformDash();
+    }
+
+    private void OnEnable()
+    {
+        ResetDashCoolDown();
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -119,14 +114,17 @@ public class Dash : MonoBehaviour
                 OnDashHit?.Invoke();
                 dashHitAudioEvent.Play(audioSource);
                 slowMotion.SlowDown(slowMotionDuration, 0.1f);
-                
+
                 // TODO maybe add some kind of bonus here?
             }
-            
+
             StopDashInstantly();
         }
-
     }
+
+    public static event Action OnDashHit;
+
+    public static event Action<bool> OnLookDirectionChange;
 
     private void ResetDashCoolDown()
     {
@@ -191,11 +189,11 @@ public class Dash : MonoBehaviour
     {
         trailRenderer.emitting = false;
     }
-    
+
     private void LookAtTarget(Vector2 lookdir)
     {
         var lookDirection = lookdir;
-            
+
         if (lookDirection.x > 0)
             OnLookDirectionChange?.Invoke(false);
         else if (lookDirection.x < 0) OnLookDirectionChange?.Invoke(true);

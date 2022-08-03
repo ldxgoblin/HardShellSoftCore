@@ -9,7 +9,7 @@ public class Jump : MonoBehaviour
     [SerializeField] [Range(1f, 15f)] private float upwardMultiplier = 3f;
 
     [SerializeField] private AudioClip jumpClip;
-    
+
     private readonly float defaultGravityScale = 1f;
     private AudioSource audioSource;
     private GroundCheck groundCheck;
@@ -42,7 +42,6 @@ public class Jump : MonoBehaviour
 
         // using the OR Operator this value remains set until we change it to false manually
         jumpRequested |= inputHandler.InputSource.GetJumpInput();
-
     }
 
     private void FixedUpdate()

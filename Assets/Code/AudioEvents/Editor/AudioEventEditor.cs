@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor((typeof(AudioEvent)), true)]
+[CustomEditor(typeof(AudioEvent), true)]
 public class AudioEventEditor : Editor
 {
     [SerializeField] private AudioSource preListener;
@@ -21,12 +21,9 @@ public class AudioEventEditor : Editor
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        
+
         EditorGUI.BeginDisabledGroup(serializedObject.isEditingMultipleObjects);
-        if(GUILayout.Button("Preview"))
-        {
-            ((AudioEvent) target).Play(preListener);
-        }
+        if (GUILayout.Button("Preview")) ((AudioEvent)target).Play(preListener);
         EditorGUI.EndDisabledGroup();
     }
 }

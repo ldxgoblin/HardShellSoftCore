@@ -15,30 +15,30 @@ public class UIManager : MonoBehaviour
     [SerializeField] [Range(0.25f, 1f)] private float rumbleFallOff;
 
     [SerializeField] private Material hpDisplay;
-    
+
     [SerializeField] private Image hpDisplayPortrait;
     [SerializeField] private Sprite[] hpDisplayPortraitSprites;
 
-    private HitPoints ballStateHp;
-    private HitPoints mechStateHp;
-
-    private float comboRumbleIntensity;
-    private float scoreRumbleIntensity;
-    
-    private Vector3 comboTextBasePosition;
-    private Vector3 comboMessageBasePosition;
-    private Vector3 scoreTextBasePosition;
-    
     [SerializeField] private ComboMessage[] comboMessages;
     [SerializeField] private RectTransform comboPanel;
+
+    private HitPoints ballStateHp;
+    private Vector3 comboMessageBasePosition;
+
+    private float comboRumbleIntensity;
+
+    private Vector3 comboTextBasePosition;
+    private HitPoints mechStateHp;
+    private float scoreRumbleIntensity;
+    private Vector3 scoreTextBasePosition;
 
     private void Awake()
     {
         ballStateHp = GameObject.FindWithTag("Player").GetComponent<Player>().HitPoints;
-        if(ballStateHp == null) Debug.LogError("Ball State HP Object not found!");
-        
+        if (ballStateHp == null) Debug.LogError("Ball State HP Object not found!");
+
         mechStateHp = GameObject.FindWithTag("Mech").GetComponent<Mech>().HitPoints;
-        if(mechStateHp == null) Debug.LogError("Mech State HP Object not found!");
+        if (mechStateHp == null) Debug.LogError("Mech State HP Object not found!");
 
         comboTextBasePosition = comboCountText.transform.localPosition;
         comboMessageBasePosition = comboMessageText.transform.localPosition;
@@ -51,11 +51,10 @@ public class UIManager : MonoBehaviour
 
         MechAttachPoint.OnMechActivation += SwitchToMechHitPointsUI;
         MechAttachPoint.OnMechDeactivation += SwitchToBallStateHitPointsUi;
-        
+
         // TODO: not optimal, needs references to the lambdas in order to unsubscribe later but i wanted to try the syntax lol
         EnemyProjectile.OnBallStateDamage += () => RemoveHitPointsUiSegment(ballStateHp);
         EnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
-        
     }
 
     private void Start()
@@ -92,7 +91,7 @@ public class UIManager : MonoBehaviour
         ComboTracker.onComboEnded -= HideComboCountText;
 
         MissionTracker.onScoreChange -= UpdateScoreText;
-        
+
         MechAttachPoint.OnMechActivation -= SwitchToMechHitPointsUI;
         MechAttachPoint.OnMechDeactivation -= SwitchToBallStateHitPointsUi;
     }
@@ -112,18 +111,14 @@ public class UIManager : MonoBehaviour
     private void UpdateComboCountText(int hits)
     {
         comboPanel.DOAnchorPos(new Vector2(-50, -70), 0.25f);
-        // comboCountText.enabled = true;
-        // comboMessageText.enabled = true;
-        
+
         comboRumbleIntensity = rumbleIntensity;
-        comboCountText.SetText($"{hits}HIT");
+        comboCountText.SetText($"{hits}");
     }
 
     private void HideComboCountText()
     {
         comboPanel.DOAnchorPos(new Vector2(500, -70), 0.25f);
-        // comboCountText.enabled = false;
-        // comboMessageText.enabled = false;
     }
 
     private void UpdateHitPointsUi(HitPoints hitPoints)
@@ -148,46 +143,36 @@ public class UIManager : MonoBehaviour
     private void RemoveHitPointsUiSegment(HitPoints hitPoints)
     {
         if (hitPoints == null) return;
-        
+
         var current = hitPoints.currentHitPoints;
         var max = hitPoints.maxHitPoints;
-        
+
         UpdateHitPointsPortrait(current, max);
-        
+
         var removedSegments = Mathf.Abs(current - max);
         hpDisplay.SetFloat("_RemovedSegments", removedSegments);
     }
 
     private void UpdateHitPointsPortrait(int current, int max)
     {
-        var percentage = 100 * ((float) current / max);
+        var percentage = 100 * ((float)current / max);
 
         // TODO refactor this mess
         if (percentage > 80)
-        {
             // 100percentSprite
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[4];
-        }
         else if (percentage is <= 80 and > 60)
-        {
             // 75percentSprite
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[3];
-        }
         else if (percentage is <= 60 and >= 40)
-        {
             // 50percentSprite
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[2];
-        }
         else if (percentage is < 40 and > 0)
-        {
             // 25percentSprite
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[1];
-        }
         else if (percentage == 0)
-        {
             // 0percentSprite
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[0];
-        }
     }
 }
 

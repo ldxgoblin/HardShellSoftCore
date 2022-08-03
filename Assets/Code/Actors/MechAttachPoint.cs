@@ -16,9 +16,6 @@ public class MechAttachPoint : MonoBehaviour
     private InputHandler playerInputHandler;
     private Rigidbody2D riderRigidbody2D;
 
-    public static event Action OnMechActivation;
-    public static event Action OnMechDeactivation;
-
     private void Awake()
     {
         mechInputHandler = transform.parent.gameObject.GetComponent<InputHandler>();
@@ -50,6 +47,8 @@ public class MechAttachPoint : MonoBehaviour
         }
     }
 
+    public static event Action OnMechActivation;
+    public static event Action OnMechDeactivation;
 
 
     private void EnterMech(InputHandler origin)
@@ -57,11 +56,12 @@ public class MechAttachPoint : MonoBehaviour
         // Sets the mech parent layer to Player, so enemy Ai can detect it
         transform.parent.gameObject.layer = 6;
 
+        currentRider.transform.position = transform.position;
         currentRider.SetActive(false);
 
         mechInputHandler.SwapInputSource(origin);
         mechIsOccupied = true;
-        
+
         OnMechActivation?.Invoke();
     }
 
@@ -73,13 +73,14 @@ public class MechAttachPoint : MonoBehaviour
         playerInputHandler.SwapInputSource(mechInputHandler);
         mechIsOccupied = false;
         EjectRider();
-        
+
         OnMechDeactivation?.Invoke();
     }
 
     private void EjectRider()
     {
         currentRider.SetActive(true);
+        currentRider.GetComponent<Rigidbody2D>().AddForce(Vector2.down * ejectionForce, ForceMode2D.Impulse);
 
         StartCoroutine(CoolDown());
 

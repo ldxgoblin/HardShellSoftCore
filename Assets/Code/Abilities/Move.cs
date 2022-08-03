@@ -7,6 +7,8 @@ public class Move : MonoBehaviour
     [SerializeField] [Range(0f, 100f)] private float maxAcceleration = 35f;
     [SerializeField] [Range(0f, 100f)] private float maxAirAcceleration = 20f;
     public bool isFacingLeft;
+
+    [SerializeField] private bool isMoving;
     private float acceleration;
 
     private Animator animator;
@@ -24,8 +26,6 @@ public class Move : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
     private Vector2 velocity;
-
-    [SerializeField] private bool isMoving;
 
     private void Awake()
     {
@@ -71,10 +71,7 @@ public class Move : MonoBehaviour
 
         if (direction.x < 0 && !isFacingLeft) isFacingLeft = true;
 
-        if (isMoving)
-        {
-            FlipSpriteX(isFacingLeft);
-        }
+        if (isMoving) FlipSpriteX(isFacingLeft);
         rigidbody2D.velocity = velocity;
 
         //animator.SetFloat("Speed", velocity.x);

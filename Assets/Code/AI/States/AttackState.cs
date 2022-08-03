@@ -28,7 +28,7 @@ public class AttackState : State
 
             return this;
         }
-        
+
         return nextState;
     }
 
@@ -36,7 +36,7 @@ public class AttackState : State
     {
         var targetDirection = aiDetector.Target.transform.position - transform.position;
         targetDirection.Normalize();
-        
+
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
         newProjectile.GetComponent<EnemyProjectile>().SetupProjectile(targetDirection);

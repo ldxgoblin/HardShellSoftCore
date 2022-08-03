@@ -6,17 +6,17 @@ public class Actor : MonoBehaviour
     [SerializeField] protected HitPoints hitPoints;
     [SerializeField] protected Material hitMaterial;
 
+    protected AudioSource audioSource;
+
     private Color baseSpriteColor;
     private Material baseSpriteMaterial;
+
+    protected bool isInvincible;
     protected Rigidbody2D rigidbody2D;
 
     private SpriteRenderer spriteRenderer;
     public HitPoints HitPoints => hitPoints;
 
-    protected AudioSource audioSource;
-
-    protected bool isInvincible;
-    
     protected virtual void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -48,7 +48,7 @@ public class Actor : MonoBehaviour
     protected virtual void Die()
     {
         // Destroy(gameObject, audioSource.clip.length/audioSource.pitch);
-        
+
         // TODO: Object Pooling
         gameObject.SetActive(false);
     }

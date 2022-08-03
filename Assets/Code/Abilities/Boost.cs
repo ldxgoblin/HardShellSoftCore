@@ -20,7 +20,7 @@ public class Boost : MonoBehaviour
     [SerializeField] private Image fuelMeter;
     [SerializeField] private float fuelMeterLerpSpeed;
     private readonly float defaultGravityScale = 1f;
-    
+
     private AudioSource audioSource;
 
     private bool boosterRequested;

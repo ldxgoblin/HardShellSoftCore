@@ -9,11 +9,11 @@ public class RangedFloatDrawer : PropertyDrawer
         label = EditorGUI.BeginProperty(position, label, property);
         position = EditorGUI.PrefixLabel(position, label);
 
-        SerializedProperty minProp = property.FindPropertyRelative("minValue");
-        SerializedProperty maxProp = property.FindPropertyRelative("maxValue");
+        var minProp = property.FindPropertyRelative("minValue");
+        var maxProp = property.FindPropertyRelative("maxValue");
 
-        float minValue = minProp.floatValue;
-        float maxValue = maxProp.floatValue;
+        var minValue = minProp.floatValue;
+        var maxValue = maxProp.floatValue;
 
         float rangeMin = 0;
         float rangeMax = 1;
@@ -31,7 +31,7 @@ public class RangedFloatDrawer : PropertyDrawer
         rangeBoundsLabel1Rect.width = rangeBoundsLabelWidth;
         GUI.Label(rangeBoundsLabel1Rect, new GUIContent(minValue.ToString("F2")));
         position.xMin += rangeBoundsLabelWidth;
-        
+
         var rangeBoundsLabel2Rect = new Rect(position);
         rangeBoundsLabel2Rect.xMin = rangeBoundsLabel2Rect.xMax - rangeBoundsLabelWidth;
         GUI.Label(rangeBoundsLabel2Rect, new GUIContent(maxValue.ToString("F2")));
@@ -44,6 +44,7 @@ public class RangedFloatDrawer : PropertyDrawer
             minProp.floatValue = minValue;
             maxProp.floatValue = maxValue;
         }
+
         EditorGUI.EndProperty();
     }
 }

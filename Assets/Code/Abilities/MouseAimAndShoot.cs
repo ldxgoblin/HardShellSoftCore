@@ -17,12 +17,12 @@ public class MouseAimAndShoot : MonoBehaviour
     [SerializeField] private VisualEffect muzzleFlash;
 
     [SerializeField] private SimpleAudioEvent shotAudioEvent;
-    private AudioSource audioSource;
 
     public bool canFire;
     private readonly float impulseModifier = 0.025f;
 
     private Vector3 aimTarget;
+    private AudioSource audioSource;
     private InputSource inputSource = null;
 
     private Camera mainCamera;
@@ -31,8 +31,6 @@ public class MouseAimAndShoot : MonoBehaviour
     private float shotCooldown;
 
     private CinemachineImpulseSource shotImpulseSource;
-    
-    public static event Action<bool> OnLookDirectionChange;
 
     private void Awake()
     {
@@ -70,7 +68,9 @@ public class MouseAimAndShoot : MonoBehaviour
             shotAudioEvent.Play(audioSource);
         }
     }
-    
+
+    public static event Action<bool> OnLookDirectionChange;
+
     private void ShootAtMousePosition(Vector3 direction)
     {
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SmashGroupCamera : MonoBehaviour
 {
     [SerializeField] private CinemachineTargetGroup targetGroup;
-    [SerializeField, Range(0.1f, 0.9f)] private float easeFactor;
+    [SerializeField] [Range(0.1f, 0.9f)] private float easeFactor;
     [SerializeField] private float targetWeight;
     [SerializeField] private float targetRadius;
 

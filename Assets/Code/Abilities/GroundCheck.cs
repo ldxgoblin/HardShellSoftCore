@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
+    private Collider2D collider2D;
     private float friction;
     private bool isOnGround;
 
@@ -33,13 +34,10 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    private Collider2D collider2D;
-    
     private void CheckForGround()
     {
-        
     }
-    
+
     private void GetFriction(Collision2D other)
     {
         var material = other.collider.sharedMaterial;
