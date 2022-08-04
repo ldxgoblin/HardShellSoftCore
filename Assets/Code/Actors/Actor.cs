@@ -47,8 +47,6 @@ public class Actor : MonoBehaviour
 
     protected virtual void Die()
     {
-        // Destroy(gameObject, audioSource.clip.length/audioSource.pitch);
-
         // TODO: Object Pooling
         gameObject.SetActive(false);
     }

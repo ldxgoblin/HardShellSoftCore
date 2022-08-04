@@ -13,9 +13,7 @@ public class MouseAimAndShoot : MonoBehaviour
     [SerializeField] private float delayBetweenShots;
 
     [SerializeField] private float projectileSpread = 1f;
-
     [SerializeField] private VisualEffect muzzleFlash;
-
     [SerializeField] private SimpleAudioEvent shotAudioEvent;
 
     public bool canFire;
@@ -29,7 +27,9 @@ public class MouseAimAndShoot : MonoBehaviour
     private Vector3 mousePosition;
 
     private float shotCooldown;
-
+    public static event Action OnPlayerShotFired;
+    public static event Action<bool> OnLookDirectionChange;
+    
     private CinemachineImpulseSource shotImpulseSource;
 
     private void Awake()
@@ -68,11 +68,11 @@ public class MouseAimAndShoot : MonoBehaviour
             shotAudioEvent.Play(audioSource);
         }
     }
-
-    public static event Action<bool> OnLookDirectionChange;
-
+    
     private void ShootAtMousePosition(Vector3 direction)
     {
+        OnPlayerShotFired?.Invoke();
+        
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
         var spread = new Vector3(0, Random.Range(-projectileSpread, projectileSpread), 0);

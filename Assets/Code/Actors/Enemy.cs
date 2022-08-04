@@ -5,16 +5,19 @@ using Random = UnityEngine.Random;
 
 public class Enemy : Actor
 {
-    [Header("General Values")] [SerializeField]
-    private int score = 100; // enemy base score value
+    [Header("General Values")] 
+    [SerializeField] private int score = 100;                       // enemy base score value
+    [Header("Splatter VFX")] 
+    [SerializeField] private GameObject enemyDeathFX;               // blood splatter vfx prefab
+    [Header("Sound FX")] 
+    [SerializeField] private SimpleAudioEvent enemyDeathAudioEvent; // sploosh!
 
-    [Header("Splatter VFX")] [SerializeField]
-    private GameObject enemyDeathFX; // blood splatter vfx prefab
-
-    [Header("Sound FX")] [SerializeField] private SimpleAudioEvent enemyDeathAudioEvent; // sploosh!
-
-    private CinemachineImpulseSource enemyImpulseSource; // camera shake
-
+    private CinemachineImpulseSource enemyImpulseSource;            // camera shake
+    public static event Action<int> OnEnemyKilled;                  // tells UIManager to update its score display
+    public static event Action<GameObject> OnEnemyDeath;            // tells WaveMananger to delete the current Enemy from its activeEnemies list
+    public static event Action<int> OnEnemyHit;
+    public static event Action<Transform> OnEnemyAddToGroup, OnEnemyRemoveFromGroup;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -22,20 +25,13 @@ public class Enemy : Actor
         enemyImpulseSource = GetComponent<CinemachineImpulseSource>();
         audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
 
-        onEnemyAddToGroup?.Invoke(transform);
+        OnEnemyAddToGroup?.Invoke(transform);
     }
-
-    public static event Action<int> onEnemyKilled; // tells UIManager to update its score display
-
-    public static event Action<GameObject>
-        onEnemyDeath; // tells WaveMananger to delete the current Enemy from its activeEnemies list
-
-    public static event Action<Transform> onEnemyAddToGroup, onEnemyRemoveFromGroup;
-
+    
     protected override void Die()
     {
-        onEnemyKilled?.Invoke(score);
-        onEnemyDeath?.Invoke(gameObject);
+        OnEnemyKilled?.Invoke(score);
+        OnEnemyDeath?.Invoke(gameObject);
 
         Instantiate(enemyDeathFX, transform.position, Quaternion.identity);
 
@@ -43,14 +39,24 @@ public class Enemy : Actor
 
         enemyImpulseSource.GenerateImpulse(transform.position);
 
-        onEnemyRemoveFromGroup?.Invoke(transform);
+        OnEnemyRemoveFromGroup?.Invoke(transform);
 
         base.Die();
     }
 
+    public override void Damage(int damage)
+    {
+        OnOnEnemyHit(damage);
+        base.Damage(damage);
+    }
     public void Bump()
     {
         var force = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
         rigidbody2D.AddForce(force * 100, ForceMode2D.Impulse);
+    }
+
+    private static void OnOnEnemyHit(int damage)
+    {
+        OnEnemyHit?.Invoke(damage);
     }
 }

@@ -2,20 +2,20 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class WaveTimer : MonoBehaviour
+public class WaveClearTimer
 {
     public bool timerActive;
     public bool timerStarted;
     public float currentTime;
 
-    private string currentTimeText;
-    private string finalRunTimeText = "NOT SET";
+    public string currentTimeText;
+    public string finalRunTimeText = "NOT SET";
 
-    private TimeSpan runTime;
+    public TimeSpan runTime;
 
     public void UpdateWaveTimer()
     {
-        if (timerActive) currentTime = currentTime + Time.deltaTime;
+        if (timerActive) currentTime += Time.deltaTime;
         runTime = TimeSpan.FromSeconds(currentTime);
         currentTimeText = FormatTimer();
     }
@@ -29,17 +29,11 @@ public class WaveTimer : MonoBehaviour
     {
         timerActive = false;
         GetFinalTime();
-
-        Debug.Log($"Final Time set to: {GetFinalTime()}");
-
-        Debug.Log("<color=red>-----------------Timer stopped!-----------------</color>");
     }
 
     public void PauseTimer()
     {
         timerActive = false;
-
-        Debug.Log("<color=red>-----------------Timer paused!-----------------</color>");
     }
 
     public void StartTimer()
@@ -50,14 +44,9 @@ public class WaveTimer : MonoBehaviour
             timerStarted = true;
             timerActive = true;
 
-            Debug.Log("<color=magenta>-----------------Timer resumed!-----------------</color>");
-
             return;
         }
-
         timerActive = true;
-
-        Debug.Log("<color=yellow>-----------------Timer started!-----------------</color>");
     }
 
     public string GetFinalTime()

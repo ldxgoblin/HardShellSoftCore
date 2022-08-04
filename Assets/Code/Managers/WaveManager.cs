@@ -8,39 +8,42 @@ public class WaveManager : MonoBehaviour
 {
     public bool waveManagerRunning;
 
-    [SerializeField] private Wave[] wavesAvailable; // contains all waves to choose from, set in inspector
-
-    [SerializeField]
-    private float timeBetweenWaves; // brief respite in seconds between the last cleared wave and the next
-
-    [SerializeField] private float waveCountDown;
-
-    [SerializeField] private List<SpawnPoint> spawnPoints; // all SpawnPoints in the current scene to choose from
-
-    [SerializeField]
-    private List<GameObject> activeEnemies; // all currently non-dead enemies used to determine when a wave is cleared
-
-    [SerializeField]
-    private Transform enemyTransform; // just an empty transform containing all spawned enemies in the scene
-
-    [SerializeField] private WaveState waveState = WaveState.COUNTDOWN;
-
+    [SerializeField] private Wave[] wavesAvailable;             // contains all waves to choose from, set in inspector
+    private int totalWaveCount;                                 // number of total waves available
+    [SerializeField] private float waveWarningTime = 2.5f;      // the amount of time in seconds the warning will be displayed
     private bool allWavesCleared;
-    private List<SpawnPoint> currentSpawnPointSelection; // the current set of n randomly selected SpawnPoints
+    private Wave currentWave;                                   // contains the currently selected wave object to run
+    private int currentWaveIndex;                               // wave index
+    private WaveState waveState = WaveState.COUNTDOWN;          // state machine
+    private enum WaveState
+    {
+        COUNTDOWN,
+        SPAWNING,
+        WAITING,
+        RANKING
+    }
+    private WaveClearTimer waveClearClearTimer;                           // records the total time from start to finish (i.e. boss kill) used for mission ranking
+    
+    [SerializeField] 
+    private float timeBetweenWaves;                             // brief respite in seconds between the last cleared wave and the next
+    private float waveCountDown;
 
-    private Wave currentWave; // contains the currently selected wave to run
-    private int currentWaveIndex; // wave index
-
-    private float enemySearchCountdown = 1f; // frequency in which we check for enemies left alive
-
-    private int totalWaveCount; // number of total waves available
-
-    private WaveTimer waveClearTimer; // records the total time from start to finish (i.e. boss kill) used for mission ranking
+    [SerializeField] 
+    private List<SpawnPoint> spawnPoints;                       // all SpawnPoints in the current scene to choose from
+    private List<SpawnPoint> currentSpawnPointSelection;        // the current set of n randomly selected SpawnPoints
+    
+    [SerializeField] private List<GameObject> activeEnemies;    // all currently non-dead enemies used to determine when a wave is cleared
+    [SerializeField] private Transform enemyTransform;          // just an empty transform containing all spawned enemies in the scene
+    
+    private float enemySearchCountdown = 1f;                    // frequency in which we check for enemies left alive, only exists for performance reasons
+    
+    public static Action<string, float> onWaveStarting;
 
     private void Awake()
     {
-        Enemy.onEnemyDeath += RemoveEnemy;
+        Enemy.OnEnemyDeath += RemoveEnemy;
         SpawnPoint.onEnemyBirth += AddEnemy;
+        UIManager.onStartSpawning += StartWave;
 
         totalWaveCount = wavesAvailable.Length;
 
@@ -52,6 +55,13 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         waveCountDown = timeBetweenWaves;
+    }
+
+    private void OnDestroy()
+    {
+        Enemy.OnEnemyDeath -= RemoveEnemy;
+        SpawnPoint.onEnemyBirth -= AddEnemy;
+        UIManager.onStartSpawning -= StartWave;
     }
 
     private void Update()
@@ -75,19 +85,17 @@ public class WaveManager : MonoBehaviour
 
             if (waveCountDown <= 0)
             {
-                if (waveState != WaveState.SPAWNING) StartWave(currentWave);
+                if (waveState != WaveState.SPAWNING)
+                {
+                    waveState = WaveState.SPAWNING;
+                    onWaveStarting?.Invoke(currentWave.waveUIMessage, waveWarningTime);
+                }
             }
             else
             {
                 waveCountDown -= Time.deltaTime;
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-        Enemy.onEnemyDeath -= RemoveEnemy;
-        SpawnPoint.onEnemyBirth -= AddEnemy;
     }
 
     private void WaveCleared()
@@ -108,6 +116,7 @@ public class WaveManager : MonoBehaviour
 
         if (enemySearchCountdown <= 0f)
         {
+            // Send Wave Cleared Message to UIManager 
             enemySearchCountdown = 1f;
             if (activeEnemies.Count == 0) return true;
         }
@@ -117,15 +126,18 @@ public class WaveManager : MonoBehaviour
 
     private void SetNextWave(int waveNumber)
     {
-        if (waveNumber <= wavesAvailable.Length) currentWave = wavesAvailable[waveNumber];
+        if (waveNumber <= wavesAvailable.Length)
+        {
+            currentWave = wavesAvailable[waveNumber];
+        }
     }
 
-    private void StartWave(Wave wave)
+    public void StartWave()
     {
-        waveState = WaveState.SPAWNING;
+
 
         var spawners = GetRandomSpawnPoints();
-        SpawnEnemies(wave, spawners);
+        SpawnEnemies(currentWave, spawners);
 
         waveState = WaveState.WAITING;
     }
@@ -177,15 +189,6 @@ public class WaveManager : MonoBehaviour
     private void RemoveEnemy(GameObject enemy)
     {
         if (activeEnemies.Contains(enemy)) activeEnemies.Remove(enemy);
-    }
-
-
-    private enum WaveState
-    {
-        COUNTDOWN,
-        SPAWNING,
-        WAITING,
-        RANKING
     }
 }
 

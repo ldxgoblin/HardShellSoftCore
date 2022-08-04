@@ -29,7 +29,7 @@ public class Dash : MonoBehaviour
 
     private Vector2 dashDirection;
 
-    private readonly float dashTrailTime = 0.5f;
+    private readonly float dashTrailTime = 0.35f;
 
     private bool desiredDash;
 
@@ -43,6 +43,9 @@ public class Dash : MonoBehaviour
     private Rigidbody2D rigidbody2D;
 
     private TrailRenderer trailRenderer;
+    
+    public static event Action OnDashHit;
+    public static event Action<bool> OnLookDirectionChange;
 
     private void Awake()
     {
@@ -122,9 +125,7 @@ public class Dash : MonoBehaviour
         }
     }
 
-    public static event Action OnDashHit;
 
-    public static event Action<bool> OnLookDirectionChange;
 
     private void ResetDashCoolDown()
     {

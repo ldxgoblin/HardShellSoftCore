@@ -9,6 +9,8 @@ public class ComboTracker : MonoBehaviour
     [SerializeField] private float currentComboTime;
 
     private bool comboInProgress;
+    public static event Action<int> OnCombo;
+    public static event Action OnComboEnded;
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class ComboTracker : MonoBehaviour
             else
             {
                 comboInProgress = false;
-                onComboEnded?.Invoke();
+                OnComboEnded?.Invoke();
             }
         }
     }
@@ -39,10 +41,7 @@ public class ComboTracker : MonoBehaviour
         Dash.OnDashHit -= RegisterHit;
         PlayerProjectile.OnPlayerProjectileHit -= RegisterHit;
     }
-
-    public static event Action<int> onCombo;
-    public static event Action onComboEnded;
-
+    
     private void RegisterHit()
     {
         if (currentComboTime <= 0) ResetHitCounter();
@@ -51,7 +50,7 @@ public class ComboTracker : MonoBehaviour
 
         if (hitCounter > 1)
         {
-            onCombo?.Invoke(hitCounter);
+            OnCombo?.Invoke(hitCounter);
             comboInProgress = true;
         }
     }

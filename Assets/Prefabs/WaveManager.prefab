@@ -44,25 +44,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1da4e3713fbd7d4caa8faddacb0f67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveManagerRunning: 0
+  waveManagerRunning: 1
   wavesAvailable:
-  - waveUIMessage: FIRST WAVE
+  - waveUIMessage: FIRST WAVE INCOMING!
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
     enemyCountPerSpawnPoint: 1
     spawnRate: 1
+    waveMusic: {fileID: 0}
     isCleared: 0
-  - waveUIMessage: SECOND WAVE
+  - waveUIMessage: SECOND WAVE INCOMING!
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
     enemyCountPerSpawnPoint: 2
     spawnRate: 0.5
+    waveMusic: {fileID: 0}
     isCleared: 0
-  - waveUIMessage: THIRD WAVE
+  - waveUIMessage: THIRD WAVE INCOMING!
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
     enemyCountPerSpawnPoint: 3
     spawnRate: 0.25
+    waveMusic: {fileID: 0}
     isCleared: 0
+  waveWarningTime: 2.5
   timeBetweenWaves: 5
-  waveCountDown: 0
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -73,4 +76,3 @@ MonoBehaviour:
   - {fileID: 0}
   activeEnemies: []
   enemyTransform: {fileID: 0}
-  waveState: 0

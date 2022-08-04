@@ -11,14 +11,14 @@ public class SmashGroupCamera : MonoBehaviour
 
     private void Awake()
     {
-        Enemy.onEnemyAddToGroup += AddTarget;
-        Enemy.onEnemyRemoveFromGroup += RemoveTarget;
+        Enemy.OnEnemyAddToGroup += AddTarget;
+        Enemy.OnEnemyRemoveFromGroup += RemoveTarget;
     }
 
     private void OnDisable()
     {
-        Enemy.onEnemyAddToGroup -= AddTarget;
-        Enemy.onEnemyRemoveFromGroup -= RemoveTarget;
+        Enemy.OnEnemyAddToGroup -= AddTarget;
+        Enemy.OnEnemyRemoveFromGroup -= RemoveTarget;
     }
 
     private void AddTarget(Transform target)

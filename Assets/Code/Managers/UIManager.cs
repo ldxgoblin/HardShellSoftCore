@@ -8,29 +8,38 @@ using Random = UnityEngine.Random;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreCountText;
+    private Vector3 scoreTextBasePosition;
+    private float scoreRumbleIntensity;
+    
     [SerializeField] private TextMeshProUGUI comboCountText;
     [SerializeField] private TextMeshProUGUI comboMessageText;
+    private Vector3 comboMessageBasePosition;
+    private Vector3 comboTextBasePosition;
+    private float comboRumbleIntensity;
 
     [SerializeField] [Range(2.5f, 5f)] private float rumbleIntensity = 2.5f;
     [SerializeField] [Range(0.25f, 1f)] private float rumbleFallOff;
 
-    [SerializeField] private Material hpDisplay;
-
-    [SerializeField] private Image hpDisplayPortrait;
     [SerializeField] private Sprite[] hpDisplayPortraitSprites;
-
+    [SerializeField] private Material hpDisplay;
+    [SerializeField] private Image hpDisplayPortrait;
+    [SerializeField] private Image playerDamageEffect;
+    
     [SerializeField] private ComboMessage[] comboMessages;
+    
     [SerializeField] private RectTransform comboPanel;
+    
+    [SerializeField] private RectTransform wavePanel;
+    [SerializeField] private TextMeshProUGUI waveMessage;
+    private Vector3 waveWarningBasePosition;
+
+    [SerializeField] private RectTransform missionEndPanel;
+    
+    public static Action onStartSpawning;
 
     private HitPoints ballStateHp;
-    private Vector3 comboMessageBasePosition;
-
-    private float comboRumbleIntensity;
-
-    private Vector3 comboTextBasePosition;
     private HitPoints mechStateHp;
-    private float scoreRumbleIntensity;
-    private Vector3 scoreTextBasePosition;
+
 
     private void Awake()
     {
@@ -44,10 +53,10 @@ public class UIManager : MonoBehaviour
         comboMessageBasePosition = comboMessageText.transform.localPosition;
         scoreTextBasePosition = scoreCountText.transform.localPosition;
 
-        ComboTracker.onCombo += UpdateComboCountText;
-        ComboTracker.onComboEnded += HideComboCountText;
+        ComboTracker.OnCombo += UpdateComboCountText;
+        ComboTracker.OnComboEnded += HideComboCountText;
 
-        MissionTracker.onScoreChange += UpdateScoreText;
+        MissionTracker.OnScoreChange += UpdateScoreText;
 
         MechAttachPoint.OnMechActivation += SwitchToMechHitPointsUI;
         MechAttachPoint.OnMechDeactivation += SwitchToBallStateHitPointsUi;
@@ -55,6 +64,12 @@ public class UIManager : MonoBehaviour
         // TODO: not optimal, needs references to the lambdas in order to unsubscribe later but i wanted to try the syntax lol
         EnemyProjectile.OnBallStateDamage += () => RemoveHitPointsUiSegment(ballStateHp);
         EnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
+
+        waveWarningBasePosition = wavePanel.position;
+
+        WaveManager.onWaveStarting += ShowWaveStartWarning;
+
+        Player.onPlayerDamage += ShowPlayerDamageEffect;
     }
 
     private void Start()
@@ -87,13 +102,17 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        ComboTracker.onCombo -= UpdateComboCountText;
-        ComboTracker.onComboEnded -= HideComboCountText;
+        ComboTracker.OnCombo -= UpdateComboCountText;
+        ComboTracker.OnComboEnded -= HideComboCountText;
 
-        MissionTracker.onScoreChange -= UpdateScoreText;
+        MissionTracker.OnScoreChange -= UpdateScoreText;
 
         MechAttachPoint.OnMechActivation -= SwitchToMechHitPointsUI;
         MechAttachPoint.OnMechDeactivation -= SwitchToBallStateHitPointsUi;
+        
+        WaveManager.onWaveStarting -= ShowWaveStartWarning;
+        
+        Player.onPlayerDamage -= ShowPlayerDamageEffect;
     }
 
     private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction,
@@ -173,6 +192,33 @@ public class UIManager : MonoBehaviour
         else if (percentage == 0)
             // 0percentSprite
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[0];
+    }
+
+    private void ShowWaveStartWarning(string waveMessageText, float duration)
+    {
+        wavePanel.position = waveWarningBasePosition;
+        
+        waveMessage.SetText(waveMessageText);
+        
+        wavePanel.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutFlash);
+        wavePanel.DOAnchorPosX(-1800, 0.5f)
+            .SetEase(Ease.InFlash)
+            .SetDelay(duration)
+            .OnComplete(() =>
+        {
+            onStartSpawning?.Invoke();
+        });
+    }
+
+    private void ShowPlayerDamageEffect(float duration)
+    {
+        playerDamageEffect.color = Color.red;
+        playerDamageEffect.DOFade(0, duration);
+    }
+
+    private void ShowMissionEndPanel()
+    {
+        
     }
 }
 
