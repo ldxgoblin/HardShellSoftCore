@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private RectTransform wavePanel;
     [SerializeField] private TextMeshProUGUI waveMessage;
-    private Vector3 waveWarningBasePosition;
+    private Vector2 waveWarningBasePosition;
 
     [SerializeField] private RectTransform missionEndPanel;
     
@@ -39,8 +39,7 @@ public class UIManager : MonoBehaviour
 
     private HitPoints ballStateHp;
     private HitPoints mechStateHp;
-
-
+    
     private void Awake()
     {
         ballStateHp = GameObject.FindWithTag("Player").GetComponent<Player>().HitPoints;
@@ -65,8 +64,7 @@ public class UIManager : MonoBehaviour
         EnemyProjectile.OnBallStateDamage += () => RemoveHitPointsUiSegment(ballStateHp);
         EnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
 
-        waveWarningBasePosition = wavePanel.position;
-
+        waveWarningBasePosition = wavePanel.anchoredPosition;
         WaveManager.onWaveStarting += ShowWaveStartWarning;
 
         Player.onPlayerDamage += ShowPlayerDamageEffect;
@@ -196,13 +194,12 @@ public class UIManager : MonoBehaviour
 
     private void ShowWaveStartWarning(string waveMessageText, float duration)
     {
-        wavePanel.position = waveWarningBasePosition;
+        wavePanel.anchoredPosition = waveWarningBasePosition;
         
         waveMessage.SetText(waveMessageText);
         
-        wavePanel.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutFlash);
-        wavePanel.DOAnchorPosX(-1800, 0.5f)
-            .SetEase(Ease.InFlash)
+        wavePanel.DOAnchorPosX(0, 0.75f);
+        wavePanel.DOAnchorPosX(-1800, 0.75f)
             .SetDelay(duration)
             .OnComplete(() =>
         {

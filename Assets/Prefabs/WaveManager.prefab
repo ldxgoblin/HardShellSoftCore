@@ -50,19 +50,19 @@ MonoBehaviour:
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
     enemyCountPerSpawnPoint: 1
     spawnRate: 1
-    waveMusic: {fileID: 0}
+    waveMusic: {fileID: 8300000, guid: 5a833ef2c309d324885d11096f68f9b0, type: 3}
     isCleared: 0
   - waveUIMessage: SECOND WAVE INCOMING!
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
     enemyCountPerSpawnPoint: 2
     spawnRate: 0.5
-    waveMusic: {fileID: 0}
+    waveMusic: {fileID: 8300000, guid: 5a833ef2c309d324885d11096f68f9b0, type: 3}
     isCleared: 0
   - waveUIMessage: THIRD WAVE INCOMING!
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}
     enemyCountPerSpawnPoint: 3
     spawnRate: 0.25
-    waveMusic: {fileID: 0}
+    waveMusic: {fileID: 8300000, guid: 5ad7fde86f0c94d4eb41438929b42c32, type: 3}
     isCleared: 0
   waveWarningTime: 2.5
   timeBetweenWaves: 5

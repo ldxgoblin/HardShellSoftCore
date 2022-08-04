@@ -14,9 +14,6 @@ public class Boost : MonoBehaviour
 
     [SerializeField] private AudioClip boostClip;
 
-    [SerializeField] private ParticleSystem boosterIdleParticles;
-    [SerializeField] private ParticleSystem boosterActiveParticles;
-
     [SerializeField] private Image fuelMeter;
     [SerializeField] private float fuelMeterLerpSpeed;
     private readonly float defaultGravityScale = 1f;
@@ -105,12 +102,6 @@ public class Boost : MonoBehaviour
     private void FuelMeterUpdate()
     {
         fuelMeter.fillAmount = Mathf.Lerp(fuelMeter.fillAmount, currentFuel / maxBoostFuel, fuelMeterLerpSpeed);
-    }
-
-    private void ModifyBoosterParticles(float size)
-    {
-        var main = boosterIdleParticles.main;
-        main.startSize = size;
     }
 
     private void PerformBoost()

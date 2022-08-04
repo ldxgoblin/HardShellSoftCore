@@ -30,11 +30,6 @@ public class MissionTracker : MonoBehaviour
         MouseAimAndShoot.OnPlayerShotFired += UpdatePlayerShotsTaken;
         ComboTracker.OnCombo += UpdateMaxCombo;
     }
-    
-    private void Start()
-    {
-
-    }
 
     private void Update()
     {
@@ -46,6 +41,10 @@ public class MissionTracker : MonoBehaviour
     private void OnDisable()
     {
         Enemy.OnEnemyKilled -= UpdateScore;
+        Enemy.OnEnemyHit -= UpdatePlayerShotsHit;
+
+        MouseAimAndShoot.OnPlayerShotFired -= UpdatePlayerShotsTaken;
+        ComboTracker.OnCombo -= UpdateMaxCombo;
     }
     
     private void UpdateScore(int scoreValue)

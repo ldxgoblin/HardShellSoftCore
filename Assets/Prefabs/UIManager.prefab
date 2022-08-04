@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7604688521574800206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7604688521574800207}
+  - component: {fileID: 7604688521574800204}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7604688521574800207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604688521574800206}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7604688521574800204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604688521574800206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8f6f3bcb85f4d2e9e17db659db0af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreCountText: {fileID: 0}
+  comboCountText: {fileID: 0}
+  comboMessageText: {fileID: 0}
+  rumbleIntensity: 5
+  rumbleFallOff: 1
+  hpDisplayPortraitSprites:
+  - {fileID: 21300000, guid: d4a021a48062a4186b7a66d7ac2a5a43, type: 3}
+  - {fileID: 21300000, guid: e881c74702d784a16a9319885c08956c, type: 3}
+  - {fileID: 21300000, guid: b0f1f22eb14c8430ea4a66fa1e1f3d88, type: 3}
+  - {fileID: 21300000, guid: 8b18f6c20105f47a0ab809c9b8d02898, type: 3}
+  - {fileID: 21300000, guid: 64c76fd6ac1344f2cb0d497acf17a919, type: 3}
+  hpDisplay: {fileID: 2100000, guid: 95f189950b5da4384a505981fc9dff49, type: 2}
+  hpDisplayPortrait: {fileID: 0}
+  playerDamageEffect: {fileID: 0}
+  comboMessages:
+  - hits: 0
+    message: 
+  comboPanel: {fileID: 0}
+  wavePanel: {fileID: 0}
+  waveMessage: {fileID: 0}
+  missionEndPanel: {fileID: 0}

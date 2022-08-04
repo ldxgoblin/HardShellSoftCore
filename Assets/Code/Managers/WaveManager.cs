@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
         WAITING,
         RANKING
     }
-    private WaveClearTimer waveClearClearTimer;                           // records the total time from start to finish (i.e. boss kill) used for mission ranking
+    private WaveClearTimer waveClearClearTimer;                 // records the total time from start to finish (i.e. boss kill) used for mission ranking
     
     [SerializeField] 
     private float timeBetweenWaves;                             // brief respite in seconds between the last cleared wave and the next
@@ -38,6 +38,8 @@ public class WaveManager : MonoBehaviour
     private float enemySearchCountdown = 1f;                    // frequency in which we check for enemies left alive, only exists for performance reasons
     
     public static Action<string, float> onWaveStarting;
+    public static Action<AudioClip> onWaveMusicStart;
+    public static Action onWaveMusicEnd;
 
     private void Awake()
     {
@@ -88,6 +90,7 @@ public class WaveManager : MonoBehaviour
                 if (waveState != WaveState.SPAWNING)
                 {
                     waveState = WaveState.SPAWNING;
+                    onWaveMusicStart?.Invoke(currentWave.waveMusic);
                     onWaveStarting?.Invoke(currentWave.waveUIMessage, waveWarningTime);
                 }
             }
@@ -105,7 +108,7 @@ public class WaveManager : MonoBehaviour
 
         waveState = WaveState.COUNTDOWN;
         waveCountDown = timeBetweenWaves;
-
+        
         IncrementWave();
         SetNextWave(currentWaveIndex);
     }
@@ -118,7 +121,11 @@ public class WaveManager : MonoBehaviour
         {
             // Send Wave Cleared Message to UIManager 
             enemySearchCountdown = 1f;
-            if (activeEnemies.Count == 0) return true;
+            if (activeEnemies.Count == 0)
+            {
+                onWaveMusicEnd?.Invoke();
+                return true;
+            }
         }
 
         return false;
@@ -134,8 +141,6 @@ public class WaveManager : MonoBehaviour
 
     public void StartWave()
     {
-
-
         var spawners = GetRandomSpawnPoints();
         SpawnEnemies(currentWave, spawners);
 

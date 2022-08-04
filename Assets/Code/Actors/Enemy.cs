@@ -1,17 +1,17 @@
 using System;
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Enemy : Actor
 {
-    [Header("General Values")] 
     [SerializeField] private int score = 100;                       // enemy base score value
-    [Header("Splatter VFX")] 
     [SerializeField] private GameObject enemyDeathFX;               // blood splatter vfx prefab
-    [Header("Sound FX")] 
     [SerializeField] private SimpleAudioEvent enemyDeathAudioEvent; // sploosh!
-
+    private Transform enemyTransform;
+    private Vector3 enemyBaseScale;
+    
     private CinemachineImpulseSource enemyImpulseSource;            // camera shake
     public static event Action<int> OnEnemyKilled;                  // tells UIManager to update its score display
     public static event Action<GameObject> OnEnemyDeath;            // tells WaveMananger to delete the current Enemy from its activeEnemies list
@@ -26,27 +26,39 @@ public class Enemy : Actor
         audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
 
         OnEnemyAddToGroup?.Invoke(transform);
+
+        enemyTransform = transform;
+        enemyBaseScale = enemyTransform.localScale;
     }
-    
+
+    private void Start()
+    {
+        enemyTransform.DOScaleY(1.75f, 0.75f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+    }
+
     protected override void Die()
     {
         OnEnemyKilled?.Invoke(score);
         OnEnemyDeath?.Invoke(gameObject);
-
-        Instantiate(enemyDeathFX, transform.position, Quaternion.identity);
-
+        
         enemyDeathAudioEvent.Play(audioSource);
-
         enemyImpulseSource.GenerateImpulse(transform.position);
-
         OnEnemyRemoveFromGroup?.Invoke(transform);
+
+        Instantiate(enemyDeathFX, enemyTransform.position, Quaternion.identity);
 
         base.Die();
     }
-
+    
+    
     public override void Damage(int damage)
     {
         OnOnEnemyHit(damage);
+        
+        var wobbleSequence = DOTween.Sequence();
+        wobbleSequence.Append(enemyTransform.DOPunchScale(new Vector3(0.25f, 0.25f, 0.25f), 0.25f))
+            .Append(enemyTransform.DOScale(enemyBaseScale, 0.25f));
+
         base.Damage(damage);
     }
     public void Bump()

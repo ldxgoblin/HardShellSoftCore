@@ -159,11 +159,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 4809777744860402422}
   previousState: {fileID: 8614957162420234050}
-  chaseSpeed: 100
+  chaseSpeed: 300
   chaseSpeedMutationRange:
-    minValue: -5
-    maxValue: 5
-  gapFactor: 0.2
+    minValue: -15
+    maxValue: 50.000008
+  gapFactor: 0.25
   rigidbody2D: {fileID: 6740654810402834790}
   aiDetector: {fileID: 5185447091002023066}
   parentSpriteRenderer: {fileID: 6740654810989252036}

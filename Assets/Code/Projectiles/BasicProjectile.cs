@@ -31,7 +31,7 @@ public class BasicProjectile : MonoBehaviour
     }
 
 
-    private void AutoDestruct()
+    protected virtual void AutoDestruct()
     {
         Destroy(gameObject, destroyAfterSeconds);
     }

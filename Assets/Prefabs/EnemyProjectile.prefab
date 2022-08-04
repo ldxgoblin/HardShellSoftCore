@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4549255565932895621}
   m_Layer: 0
   m_Name: EnemyProjectile
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   projectileDamage: 1
   projectileSpeed: 30
   destroyAfterSeconds: 2
-  projectileImpactFX: {fileID: 0}
+  projectileImpactFX: {fileID: 7650888637837580235, guid: eb02ce2c06af38040ba62270c174fb0a, type: 3}
 --- !u!1 &2469154771428581529
 GameObject:
   m_ObjectHideFlags: 0
