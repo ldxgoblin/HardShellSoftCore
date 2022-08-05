@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: ATTRACT MODE
-  productName: HARDSHELL SOFTCORE
+  productName: HARDSHELL SOFTCORE Goldmaster
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -140,7 +140,7 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  bundleVersion: 0.8
+  bundleVersion: 0.9g
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -279,7 +279,7 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b0f1f22eb14c8430ea4a66fa1e1f3d88, type: 3}
+      m_Icon: {fileID: 2800000, guid: 526789a760dc40245802f9e367341745, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 0

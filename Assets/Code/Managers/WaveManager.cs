@@ -41,12 +41,15 @@ public class WaveManager : MonoBehaviour
     public static Action<AudioClip> onWaveMusicStart;
     public static Action onWaveMusicEnd;
 
+    public static Action onStartTrackingWaveTime;
+    public static Action onStopTrackingWaveTime;
+
     private void Awake()
     {
         Enemy.OnEnemyDeath += RemoveEnemy;
         SpawnPoint.onEnemyBirth += AddEnemy;
         UIManager.onStartSpawning += StartWave;
-
+        
         totalWaveCount = wavesAvailable.Length;
 
         // Initialize System with first Wave
@@ -92,6 +95,8 @@ public class WaveManager : MonoBehaviour
                     waveState = WaveState.SPAWNING;
                     onWaveMusicStart?.Invoke(currentWave.waveMusic);
                     onWaveStarting?.Invoke(currentWave.waveUIMessage, waveWarningTime);
+                    
+                    onStartTrackingWaveTime?.Invoke();
                 }
             }
             else
@@ -124,6 +129,8 @@ public class WaveManager : MonoBehaviour
             if (activeEnemies.Count == 0)
             {
                 onWaveMusicEnd?.Invoke();
+                
+                onStopTrackingWaveTime?.Invoke();
                 return true;
             }
         }

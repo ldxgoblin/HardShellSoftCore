@@ -9,8 +9,7 @@ public class WaveClearTimer
     public float currentTime;
 
     public string currentTimeText;
-    public string finalRunTimeText = "NOT SET";
-
+    
     public TimeSpan runTime;
 
     public void UpdateWaveTimer()
@@ -23,12 +22,6 @@ public class WaveClearTimer
     public string FormatTimer()
     {
         return runTime.ToString(@"mm\:ss\:ff");
-    }
-
-    public void StopTimer()
-    {
-        timerActive = false;
-        GetFinalTime();
     }
 
     public void PauseTimer()
@@ -47,11 +40,5 @@ public class WaveClearTimer
             return;
         }
         timerActive = true;
-    }
-
-    public string GetFinalTime()
-    {
-        finalRunTimeText = FormatTimer();
-        return finalRunTimeText;
     }
 }

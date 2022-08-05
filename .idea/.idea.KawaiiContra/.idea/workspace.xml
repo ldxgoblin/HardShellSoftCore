@@ -6,42 +6,37 @@
   <component name="ChangeListManager">
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/DashTrailTexture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/DashTrailTexture.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/LevelDesign.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/LevelDesign/SmartSelect_20220720-110418_Sketchbook.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/LevelDesign/SmartSelect_20220720-110418_Sketchbook.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/GridBox_Default.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/GridBox_Default.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempLogo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempLogo2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempUI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempUI/ScoreBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempUI/ScoreBg.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempUI/portraitBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/TempUI/portraitBg.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/0PercentHpEmote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/0PercentHpEmote.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/100PercentHpEmote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/100PercentHpEmote.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/25PercentHpEmote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/25PercentHpEmote.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/50PercentHpEmote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/50PercentHpEmote.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/75PercentHpEmote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UIEmotes/75PercentHpEmote.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/WARNING.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/WARNING.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/HoverMech.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/HoverMech.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/HoverMech_Idle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/HoverMech_Idle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Nude_Idle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Nude_Idle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Nude_Roll.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Nude_Roll.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player_Nude.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player_Nude.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/PerspectiveBackgroundTexture.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/PerspectiveBackgroundTexture.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/AudioEvent/MechShot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/AudioEvent/MechShot.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Dash.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Camera/SmashGroupCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Camera/SmashGroupCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/ComboTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/ComboTracker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/MissionTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/MissionTracker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/WaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/WaveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/WaveSystem/WaveClearTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/WaveSystem/WaveClearTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GabrielAguiarProductions/VFXGraph_Muzzle_2020.3_HDRP_v1.0.1.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GabrielAguiarProductions/VFXGraph_Muzzle_2020.3_URP_v1.0.1.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AudioEffectsPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AudioEffectsPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HoverMechNew.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HoverMechNew.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MusicManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MusicManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UIManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UIManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WaveManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WaveManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/VFXandParticles/BloodSplatterExplosion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/VFXandParticles/BloodSplatterExplosion.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,17 +69,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Discover.Launch.Via.Unity": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "rider.run.widget.enabled.cache": "false",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Desktop/FullAutoFluff_Prototype_v0.app/Contents/MacOS/Full Auto Fluff" />

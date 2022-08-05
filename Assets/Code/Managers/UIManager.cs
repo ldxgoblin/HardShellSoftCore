@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -7,9 +8,11 @@ using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreCountText, comboCountText, comboMessageText, 
-        missionEndHeadline, damageCountText, accuracyCountText, comboCounterText, 
-        scoreCounterText, clearTimeCounterText, rankText, waveMessage;
+    [SerializeField] private TextMeshProUGUI currentScoreText, currentComboText, 
+        comboMessageText, missionEndHeadline, finalDamageCountText, finalAccuracyCountText, 
+        finalComboCountText, bonusScoreText, finalScoreCountText, finalClearTimeText, rankText, 
+        waveMessageText;
+    
     private Vector3 scoreTextBasePosition, comboMessageBasePosition, comboTextBasePosition;
     private float scoreRumbleIntensity, comboRumbleIntensity;
     
@@ -18,12 +21,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Sprite[] hpDisplayPortraitSprites;
     [SerializeField] private Material hpDisplay;
-    [SerializeField] private Image hpDisplayPortrait, playerDamageEffect, missionEndBackgroundImage;
+    [SerializeField] private Image hpDisplayPortrait, playerDamageEffect, missionEndBackgroundImage, heroImage;
     [SerializeField] private Sprite heroFailSprite, heroWinSprite;
-    
-    [SerializeField] private ComboMessage[] comboMessages;
-    
-    [SerializeField] private RectTransform comboPanel, wavePanel, rankBubble, heroImagePanel, quitButton, restartButton, infoPanel;
+
+    [SerializeField] private RectTransform comboPanel, comboMessagePanel, wavePanel, rankBubble, heroImagePanel, infoPanel;
     [SerializeField] private Color failColor, winColor;
     
     private Vector2 waveWarningBasePosition;
@@ -40,14 +41,16 @@ public class UIManager : MonoBehaviour
         mechStateHp = GameObject.FindWithTag("Mech").GetComponent<Mech>().HitPoints;
         if (mechStateHp == null) Debug.LogError("Mech State HP Object not found!");
 
-        comboTextBasePosition = comboCountText.transform.localPosition;
+        comboTextBasePosition = currentComboText.transform.localPosition;
         comboMessageBasePosition = comboMessageText.transform.localPosition;
-        scoreTextBasePosition = scoreCountText.transform.localPosition;
+        scoreTextBasePosition = currentScoreText.transform.localPosition;
 
         ComboTracker.OnCombo += UpdateComboCountText;
         ComboTracker.OnComboEnded += HideComboCountText;
+        ComboTracker.OnComboMessage += UpdateComboMessage;
 
         MissionTracker.OnScoreChange += UpdateScoreText;
+        MissionTracker.OnBlastAllStatistics += SetFinalStats;
 
         MechAttachPoint.OnMechActivation += SwitchToMechHitPointsUI;
         MechAttachPoint.OnMechDeactivation += SwitchToBallStateHitPointsUi;
@@ -60,15 +63,15 @@ public class UIManager : MonoBehaviour
         WaveManager.onWaveStarting += ShowWaveStartWarning;
 
         Player.onPlayerDamage += ShowPlayerDamageEffect;
-        Player.onPlayerDeath += ShowMissionEndPanel;
+        Player.onPlayerDeath += MissionFailed;
+
+        heroImage = heroImagePanel.GetComponent<Image>();
     }
 
     private void Start()
     {
         DOTween.Init();
         UpdateHitPointsUi(ballStateHp);
-
-        ShowMissionEndPanel();
     }
 
     private void Update()
@@ -77,7 +80,7 @@ public class UIManager : MonoBehaviour
 
         if (comboRumbleIntensity > 0)
         {
-            RumbleCounter(comboCountText, comboTextBasePosition, randomDirection, comboRumbleIntensity);
+            RumbleCounter(currentComboText, comboTextBasePosition, randomDirection, comboRumbleIntensity);
             RumbleCounter(comboMessageText, comboMessageBasePosition, randomDirection, comboRumbleIntensity);
             comboRumbleIntensity -= rumbleFallOff * Time.deltaTime;
         }
@@ -88,7 +91,7 @@ public class UIManager : MonoBehaviour
 
         if (scoreRumbleIntensity > 0)
         {
-            RumbleCounter(scoreCountText, scoreTextBasePosition, randomDirection, scoreRumbleIntensity);
+            RumbleCounter(currentScoreText, scoreTextBasePosition, randomDirection, scoreRumbleIntensity);
             scoreRumbleIntensity -= rumbleFallOff * Time.deltaTime;
         }
     }
@@ -97,7 +100,8 @@ public class UIManager : MonoBehaviour
     {
         ComboTracker.OnCombo -= UpdateComboCountText;
         ComboTracker.OnComboEnded -= HideComboCountText;
-
+        ComboTracker.OnComboMessage -= UpdateComboMessage;
+        
         MissionTracker.OnScoreChange -= UpdateScoreText;
 
         MechAttachPoint.OnMechActivation -= SwitchToMechHitPointsUI;
@@ -106,7 +110,9 @@ public class UIManager : MonoBehaviour
         WaveManager.onWaveStarting -= ShowWaveStartWarning;
         
         Player.onPlayerDamage -= ShowPlayerDamageEffect;
-        Player.onPlayerDeath -= ShowMissionEndPanel;
+        Player.onPlayerDeath -= MissionFailed;
+        
+        MissionTracker.OnBlastAllStatistics -= SetFinalStats;
     }
 
     private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction,
@@ -118,20 +124,25 @@ public class UIManager : MonoBehaviour
     private void UpdateScoreText(int score)
     {
         scoreRumbleIntensity = rumbleIntensity;
-        scoreCountText.SetText(score.ToString());
+        currentScoreText.SetText(score.ToString());
     }
 
     private void UpdateComboCountText(int hits)
     {
-        comboPanel.DOAnchorPos(new Vector2(-50, -70), 0.25f);
+        comboPanel.DOAnchorPos(new Vector2(-50, -70), 0.25f).SetEase(Ease.OutExpo);
 
         comboRumbleIntensity = rumbleIntensity;
-        comboCountText.SetText($"{hits}");
+        currentComboText.SetText($"{hits}");
+    }
+
+    private void UpdateComboMessage(string message)
+    {
+        comboMessageText.SetText(message);
     }
 
     private void HideComboCountText()
     {
-        comboPanel.DOAnchorPos(new Vector2(500, -70), 0.25f);
+        comboPanel.DOAnchorPos(new Vector2(500, -70), 0.25f).SetEase(Ease.InExpo).OnComplete(()=> UpdateComboMessage(""));
     }
 
     private void UpdateHitPointsUi(HitPoints hitPoints)
@@ -192,15 +203,18 @@ public class UIManager : MonoBehaviour
     {
         wavePanel.anchoredPosition = waveWarningBasePosition;
         
-        waveMessage.SetText(waveMessageText);
+        this.waveMessageText.SetText(waveMessageText);
+
+        var sequence = DOTween.Sequence();
         
-        wavePanel.DOAnchorPosX(0, 0.75f).SetEase(Ease.InElastic);
-        wavePanel.DOAnchorPosX(-1800, 0.75f)
-            .SetDelay(duration)
+        sequence.Append(wavePanel.DOAnchorPosX(0, 0.1f))
+            .Append(wavePanel.DOShakeScale(3, new Vector3(0.15f, 0.15f, 0f), 3, 10, true))
+            .Append(wavePanel.DOAnchorPosX(-1800, 0.35f))
+            .SetEase(Ease.InOutExpo)
             .OnComplete(() =>
-        {
-            onStartSpawning?.Invoke();
-        });
+            {
+                onStartSpawning?.Invoke();
+            });
     }
 
     private void ShowPlayerDamageEffect(float duration)
@@ -209,32 +223,53 @@ public class UIManager : MonoBehaviour
         playerDamageEffect.DOFade(0, duration);
     }
 
-    private void ShowMissionEndPanel()
+    private void MissionFailed()
     {
-        bool gameWon = true;
-        var duration = 0.75f;
-        var jumpPower = 2;
-        var strength = new Vector2(0, -100);
+        ShowMissionEndPanel(false);
+    }
 
-        if (gameWon)
+    private void MissionAccomplished()
+    {
+        ShowMissionEndPanel(true);
+    }
+    
+    private void ShowMissionEndPanel(bool state)
+    {
+        var duration = 0.75f;
+        var color = new Color();
+
+        if (state)
         {
-            // Update Text & Counters
             missionEndHeadline.SetText("FUCK YEAH!");
-            
-            var sequence = DOTween.Sequence();
-            sequence.Append(missionEndBackgroundImage.DOColor(winColor, duration))
-                .Append(infoPanel.DOAnchorPosX(280, duration).SetEase(Ease.OutCubic))
-                .Append(heroImagePanel.DOPunchAnchorPos(new Vector2(0, 150), duration))
-                .Append(rankBubble.DOPunchAnchorPos(strength, duration));
+            heroImage.sprite = heroWinSprite;
+            color = winColor;
+        }
+        else
+        {
+            missionEndHeadline.SetText("YOU DIED!");
+            heroImage.sprite = heroFailSprite;
+            color = failColor;
         }
         
-
+        rankBubble.localScale = Vector3.zero;
+        
+        var sequence = DOTween.Sequence();
+        sequence.Append(missionEndBackgroundImage.DOColor(color, duration/2))
+            .Append(infoPanel.DOAnchorPosX(280, duration))
+            .Append(heroImagePanel.DOAnchorPosY(-70, duration))
+            .Append(rankBubble.DOScale(new Vector3(1.2f,1.2f, 0), duration))
+            .SetEase(Ease.InOutExpo);
     }
-}
 
-[Serializable]
-public class ComboMessage
-{
-    public int hits;
-    public string message;
+    private void SetFinalStats(int damage, float accuracy, int combos, int score, int bonusScore, string clearTime, string rank)
+    {
+        finalDamageCountText.text = damage.ToString();
+        finalAccuracyCountText.text = accuracy + " %"; 
+        finalComboCountText.text = combos.ToString();
+        finalScoreCountText.text = score.ToString();
+        finalClearTimeText.text = clearTime;
+
+        bonusScoreText.text = bonusScore.ToString();
+        rankText.text = rank;
+    }
 }

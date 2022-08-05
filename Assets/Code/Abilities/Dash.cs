@@ -45,6 +45,8 @@ public class Dash : MonoBehaviour
     private TrailRenderer trailRenderer;
     
     public static event Action OnDashHit;
+    public static event Action OnDash;
+    public static event Action<int> OnDashDamage;
     public static event Action<bool> OnLookDirectionChange;
 
     private void Awake()
@@ -83,6 +85,8 @@ public class Dash : MonoBehaviour
                 canDamage = true;
 
                 dashAudioEvent.Play(audioSource);
+                
+                OnDash?.Invoke();
 
                 ResetDashCoolDown();
             }
@@ -101,6 +105,7 @@ public class Dash : MonoBehaviour
     private void OnEnable()
     {
         ResetDashCoolDown();
+        trailRenderer.emitting = false;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -115,8 +120,12 @@ public class Dash : MonoBehaviour
                 Instantiate(dashImpactFX, transform.position, Quaternion.identity);
 
                 OnDashHit?.Invoke();
+                
+                OnDash?.Invoke();
+                OnDashDamage?.Invoke(1);
+                
                 dashHitAudioEvent.Play(audioSource);
-                slowMotion.SlowDown(slowMotionDuration, 0.1f);
+                slowMotion.SlowDown(slowMotionDuration, 0.15f);
 
                 // TODO maybe add some kind of bonus here?
             }

@@ -49,8 +49,7 @@ public class Enemy : Actor
 
         base.Die();
     }
-    
-    
+
     public override void Damage(int damage)
     {
         OnOnEnemyHit(damage);

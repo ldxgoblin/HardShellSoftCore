@@ -5,7 +5,7 @@ using UnityEngine;
 public class SmashGroupCamera : MonoBehaviour
 {
     [SerializeField] private CinemachineTargetGroup targetGroup;
-    [SerializeField] [Range(0.1f, 0.9f)] private float easeFactor;
+    [SerializeField] [Range(1f, 10f)] private float easeFactor;
     [SerializeField] private float targetWeight;
     [SerializeField] private float targetRadius;
 
@@ -42,7 +42,8 @@ public class SmashGroupCamera : MonoBehaviour
             index = targetGroup.FindMember(targetTransform);
             if (index >= 0) targetGroup.m_Targets[index] = target;
 
-            yield return new WaitForSeconds(0.01f);
+            //yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
 
         target.weight = targetWeight;

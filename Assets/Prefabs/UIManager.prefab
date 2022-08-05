@@ -44,17 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8f6f3bcb85f4d2e9e17db659db0af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreCountText: {fileID: 0}
-  comboCountText: {fileID: 0}
+  currentScoreText: {fileID: 0}
+  currentComboText: {fileID: 0}
   comboMessageText: {fileID: 0}
   missionEndHeadline: {fileID: 0}
-  damageCounterText: {fileID: 0}
-  accuracyCounterText: {fileID: 0}
-  comboCounterText: {fileID: 0}
-  scoreCounterText: {fileID: 0}
-  clearTimeCounterText: {fileID: 0}
+  finalDamageCountText: {fileID: 0}
+  finalAccuracyCountText: {fileID: 0}
+  finalComboCountText: {fileID: 0}
+  finalScoreCountText: {fileID: 0}
+  finalClearTimeText: {fileID: 0}
   rankText: {fileID: 0}
-  waveMessage: {fileID: 0}
+  waveMessageText: {fileID: 0}
   rumbleIntensity: 5
   rumbleFallOff: 1
   hpDisplayPortraitSprites:
@@ -67,17 +67,14 @@ MonoBehaviour:
   hpDisplayPortrait: {fileID: 0}
   playerDamageEffect: {fileID: 0}
   missionEndBackgroundImage: {fileID: 0}
+  heroImage: {fileID: 0}
   heroFailSprite: {fileID: 21300000, guid: e0d47a26e885bf84e8dd20c08455ae97, type: 3}
   heroWinSprite: {fileID: 21300000, guid: 343416edc01a63f4c89c44bf5133c9ec, type: 3}
-  comboMessages:
-  - hits: 0
-    message: 
   comboPanel: {fileID: 0}
+  comboMessagePanel: {fileID: 0}
   wavePanel: {fileID: 0}
   rankBubble: {fileID: 0}
   heroImagePanel: {fileID: 0}
-  quitButton: {fileID: 0}
-  restartButton: {fileID: 0}
   infoPanel: {fileID: 0}
   failColor: {r: 1, g: 0, b: 0.6039216, a: 0.6666667}
   winColor: {r: 0, g: 1, b: 0, a: 0.6666667}
