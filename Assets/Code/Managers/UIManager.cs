@@ -7,38 +7,30 @@ using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreCountText;
-    private Vector3 scoreTextBasePosition;
-    private float scoreRumbleIntensity;
+    [SerializeField] private TextMeshProUGUI scoreCountText, comboCountText, comboMessageText, 
+        missionEndHeadline, damageCountText, accuracyCountText, comboCounterText, 
+        scoreCounterText, clearTimeCounterText, rankText, waveMessage;
+    private Vector3 scoreTextBasePosition, comboMessageBasePosition, comboTextBasePosition;
+    private float scoreRumbleIntensity, comboRumbleIntensity;
     
-    [SerializeField] private TextMeshProUGUI comboCountText;
-    [SerializeField] private TextMeshProUGUI comboMessageText;
-    private Vector3 comboMessageBasePosition;
-    private Vector3 comboTextBasePosition;
-    private float comboRumbleIntensity;
-
     [SerializeField] [Range(2.5f, 5f)] private float rumbleIntensity = 2.5f;
     [SerializeField] [Range(0.25f, 1f)] private float rumbleFallOff;
 
     [SerializeField] private Sprite[] hpDisplayPortraitSprites;
     [SerializeField] private Material hpDisplay;
-    [SerializeField] private Image hpDisplayPortrait;
-    [SerializeField] private Image playerDamageEffect;
+    [SerializeField] private Image hpDisplayPortrait, playerDamageEffect, missionEndBackgroundImage;
+    [SerializeField] private Sprite heroFailSprite, heroWinSprite;
     
     [SerializeField] private ComboMessage[] comboMessages;
     
-    [SerializeField] private RectTransform comboPanel;
+    [SerializeField] private RectTransform comboPanel, wavePanel, rankBubble, heroImagePanel, quitButton, restartButton, infoPanel;
+    [SerializeField] private Color failColor, winColor;
     
-    [SerializeField] private RectTransform wavePanel;
-    [SerializeField] private TextMeshProUGUI waveMessage;
     private Vector2 waveWarningBasePosition;
-
-    [SerializeField] private RectTransform missionEndPanel;
     
     public static Action onStartSpawning;
 
-    private HitPoints ballStateHp;
-    private HitPoints mechStateHp;
+    private HitPoints ballStateHp, mechStateHp;
     
     private void Awake()
     {
@@ -68,12 +60,15 @@ public class UIManager : MonoBehaviour
         WaveManager.onWaveStarting += ShowWaveStartWarning;
 
         Player.onPlayerDamage += ShowPlayerDamageEffect;
+        Player.onPlayerDeath += ShowMissionEndPanel;
     }
 
     private void Start()
     {
         DOTween.Init();
         UpdateHitPointsUi(ballStateHp);
+
+        ShowMissionEndPanel();
     }
 
     private void Update()
@@ -111,6 +106,7 @@ public class UIManager : MonoBehaviour
         WaveManager.onWaveStarting -= ShowWaveStartWarning;
         
         Player.onPlayerDamage -= ShowPlayerDamageEffect;
+        Player.onPlayerDeath -= ShowMissionEndPanel;
     }
 
     private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction,
@@ -198,7 +194,7 @@ public class UIManager : MonoBehaviour
         
         waveMessage.SetText(waveMessageText);
         
-        wavePanel.DOAnchorPosX(0, 0.75f);
+        wavePanel.DOAnchorPosX(0, 0.75f).SetEase(Ease.InElastic);
         wavePanel.DOAnchorPosX(-1800, 0.75f)
             .SetDelay(duration)
             .OnComplete(() =>
@@ -215,7 +211,24 @@ public class UIManager : MonoBehaviour
 
     private void ShowMissionEndPanel()
     {
+        bool gameWon = true;
+        var duration = 0.75f;
+        var jumpPower = 2;
+        var strength = new Vector2(0, -100);
+
+        if (gameWon)
+        {
+            // Update Text & Counters
+            missionEndHeadline.SetText("FUCK YEAH!");
+            
+            var sequence = DOTween.Sequence();
+            sequence.Append(missionEndBackgroundImage.DOColor(winColor, duration))
+                .Append(infoPanel.DOAnchorPosX(280, duration).SetEase(Ease.OutCubic))
+                .Append(heroImagePanel.DOPunchAnchorPos(new Vector2(0, 150), duration))
+                .Append(rankBubble.DOPunchAnchorPos(strength, duration));
+        }
         
+
     }
 }
 

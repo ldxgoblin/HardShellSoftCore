@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1da4e3713fbd7d4caa8faddacb0f67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveManagerRunning: 1
+  waveManagerRunning: 0
   wavesAvailable:
   - waveUIMessage: FIRST WAVE INCOMING!
     enemyType: {fileID: 6740654810402834787, guid: a43f3c0f2a49b4ccfa0911eb413d7bae, type: 3}

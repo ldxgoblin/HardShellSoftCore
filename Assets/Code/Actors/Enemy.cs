@@ -33,7 +33,7 @@ public class Enemy : Actor
 
     private void Start()
     {
-        enemyTransform.DOScaleY(1.75f, 0.75f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        enemyTransform.DOScaleY(2f, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
 
     protected override void Die()
@@ -56,7 +56,7 @@ public class Enemy : Actor
         OnOnEnemyHit(damage);
         
         var wobbleSequence = DOTween.Sequence();
-        wobbleSequence.Append(enemyTransform.DOPunchScale(new Vector3(0.25f, 0.25f, 0.25f), 0.25f))
+        wobbleSequence.Append(enemyTransform.DOPunchScale(new Vector3(0.35f, 0.35f, 0.35f), 0.25f))
             .Append(enemyTransform.DOScale(enemyBaseScale, 0.25f));
 
         base.Damage(damage);
