@@ -133,10 +133,10 @@ Material:
     - _QueueOffset: 0
     - _Radius: 0.035
     - _ReceiveShadows: 1
-    - _RemovedSegments: 5
+    - _RemovedSegments: 20
     - _Rotation: 0
     - _SampleGI: 0
-    - _SegmentCount: 5
+    - _SegmentCount: 20
     - _SegmentSpacing: 0.01
     - _Shininess: 0
     - _Smoothness: 0.5
