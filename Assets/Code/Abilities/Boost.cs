@@ -52,12 +52,6 @@ public class Boost : MonoBehaviour
 
         velocity = rigidbody2D.velocity;
 
-        isOnGround = groundCheck.GetCurrentGroundState();
-
-        // reset boost counter
-        if (isOnGround)
-            if (currentFuel < maxBoostFuel)
-                currentFuel += 1 * fuelDepletionRate;
 
         // check if a boost was requested and perform it
         if (boosterRequested)
@@ -75,6 +69,8 @@ public class Boost : MonoBehaviour
         else
         {
             isBoosting = false;
+            if (currentFuel < maxBoostFuel)
+                currentFuel += 0.75f * fuelDepletionRate;
         }
 
 

@@ -199,17 +199,16 @@ public class UIManager : MonoBehaviour
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[0];
     }
 
-    private void ShowWaveStartWarning(string waveMessageText, float duration)
+    private void ShowWaveStartWarning(string waveMessage, float duration)
     {
         wavePanel.anchoredPosition = waveWarningBasePosition;
         
-        this.waveMessageText.SetText(waveMessageText);
+        waveMessageText.SetText(waveMessage);
 
         var sequence = DOTween.Sequence();
         
-        sequence.Append(wavePanel.DOAnchorPosX(0, 0.1f))
-            .Append(wavePanel.DOShakeScale(3, new Vector3(0.15f, 0.15f, 0f), 3, 10, true))
-            .Append(wavePanel.DOAnchorPosX(-1800, 0.35f))
+        sequence.Append(wavePanel.DOAnchorPosX(0, duration))
+            .Append(wavePanel.DOAnchorPosX(-1800, duration))
             .SetEase(Ease.InOutExpo)
             .OnComplete(() =>
             {

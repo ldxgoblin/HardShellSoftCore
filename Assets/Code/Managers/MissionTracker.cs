@@ -117,7 +117,9 @@ public class MissionTracker : MonoBehaviour
     private void EndTracking()
     {
         playerScoreBonus = CalculateBonusScore();
-        OnBlastAllStatistics?.Invoke(playerDamageDone, playerAccuracy, playerMaxCombo, playerScore, playerScoreBonus, timer.currentTimeText, GetRank(playerScore + playerScoreBonus));
+        var totalScore = playerScore + playerScoreBonus;
+        
+        OnBlastAllStatistics?.Invoke(playerDamageDone, playerAccuracy, playerMaxCombo, totalScore, playerScoreBonus, timer.currentTimeText, GetRank(totalScore));
         
         OnScoreSubmission?.Invoke(playerScore, playerScoreBonus);
     }
@@ -171,12 +173,12 @@ public class MissionTracker : MonoBehaviour
         return totalScore switch
         {
             < 2500 => "F",
-            >= 2500 and < 7500 => "E",
-            >= 7500 and < 10000 => "D",
-            >= 10000 and < 12500 => "C",
-            >= 12500 and < 17500 => "B",
-            >= 17500 and < 20000 => "A",
-            >= 20000 and < 25000 => "S",
+            >= 2500 and < 10000 => "E",
+            >= 10000 and < 20000 => "D",
+            >= 20000 and < 35000 => "C",
+            >= 35000 and < 55000 => "B",
+            >= 55000 and < 85000 => "A",
+            >= 85000 and < 130000 => "S",
             _ => "X"
         };
     }
