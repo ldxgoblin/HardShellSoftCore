@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 369544534265692806}
   - component: {fileID: 2317506225695773212}
   - component: {fileID: 1926008057108933197}
-  - component: {fileID: 4549255565932895621}
+  - component: {fileID: 8355402483701287405}
   m_Layer: 0
-  m_Name: EnemyProjectile
+  m_Name: EnemySlimeProjectile
   m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 369544534265692808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 856595298455695718}
   - {fileID: 8919073137028139340}
@@ -72,8 +72,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
---- !u!114 &4549255565932895621
+  m_Radius: 3.35
+--- !u!114 &8355402483701287405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,13 +82,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 369544534265692808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21a0293ff92cccf44ac75afc24f91d59, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c4155a765cc51043a8d9e7be147e85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 1
   projectileSpeed: 30
-  destroyAfterSeconds: 2
+  destroyAfterSeconds: 5
   projectileImpactFX: {fileID: 7650888637837580235, guid: eb02ce2c06af38040ba62270c174fb0a, type: 3}
+  wobbleDuration: 0.25
+  maxWobbleScale: {x: 1, y: 1, z: 1}
 --- !u!1 &2469154771428581529
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 2469154771428581529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 369544534265692806}
@@ -162,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 4227e46eba4cdbc49b6fc4afa136da7b, type: 3}
   m_Color: {r: 0.26870775, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,6 +182,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 369544534265692806}
     m_Modifications:
+    - target: {fileID: 5477110804022144843, guid: 7c3871d772749be4a8f1057d6d330a65, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477110804022144843, guid: 7c3871d772749be4a8f1057d6d330a65, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477110804022144843, guid: 7c3871d772749be4a8f1057d6d330a65, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477110804022144843, guid: 7c3871d772749be4a8f1057d6d330a65, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477110804022144843, guid: 7c3871d772749be4a8f1057d6d330a65, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477110804022144843, guid: 7c3871d772749be4a8f1057d6d330a65, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5676324200617114961, guid: 7c3871d772749be4a8f1057d6d330a65, type: 3}
       propertyPath: m_Name
       value: EnemyProjectileFX

@@ -114,9 +114,10 @@ public class Dash : MonoBehaviour
         {
             if (canDamage)
             {
-                var enemyActor = col.gameObject.GetComponent<Enemy>();
-                enemyActor.Damage(dashDamage);
+                var enemyActor = col.gameObject.GetComponent<Actor>();
 
+                enemyActor.Damage(dashDamage);
+                
                 Instantiate(dashImpactFX, transform.position, Quaternion.identity);
 
                 OnDashHit?.Invoke();

@@ -29,7 +29,9 @@ public class MissionTracker : MonoBehaviour
     private void Awake()
     {
         Enemy.OnEnemyKilled += UpdateScore;
-        Enemy.OnEnemyHit += TrackPlayerShotsHit;
+        Enemy.onEnemyHit += TrackPlayerShotsHit;
+
+        BossEnemy.OnBossHit += TrackPlayerShotsHit;
 
         Player.OnPlayerDeath += PauseTimer;
         Player.OnPlayerDeath += EndTracking;
@@ -57,7 +59,9 @@ public class MissionTracker : MonoBehaviour
     private void OnDisable()
     {
         Enemy.OnEnemyKilled -= UpdateScore;
-        Enemy.OnEnemyHit -= TrackPlayerShotsHit;
+        Enemy.onEnemyHit -= TrackPlayerShotsHit;
+        
+        BossEnemy.OnBossHit -= TrackPlayerShotsHit;
         
         Player.OnPlayerDeath -= PauseTimer;
         Player.OnPlayerDeath -= EndTracking;
@@ -71,7 +75,7 @@ public class MissionTracker : MonoBehaviour
         WaveManager.OnStartTrackingWaveTime -= RunTimer;
         WaveManager.OnStopTrackingWaveTime -= PauseTimer;
         WaveManager.OnWavesCleared -= PauseTimer;
-        WaveManager.OnWavesCleared -= EndTracking;
+        WaveManager.OnWavesCleared += EndTracking;
     }
     
     private void UpdateScore(int scoreValue)

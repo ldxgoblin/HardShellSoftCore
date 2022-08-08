@@ -15,7 +15,7 @@ public class Enemy : Actor
     private CinemachineImpulseSource enemyImpulseSource;            // camera shake
     public static event Action<int> OnEnemyKilled;                  // tells UIManager to update its score display
     public static event Action<GameObject> OnEnemyDeath;            // tells WaveMananger to delete the current Enemy from its activeEnemies list
-    public static event Action<int> OnEnemyHit;
+    public static Action<int> onEnemyHit;
     public static event Action<Transform> OnEnemyAddToGroup, OnEnemyRemoveFromGroup;
     
     protected override void Awake()
@@ -31,7 +31,7 @@ public class Enemy : Actor
         enemyBaseScale = enemyTransform.localScale;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         enemyTransform.DOScaleY(2f, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
     }
@@ -52,7 +52,7 @@ public class Enemy : Actor
 
     public override void Damage(int damage)
     {
-        OnOnEnemyHit(damage);
+        onEnemyHit?.Invoke(damage);
         
         var wobbleSequence = DOTween.Sequence();
         wobbleSequence.Append(enemyTransform.DOPunchScale(new Vector3(0.35f, 0.35f, 0.35f), 0.25f))
@@ -64,10 +64,5 @@ public class Enemy : Actor
     {
         var force = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
         rigidbody2D.AddForce(force * 100, ForceMode2D.Impulse);
-    }
-
-    private static void OnOnEnemyHit(int damage)
-    {
-        OnEnemyHit?.Invoke(damage);
     }
 }

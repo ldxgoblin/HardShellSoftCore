@@ -1,14 +1,25 @@
 using System;
+using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class EnemyProjectile : BasicProjectile
+public class BasicEnemyProjectile : BasicProjectile
 {
-    [SerializeField] private GameObject projectileImpactFX;
+    [SerializeField] protected GameObject projectileImpactFX;
+
+    protected Transform enemyProjectileTransform;
+    
     public static event Action OnMechStateDamage;
     public static event Action OnBallStateDamage;
+
+    protected override void Awake()
+    {
+        enemyProjectileTransform = transform;
+
+        base.Awake();
+    }
     
-    public override void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {

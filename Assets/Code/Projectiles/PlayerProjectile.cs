@@ -9,7 +9,7 @@ public class PlayerProjectile : BasicProjectile
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            var enemyActor = col.gameObject.GetComponent<Enemy>();
+            var enemyActor = col.gameObject.GetComponent<Actor>();
             if (enemyActor != null)
             {
                 Instantiate(projectileEnemyImpactFX, transform.position, transform.rotation);

@@ -56,8 +56,8 @@ public class UIManager : MonoBehaviour
         MechAttachPoint.OnMechDeactivation += SwitchToBallStateHitPointsUi;
 
         // TODO: not optimal, needs references to the lambdas in order to unsubscribe later but i wanted to try the syntax lol
-        EnemyProjectile.OnBallStateDamage += () => RemoveHitPointsUiSegment(ballStateHp);
-        EnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
+        BasicEnemyProjectile.OnBallStateDamage += () => RemoveHitPointsUiSegment(ballStateHp);
+        BasicEnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
 
         waveWarningBasePosition = wavePanel.anchoredPosition;
         WaveManager.OnWaveStarting += ShowWaveStartWarning;

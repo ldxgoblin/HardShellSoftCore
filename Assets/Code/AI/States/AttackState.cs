@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    [SerializeField] private State nextState;
-    [SerializeField] private AIDetectorCircle aiDetector;
+    [SerializeField] protected State nextState;
+    [SerializeField] protected AIDetectorCircle aiDetector;
 
     [SerializeField] private Transform projectileTransform;
-    [SerializeField] private GameObject projectile;
+    [SerializeField] protected GameObject projectile;
 
-    [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float fireCooldown;
+    [SerializeField] protected float baseFireRate = 1f;
+    [SerializeField] protected float fireCooldown;
 
     [SerializeField] private bool doesContactDamage;
 
-    private bool canFire;
+    protected bool canFire;
 
     public override State RunCurrentState()
     {
@@ -23,7 +23,7 @@ public class AttackState : State
 
         if (canFire && aiDetector.TargetInSight)
         {
-            Attack();
+            RegularFixedAngleAttack();
             StartCooldown();
 
             return this;
@@ -32,19 +32,19 @@ public class AttackState : State
         return nextState;
     }
 
-    private void Attack()
+    protected virtual void RegularFixedAngleAttack()
     {
         var targetDirection = aiDetector.Target.transform.position - transform.position;
         targetDirection.Normalize();
 
         var newProjectile = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
-        newProjectile.GetComponent<EnemyProjectile>().SetupProjectile(targetDirection);
+        newProjectile.GetComponent<EnemySlimeProjectile>().SetupProjectile(targetDirection);
     }
 
-    private void StartCooldown()
+    protected void StartCooldown()
     {
-        fireCooldown = fireRate;
+        fireCooldown = baseFireRate;
         canFire = false;
     }
 }
