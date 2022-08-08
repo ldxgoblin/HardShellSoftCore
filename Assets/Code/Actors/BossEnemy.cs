@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class BossEnemy : Actor
 {
-    public static event Action<int> OnBossHit; 
+    [SerializeField] private AudioClip bossIntroScream, bossDeathgrowl;
+    [SerializeField] private int score;
+    
     private Transform bossHeadTransform;
     private Vector3 bossHeadBaseScale;
-
+    public static event Action<int> OnBossHit;
+    public static event Action<HitPoints> OnBossHitPointUpdate; 
     public static event Action OnBossKilled;
+    public static event Action OnBossSpawned;
+    public static event Action<int> OnBossScore;
     
     // Start is called before the first frame update
     protected override void Awake()
     {
+        OnBossHitPointUpdate?.Invoke(HitPoints);
+        OnBossSpawned?.Invoke();
+        
         bossHeadTransform = GetComponent<Transform>();
         bossHeadBaseScale = bossHeadTransform.localScale;
+
+        audioSource = GetComponent<AudioSource>();
         
         base.Awake();
     }
 
     protected void Start()
     {
+        audioSource.PlayOneShot(bossIntroScream);
         bossHeadTransform = GetComponent<Transform>();
     }
 
@@ -28,17 +39,16 @@ public class BossEnemy : Actor
     public override void Damage(int damage)
     {
         OnBossHit?.Invoke(damage);
+        OnBossHitPointUpdate?.Invoke(HitPoints);
         
-        var wobbleSequence = DOTween.Sequence();
-        wobbleSequence.Append(bossHeadTransform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 0.15f))
-            .Append(bossHeadTransform.DOScale(bossHeadBaseScale, 0.25f));
-
         base.Damage(damage);
     }
 
     protected override void Die()
     {
         OnBossKilled?.Invoke();
+        OnBossScore?.Invoke(score);
+        audioSource.PlayOneShot(bossDeathgrowl);
         base.Die();
     }
 }

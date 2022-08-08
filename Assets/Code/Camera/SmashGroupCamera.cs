@@ -13,12 +13,15 @@ public class SmashGroupCamera : MonoBehaviour
     {
         Enemy.OnEnemyAddToGroup += AddTarget;
         Enemy.OnEnemyRemoveFromGroup += RemoveTarget;
+
+        BossBody.OnAddBossTarget += AddTarget;
     }
 
     private void OnDisable()
     {
         Enemy.OnEnemyAddToGroup -= AddTarget;
         Enemy.OnEnemyRemoveFromGroup -= RemoveTarget;
+        BossBody.OnAddBossTarget -= AddTarget;
     }
 
     private void AddTarget(Transform target)

@@ -6,7 +6,7 @@ public class BossAttackState : AttackState
     [SerializeField] private Transform[] projectileTransforms;
     [SerializeField] private GameObject trackerProjectile;
     [SerializeField] private Transform bossHeadTransform;
-    [SerializeField] private float telegraphMultiplier = 1.5f;
+    [SerializeField] private float telegraphMultiplier = 1.2f;
     
     public override State RunCurrentState()
     {
@@ -26,7 +26,8 @@ public class BossAttackState : AttackState
 
     private void TelegraphAttack()
     {
-        bossHeadTransform.DOPunchPosition(new Vector3(1,1), baseFireRate * telegraphMultiplier, 5).OnComplete(RegularFixedAngleAttack);
+        bossHeadTransform.DOShakePosition(baseFireRate, Vector3.one, 5, 5, false, true)
+            .OnComplete(RegularFixedAngleAttack);
         StartCooldown();
     }
     

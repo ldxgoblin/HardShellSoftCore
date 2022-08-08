@@ -6,7 +6,6 @@ public class Mech : Player
     [SerializeField] private AudioClip mechDeactivationClip;
     [SerializeField] private GameObject blurb;
     
-    
     public bool MechIsActive { get; private set; }
 
     protected override void Awake()
