@@ -14,14 +14,14 @@ public class MusicManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        WaveManager.onWaveMusicStart += FadeInTrack;
-        WaveManager.onWaveMusicEnd += FadeOutTrack;
+        WaveManager.OnWaveMusicStart += FadeInTrack;
+        WaveManager.OnWaveMusicEnd += FadeOutTrack;
     }
 
     private void OnDisable()
     {
-        WaveManager.onWaveMusicStart -= FadeInTrack;
-        WaveManager.onWaveMusicEnd -= FadeOutTrack;
+        WaveManager.OnWaveMusicStart -= FadeInTrack;
+        WaveManager.OnWaveMusicEnd -= FadeOutTrack;
     }
 
     private void FadeInTrack(AudioClip clip)

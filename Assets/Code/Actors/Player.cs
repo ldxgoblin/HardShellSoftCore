@@ -5,8 +5,8 @@ public class Player : Actor
 {
     [SerializeField] private float damageEffectDuration = 0.25f;
 
-    public static Action<float> onPlayerDamage;
-    public static Action onPlayerDeath;
+    public static event Action<float> OnPlayerDamage;
+    public static event Action OnPlayerDeath;
 
     public void SetInvincibility(bool state)
     {
@@ -15,13 +15,13 @@ public class Player : Actor
 
     public override void Damage(int damage)
     {
-        onPlayerDamage?.Invoke(damageEffectDuration);
+        OnPlayerDamage?.Invoke(damageEffectDuration);
         base.Damage(damage);
     }
 
     protected override void Die()
     {
-        onPlayerDeath?.Invoke();
+        OnPlayerDeath?.Invoke();
         base.Die();
     }
     

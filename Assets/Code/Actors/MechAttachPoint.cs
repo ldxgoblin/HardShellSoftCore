@@ -16,6 +16,11 @@ public class MechAttachPoint : MonoBehaviour
     private InputHandler playerInputHandler;
     private Rigidbody2D riderRigidbody2D;
 
+    private bool initialActivationDone;
+    
+    public static event Action OnMechActivation;
+    public static event Action OnMechDeactivation;
+
     private void Awake()
     {
         mechInputHandler = transform.parent.gameObject.GetComponent<InputHandler>();
@@ -47,12 +52,17 @@ public class MechAttachPoint : MonoBehaviour
         }
     }
 
-    public static event Action OnMechActivation;
-    public static event Action OnMechDeactivation;
-
-
+    public static event Action OnStartWaveSpawning;
+    
     private void EnterMech(InputHandler origin)
     {
+        // Wave spawner starts on when players enter mech for the first time
+        if (!initialActivationDone)
+        {
+            OnStartWaveSpawning?.Invoke();
+            initialActivationDone = true;
+        }
+        
         // Sets the mech parent layer to Player, so enemy Ai can detect it
         transform.parent.gameObject.layer = 6;
 

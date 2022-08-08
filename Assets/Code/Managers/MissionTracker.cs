@@ -31,8 +31,8 @@ public class MissionTracker : MonoBehaviour
         Enemy.OnEnemyKilled += UpdateScore;
         Enemy.OnEnemyHit += TrackPlayerShotsHit;
 
-        Player.onPlayerDeath += PauseTimer;
-        Player.onPlayerDeath += EndTracking;
+        Player.OnPlayerDeath += PauseTimer;
+        Player.OnPlayerDeath += EndTracking;
         
         MouseAimAndShoot.OnPlayerShotFired += TrackPlayerShotsTaken;
         Dash.OnDash += TrackPlayerShotsTaken;
@@ -40,8 +40,11 @@ public class MissionTracker : MonoBehaviour
         
         ComboTracker.OnCombo += TrackMaxCombo;
 
-        WaveManager.onStartTrackingWaveTime += RunTimer;
-        WaveManager.onStopTrackingWaveTime += PauseTimer;
+        WaveManager.OnStartTrackingWaveTime += RunTimer;
+        WaveManager.OnStopTrackingWaveTime += PauseTimer;
+        
+        WaveManager.OnWavesCleared += PauseTimer;
+        WaveManager.OnWavesCleared += EndTracking;
     }
 
     private void Update()
@@ -56,8 +59,8 @@ public class MissionTracker : MonoBehaviour
         Enemy.OnEnemyKilled -= UpdateScore;
         Enemy.OnEnemyHit -= TrackPlayerShotsHit;
         
-        Player.onPlayerDeath -= PauseTimer;
-        Player.onPlayerDeath -= EndTracking;
+        Player.OnPlayerDeath -= PauseTimer;
+        Player.OnPlayerDeath -= EndTracking;
 
         MouseAimAndShoot.OnPlayerShotFired -= TrackPlayerShotsTaken;
         Dash.OnDash -= TrackPlayerShotsTaken;
@@ -65,8 +68,10 @@ public class MissionTracker : MonoBehaviour
         
         ComboTracker.OnCombo -= TrackMaxCombo;
         
-        WaveManager.onStartTrackingWaveTime -= RunTimer;
-        WaveManager.onStopTrackingWaveTime -= PauseTimer;
+        WaveManager.OnStartTrackingWaveTime -= RunTimer;
+        WaveManager.OnStopTrackingWaveTime -= PauseTimer;
+        WaveManager.OnWavesCleared -= PauseTimer;
+        WaveManager.OnWavesCleared -= EndTracking;
     }
     
     private void UpdateScore(int scoreValue)

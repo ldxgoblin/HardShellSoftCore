@@ -126,8 +126,6 @@ public class Dash : MonoBehaviour
                 
                 dashHitAudioEvent.Play(audioSource);
                 slowMotion.SlowDown(slowMotionDuration, 0.15f);
-
-                // TODO maybe add some kind of bonus here?
             }
 
             StopDashInstantly();

@@ -37,24 +37,27 @@ public class WaveManager : MonoBehaviour
     
     private float enemySearchCountdown = 1f;                    // frequency in which we check for enemies left alive, only exists for performance reasons
     
-    public static Action<string, float> onWaveStarting;
-    public static Action<AudioClip> onWaveMusicStart;
-    public static Action onWaveMusicEnd;
+    public static event Action<string, float> OnWaveStarting;
+    public static event Action<AudioClip> OnWaveMusicStart;
+    public static event Action OnWaveMusicEnd;
+    public static event Action OnStartTrackingWaveTime;
+    public static event Action OnStopTrackingWaveTime;
 
-    public static Action onStartTrackingWaveTime;
-    public static Action onStopTrackingWaveTime;
+    [SerializeField] private AudioClip[] waveMusic;
 
     private void Awake()
     {
         Enemy.OnEnemyDeath += RemoveEnemy;
         SpawnPoint.onEnemyBirth += AddEnemy;
-        UIManager.onStartSpawning += StartWave;
+        UIManager.OnStartSpawning += StartWave;
+        MechAttachPoint.OnStartWaveSpawning += StartWaveManager;
         
         totalWaveCount = wavesAvailable.Length;
 
         // Initialize System with first Wave
         currentWaveIndex = 0;
         SetNextWave(currentWaveIndex);
+        
     }
 
     private void Start()
@@ -66,8 +69,10 @@ public class WaveManager : MonoBehaviour
     {
         Enemy.OnEnemyDeath -= RemoveEnemy;
         SpawnPoint.onEnemyBirth -= AddEnemy;
-        UIManager.onStartSpawning -= StartWave;
+        UIManager.OnStartSpawning -= StartWave;
     }
+
+    public static event Action OnWavesCleared; 
 
     private void Update()
     {
@@ -75,7 +80,7 @@ public class WaveManager : MonoBehaviour
         {
             if (waveState == WaveState.RANKING)
             {
-                // Invoke Mission Ranking Event here
+                OnWavesCleared?.Invoke();
                 waveManagerRunning = false;
                 return;
             }
@@ -93,10 +98,13 @@ public class WaveManager : MonoBehaviour
                 if (waveState != WaveState.SPAWNING)
                 {
                     waveState = WaveState.SPAWNING;
-                    onWaveMusicStart?.Invoke(currentWave.waveMusic);
-                    onWaveStarting?.Invoke(currentWave.waveUIMessage, waveWarningTime);
+                    OnWaveStarting?.Invoke(currentWave.waveUIMessage, waveWarningTime);
+                    OnStartTrackingWaveTime?.Invoke();
                     
-                    onStartTrackingWaveTime?.Invoke();
+                    if(currentWaveIndex == 0)
+                    {
+                        OnWaveMusicStart?.Invoke(waveMusic[Random.Range(0, waveMusic.Length)]);
+                    }
                 }
             }
             else
@@ -128,9 +136,7 @@ public class WaveManager : MonoBehaviour
             enemySearchCountdown = 1f;
             if (activeEnemies.Count == 0)
             {
-                onWaveMusicEnd?.Invoke();
-                
-                onStopTrackingWaveTime?.Invoke();
+                OnStopTrackingWaveTime?.Invoke();
                 return true;
             }
         }
@@ -162,15 +168,21 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            // TODO Call Ui Event
             waveState = WaveState.RANKING;
             allWavesCleared = true;
+            OnWaveMusicEnd?.Invoke();
         }
     }
 
     private List<SpawnPoint> SelectRandomSpawnPoints(int count)
     {
         return spawnPoints.OrderBy(point => Guid.NewGuid()).Take(count).ToList();
+    }
+
+    private void StartWaveManager()
+    {
+        waveManagerRunning = true;
+        MechAttachPoint.OnStartWaveSpawning -= StartWaveManager;
     }
 
     private List<SpawnPoint> GetRandomSpawnPoints()
@@ -211,6 +223,5 @@ public class Wave
     public GameObject enemyType;
     public int enemyCountPerSpawnPoint;
     public float spawnRate;
-    public AudioClip waveMusic;
     public bool isCleared;
 }

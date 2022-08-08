@@ -13,12 +13,13 @@ public class EnemyProjectile : BasicProjectile
         if (col.gameObject.CompareTag("Player"))
         {
             var playerActor = col.gameObject.GetComponent<Player>();
+
             playerActor.Damage(projectileDamage);
 
             Instantiate(projectileImpactFX, transform.position, quaternion.identity);
             
             OnBallStateDamage?.Invoke();
-
+                
             Destroy(gameObject);
         }
 

@@ -261,7 +261,7 @@ MonoBehaviour:
     maxHitPoints: 5
     currentHitPoints: 5
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
-  score: 999
+  score: 1399
   enemyDeathFX: {fileID: 7650888637837580235, guid: 34eea1aa2d8c2a044a1a1c6a99cd95b5, type: 3}
   enemyDeathAudioEvent: {fileID: 11400000, guid: 86c7b261edfc00947a5e1768eb6f521b, type: 2}
 --- !u!114 &4801662552143707676

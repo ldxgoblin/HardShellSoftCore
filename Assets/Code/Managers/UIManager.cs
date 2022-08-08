@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     
     private Vector2 waveWarningBasePosition;
     
-    public static Action onStartSpawning;
+    public static event Action OnStartSpawning;
 
     private HitPoints ballStateHp, mechStateHp;
     
@@ -60,12 +60,15 @@ public class UIManager : MonoBehaviour
         EnemyProjectile.OnMechStateDamage += () => RemoveHitPointsUiSegment(mechStateHp);
 
         waveWarningBasePosition = wavePanel.anchoredPosition;
-        WaveManager.onWaveStarting += ShowWaveStartWarning;
+        WaveManager.OnWaveStarting += ShowWaveStartWarning;
+        WaveManager.OnWavesCleared += MissionAccomplished;
 
-        Player.onPlayerDamage += ShowPlayerDamageEffect;
-        Player.onPlayerDeath += MissionFailed;
+        Player.OnPlayerDamage += ShowPlayerDamageEffect;
+        Player.OnPlayerDeath += MissionFailed;
 
         heroImage = heroImagePanel.GetComponent<Image>();
+        
+        
     }
 
     private void Start()
@@ -107,10 +110,11 @@ public class UIManager : MonoBehaviour
         MechAttachPoint.OnMechActivation -= SwitchToMechHitPointsUI;
         MechAttachPoint.OnMechDeactivation -= SwitchToBallStateHitPointsUi;
         
-        WaveManager.onWaveStarting -= ShowWaveStartWarning;
+        WaveManager.OnWaveStarting -= ShowWaveStartWarning;
+        WaveManager.OnWavesCleared -= MissionAccomplished;
         
-        Player.onPlayerDamage -= ShowPlayerDamageEffect;
-        Player.onPlayerDeath -= MissionFailed;
+        Player.OnPlayerDamage -= ShowPlayerDamageEffect;
+        Player.OnPlayerDeath -= MissionFailed;
         
         MissionTracker.OnBlastAllStatistics -= SetFinalStats;
     }
@@ -207,13 +211,14 @@ public class UIManager : MonoBehaviour
 
         var sequence = DOTween.Sequence();
         
-        sequence.Append(wavePanel.DOAnchorPosX(0, duration))
-            .Append(wavePanel.DOAnchorPosX(-1800, duration))
-            .SetEase(Ease.InOutExpo)
+        sequence.Append(wavePanel.DOAnchorPosX(0, 0.25f))
+            .Append(wavePanel.DOPunchPosition(new Vector3(2,2,0),duration))
+            .Append(wavePanel.DOAnchorPosX(-1800, 0.25f))
             .OnComplete(() =>
             {
-                onStartSpawning?.Invoke();
-            });
+                OnStartSpawning?.Invoke();
+            })
+            .SetEase(Ease.InOutExpo);
     }
 
     private void ShowPlayerDamageEffect(float duration)
