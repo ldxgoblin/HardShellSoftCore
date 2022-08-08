@@ -20,7 +20,7 @@ public class WaveManager : MonoBehaviour
         COUNTDOWN,
         SPAWNING,
         WAITING,
-        RANKING
+        BOSS
     }
     private WaveClearTimer waveClearClearTimer;                 // records the total time from start to finish (i.e. boss kill) used for mission ranking
     
@@ -36,14 +36,17 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Transform enemyTransform;          // just an empty transform containing all spawned enemies in the scene
     
     private float enemySearchCountdown = 1f;                    // frequency in which we check for enemies left alive, only exists for performance reasons
-    
+
+    [SerializeField] private GameObject boss;
     public static event Action<string, float> OnWaveStarting;
     public static event Action<AudioClip> OnWaveMusicStart;
     public static event Action OnWaveMusicEnd;
     public static event Action OnStartTrackingWaveTime;
     public static event Action OnStopTrackingWaveTime;
+    public static event Action OnWavesCleared; 
 
     [SerializeField] private AudioClip[] waveMusic;
+    [SerializeField] private AudioClip bossTrack;
 
     private void Awake()
     {
@@ -51,17 +54,18 @@ public class WaveManager : MonoBehaviour
         SpawnPoint.onEnemyBirth += AddEnemy;
         UIManager.OnStartSpawning += StartWave;
         MechAttachPoint.OnStartWaveSpawning += StartWaveManager;
+        Player.OnPlayerDeath += StopWaveManager;
         
         totalWaveCount = wavesAvailable.Length;
 
         // Initialize System with first Wave
         currentWaveIndex = 0;
         SetNextWave(currentWaveIndex);
-        
     }
-
+    
     private void Start()
     {
+        SpawnBoss();
         waveCountDown = timeBetweenWaves;
     }
 
@@ -70,17 +74,19 @@ public class WaveManager : MonoBehaviour
         Enemy.OnEnemyDeath -= RemoveEnemy;
         SpawnPoint.onEnemyBirth -= AddEnemy;
         UIManager.OnStartSpawning -= StartWave;
+        MechAttachPoint.OnStartWaveSpawning -= StartWaveManager;
+        Player.OnPlayerDeath -= StopWaveManager;
     }
-
-    public static event Action OnWavesCleared; 
 
     private void Update()
     {
         if (waveManagerRunning)
         {
-            if (waveState == WaveState.RANKING)
+            if (waveState == WaveState.BOSS)
             {
+                // Activate Boss here
                 OnWavesCleared?.Invoke();
+                SpawnBoss();
                 waveManagerRunning = false;
                 return;
             }
@@ -168,7 +174,7 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            waveState = WaveState.RANKING;
+            waveState = WaveState.BOSS;
             allWavesCleared = true;
             OnWaveMusicEnd?.Invoke();
         }
@@ -184,7 +190,17 @@ public class WaveManager : MonoBehaviour
         waveManagerRunning = true;
         MechAttachPoint.OnStartWaveSpawning -= StartWaveManager;
     }
+    
+    private void StopWaveManager()
+    {
+        waveManagerRunning = false;
+    }
 
+    private void SpawnBoss()
+    {
+        OnWaveMusicStart?.Invoke(bossTrack);
+        boss.SetActive(true);
+    }
     private List<SpawnPoint> GetRandomSpawnPoints()
     {
         var randomCount = Random.Range(1, spawnPoints.Count);
@@ -214,6 +230,8 @@ public class WaveManager : MonoBehaviour
     {
         if (activeEnemies.Contains(enemy)) activeEnemies.Remove(enemy);
     }
+
+
 }
 
 [Serializable]

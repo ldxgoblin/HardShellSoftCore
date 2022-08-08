@@ -95,6 +95,7 @@ public class Boost : MonoBehaviour
         if (isBoosting) PerformBoost();
     }
 
+    // TODO put this in the fucking UIManager
     private void FuelMeterUpdate()
     {
         fuelMeter.fillAmount = Mathf.Lerp(fuelMeter.fillAmount, currentFuel / maxBoostFuel, fuelMeterLerpSpeed);

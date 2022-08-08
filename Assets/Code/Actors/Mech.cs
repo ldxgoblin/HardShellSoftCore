@@ -6,7 +6,6 @@ public class Mech : Player
     [SerializeField] private AudioClip mechDeactivationClip;
     [SerializeField] private GameObject blurb;
     
-    
     public bool MechIsActive { get; private set; }
 
     protected override void Awake()
@@ -28,7 +27,7 @@ public class Mech : Player
     private void SetMechActive()
     {
         Debug.Log("Mech activated!");
-        MechIsActive = false;
+        MechIsActive = true;
         blurb.gameObject.SetActive(false);
         
         audioSource.PlayOneShot(mechActivationClip);

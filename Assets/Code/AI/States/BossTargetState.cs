@@ -14,17 +14,17 @@ public class BossTargetState : State
     {
         if (aiDetector.TargetInSight)
         {
-            var distance = Vector2.Distance(aiDetector.Target.transform.position, transform.position);
             Target();
-            
-            if (distance <= aiDetector.detectorRadius)
+            var distance = Vector2.Distance(aiDetector.Target.transform.position, transform.position);
+                        
+            if (distance <= aiDetector.detectorRadius / 2)
             {
+                // switch to attack
                 return nextState;
             }
             
             return this;
         }
-
         return previousState;
     }
     

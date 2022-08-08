@@ -21,14 +21,13 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Sprite[] hpDisplayPortraitSprites;
     [SerializeField] private Material hpDisplay;
-    [SerializeField] private Image hpDisplayPortrait, playerDamageEffect, missionEndBackgroundImage, heroImage;
+    [SerializeField] private Image hpDisplayPortrait, playerDamageEffect, missionEndBackgroundImage, heroImage, bossHpBar;
     [SerializeField] private Sprite heroFailSprite, heroWinSprite;
 
-    [SerializeField] private RectTransform comboPanel, comboMessagePanel, wavePanel, rankBubble, heroImagePanel, infoPanel;
+    [SerializeField] private RectTransform comboPanel, bossHpPanel, wavePanel, rankBubble, heroImagePanel, infoPanel;
     [SerializeField] private Color failColor, winColor;
     
     private Vector2 waveWarningBasePosition;
-    
     public static event Action OnStartSpawning;
 
     private HitPoints ballStateHp, mechStateHp;
@@ -61,14 +60,16 @@ public class UIManager : MonoBehaviour
 
         waveWarningBasePosition = wavePanel.anchoredPosition;
         WaveManager.OnWaveStarting += ShowWaveStartWarning;
-        WaveManager.OnWavesCleared += MissionAccomplished;
+
+        BossEnemy.OnBossKilled += MissionAccomplished;
+        BossEnemy.OnBossSpawned += ShowBossHitPointsPanel; 
+        BossEnemy.OnBossHitPointUpdate += UpdateBossHitPoints;
 
         Player.OnPlayerDamage += ShowPlayerDamageEffect;
         Player.OnPlayerDeath += MissionFailed;
 
         heroImage = heroImagePanel.GetComponent<Image>();
-        
-        
+
     }
 
     private void Start()
@@ -111,7 +112,10 @@ public class UIManager : MonoBehaviour
         MechAttachPoint.OnMechDeactivation -= SwitchToBallStateHitPointsUi;
         
         WaveManager.OnWaveStarting -= ShowWaveStartWarning;
-        WaveManager.OnWavesCleared -= MissionAccomplished;
+
+        BossEnemy.OnBossKilled -= MissionAccomplished;
+        BossEnemy.OnBossSpawned -= ShowBossHitPointsPanel; 
+        BossEnemy.OnBossHitPointUpdate -= UpdateBossHitPoints;
         
         Player.OnPlayerDamage -= ShowPlayerDamageEffect;
         Player.OnPlayerDeath -= MissionFailed;
@@ -149,6 +153,11 @@ public class UIManager : MonoBehaviour
         comboPanel.DOAnchorPos(new Vector2(500, -70), 0.25f).SetEase(Ease.InExpo).OnComplete(()=> UpdateComboMessage(""));
     }
 
+    private void ShowBossHitPointsPanel()
+    {
+        bossHpPanel.DOAnchorPos(new Vector2(0, 200), 3f).SetEase(Ease.OutBounce);
+    }
+    
     private void UpdateHitPointsUi(HitPoints hitPoints)
     {
         // changes everytime we switch from mech to ball state
@@ -235,6 +244,13 @@ public class UIManager : MonoBehaviour
     private void MissionAccomplished()
     {
         ShowMissionEndPanel(true);
+    }
+
+    
+    private void UpdateBossHitPoints(HitPoints bossHitPoints)
+    {
+        var bossHpLerpSpeed = 10;
+        bossHpBar.fillAmount = Mathf.Lerp(bossHpBar.fillAmount, (float)bossHitPoints.currentHitPoints / bossHitPoints.maxHitPoints, bossHpLerpSpeed);
     }
     
     private void ShowMissionEndPanel(bool state)
