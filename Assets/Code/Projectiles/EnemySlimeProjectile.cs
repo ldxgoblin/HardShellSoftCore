@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -13,6 +11,4 @@ public class EnemySlimeProjectile : BasicEnemyProjectile
         enemyProjectileTransform.DOScale(maxWobbleScale, wobbleDuration).SetLoops(-1, LoopType.Yoyo);
         base.Awake();
     }
-
-
 }

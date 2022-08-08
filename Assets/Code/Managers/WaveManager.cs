@@ -42,6 +42,7 @@ public class WaveManager : MonoBehaviour
     public static event Action OnWaveMusicEnd;
     public static event Action OnStartTrackingWaveTime;
     public static event Action OnStopTrackingWaveTime;
+    public static event Action OnWavesCleared; 
 
     [SerializeField] private AudioClip[] waveMusic;
 
@@ -51,6 +52,8 @@ public class WaveManager : MonoBehaviour
         SpawnPoint.onEnemyBirth += AddEnemy;
         UIManager.OnStartSpawning += StartWave;
         MechAttachPoint.OnStartWaveSpawning += StartWaveManager;
+
+        Player.OnPlayerDeath += StopSpawning;
         
         totalWaveCount = wavesAvailable.Length;
 
@@ -70,9 +73,9 @@ public class WaveManager : MonoBehaviour
         Enemy.OnEnemyDeath -= RemoveEnemy;
         SpawnPoint.onEnemyBirth -= AddEnemy;
         UIManager.OnStartSpawning -= StartWave;
+        Player.OnPlayerDeath -= StopSpawning;
     }
 
-    public static event Action OnWavesCleared; 
 
     private void Update()
     {
@@ -213,6 +216,11 @@ public class WaveManager : MonoBehaviour
     private void RemoveEnemy(GameObject enemy)
     {
         if (activeEnemies.Contains(enemy)) activeEnemies.Remove(enemy);
+    }
+
+    private void StopSpawning()
+    {
+        waveManagerRunning = false;
     }
 }
 

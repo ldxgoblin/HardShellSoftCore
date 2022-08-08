@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,6 +7,8 @@ public class BossEnemy : Actor
     public static event Action<int> OnBossHit; 
     private Transform bossHeadTransform;
     private Vector3 bossHeadBaseScale;
+
+    public static event Action OnBossKilled;
     
     // Start is called before the first frame update
     protected override void Awake()
@@ -34,5 +34,11 @@ public class BossEnemy : Actor
             .Append(bossHeadTransform.DOScale(bossHeadBaseScale, 0.25f));
 
         base.Damage(damage);
+    }
+
+    protected override void Die()
+    {
+        OnBossKilled?.Invoke();
+        base.Die();
     }
 }

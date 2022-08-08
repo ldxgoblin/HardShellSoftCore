@@ -1,5 +1,4 @@
 using System;
-using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ public class BasicEnemyProjectile : BasicProjectile
         base.Awake();
     }
     
-    private void OnTriggerEnter2D(Collider2D col)
+    public override void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
@@ -37,7 +36,8 @@ public class BasicEnemyProjectile : BasicProjectile
         if (col.gameObject.CompareTag("Mech"))
         {
             var mechActor = col.gameObject.GetComponent<Mech>();
-
+            Debug.Log(" Mech HIT!");
+            
             if (mechActor.MechIsActive)
             {
                 mechActor.Damage(projectileDamage);

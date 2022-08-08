@@ -47,6 +47,7 @@ public class MissionTracker : MonoBehaviour
         
         WaveManager.OnWavesCleared += PauseTimer;
         WaveManager.OnWavesCleared += EndTracking;
+        BossEnemy.OnBossKilled += EndTracking;
     }
 
     private void Update()
@@ -75,7 +76,8 @@ public class MissionTracker : MonoBehaviour
         WaveManager.OnStartTrackingWaveTime -= RunTimer;
         WaveManager.OnStopTrackingWaveTime -= PauseTimer;
         WaveManager.OnWavesCleared -= PauseTimer;
-        WaveManager.OnWavesCleared += EndTracking;
+        WaveManager.OnWavesCleared -= EndTracking;
+        BossEnemy.OnBossKilled -= EndTracking;
     }
     
     private void UpdateScore(int scoreValue)

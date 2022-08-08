@@ -63,12 +63,12 @@ public class UIManager : MonoBehaviour
         WaveManager.OnWaveStarting += ShowWaveStartWarning;
         WaveManager.OnWavesCleared += MissionAccomplished;
 
+        BossEnemy.OnBossKilled += MissionAccomplished;
+
         Player.OnPlayerDamage += ShowPlayerDamageEffect;
         Player.OnPlayerDeath += MissionFailed;
 
         heroImage = heroImagePanel.GetComponent<Image>();
-        
-        
     }
 
     private void Start()
@@ -112,6 +112,7 @@ public class UIManager : MonoBehaviour
         
         WaveManager.OnWaveStarting -= ShowWaveStartWarning;
         WaveManager.OnWavesCleared -= MissionAccomplished;
+        BossEnemy.OnBossKilled += MissionAccomplished;
         
         Player.OnPlayerDamage -= ShowPlayerDamageEffect;
         Player.OnPlayerDeath -= MissionFailed;

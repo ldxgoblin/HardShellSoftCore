@@ -20,6 +20,7 @@ public class MechAttachPoint : MonoBehaviour
     
     public static event Action OnMechActivation;
     public static event Action OnMechDeactivation;
+    public static event Action OnStartWaveSpawning;
 
     private void Awake()
     {
@@ -51,8 +52,6 @@ public class MechAttachPoint : MonoBehaviour
             EnterMech(playerInputHandler);
         }
     }
-
-    public static event Action OnStartWaveSpawning;
     
     private void EnterMech(InputHandler origin)
     {

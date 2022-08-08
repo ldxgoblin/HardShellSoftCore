@@ -28,7 +28,7 @@ public class Mech : Player
     private void SetMechActive()
     {
         Debug.Log("Mech activated!");
-        MechIsActive = false;
+        MechIsActive = true;
         blurb.gameObject.SetActive(false);
         
         audioSource.PlayOneShot(mechActivationClip);
