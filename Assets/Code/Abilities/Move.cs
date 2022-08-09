@@ -10,8 +10,7 @@ public class Move : MonoBehaviour
 
     [SerializeField] private bool isMoving;
     private float acceleration;
-
-    private Animator animator;
+    
     private Vector2 desiredVelocity;
 
     private Vector2 direction;
@@ -36,8 +35,6 @@ public class Move : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         groundCheck = GetComponent<GroundCheck>();
-
-        animator = GetComponent<Animator>();
 
         facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
     }
@@ -73,8 +70,6 @@ public class Move : MonoBehaviour
 
         if (isMoving) FlipSpriteX(isFacingLeft);
         rigidbody2D.velocity = velocity;
-
-        //animator.SetFloat("Speed", velocity.x);
     }
 
     private void OnDestroy()
@@ -85,6 +80,9 @@ public class Move : MonoBehaviour
 
     private void FlipSpriteX(bool flipX)
     {
-        spriteRenderer.flipX = flipX;
+        if (enabled)
+        {
+            spriteRenderer.flipX = flipX;
+        }
     }
 }

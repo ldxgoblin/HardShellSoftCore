@@ -5,24 +5,30 @@ using UnityEngine;
 
 public class BossBody : MonoBehaviour
 {
-    [SerializeField] private Transform bossHeadTransform;
+    [SerializeField] private Transform bossHeadTransform, bossClawsTransform, bossLegsTransform;
+    [SerializeField] private AudioClip bossIntroScream, bossDeathgrowl;
     
     private CinemachineImpulseSource bossImpulseSource;
     private Transform bossBodyTransform;
+    [SerializeField] private AudioSource audioSource;
 
     public static event Action<Transform> OnAddBossTarget;
 
     private void Awake()
     {
         bossBodyTransform = transform;
-        bossBodyTransform.DOMoveY(77, 2).SetEase(Ease.OutBounce).SetDelay(1);
+        bossBodyTransform.DOMoveY(83, 2).SetEase(Ease.OutElastic).OnComplete(Intimidate);
+        
+        bossClawsTransform.DOScaleY(1.1f, 3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        bossLegsTransform.DOScaleY(1.6f, 3f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
 
         bossImpulseSource = GetComponent<CinemachineImpulseSource>();
         OnAddBossTarget?.Invoke(bossBodyTransform);
     }
 
-    private void Start()
+    private void Intimidate()
     {
-        bossImpulseSource.GenerateImpulse(new Vector3(500, 500, 500));
+        audioSource.PlayOneShot(bossIntroScream);
+        bossImpulseSource.GenerateImpulse(transform.position);
     }
 }

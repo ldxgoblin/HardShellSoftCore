@@ -5,7 +5,7 @@ public class BossAttackState : AttackState
 {
     [SerializeField] private Transform[] projectileTransforms;
     [SerializeField] private GameObject trackerProjectile;
-    [SerializeField] private Transform bossHeadTransform;
+    [SerializeField] private Transform bossHeadTransform, enemySpawnerTransform;
     [SerializeField] private float telegraphMultiplier = 1.2f;
     
     public override State RunCurrentState()
@@ -40,15 +40,12 @@ public class BossAttackState : AttackState
         }
     }
     
-    private void RotatingStraightAttack()
+    private void SpawnEnemies()
     {
-        var targetDirection = aiDetector.Target.transform.position - transform.position;
-        targetDirection.Normalize();
-
         foreach(var transform in projectileTransforms)
         {
-            var newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-            newProjectile.GetComponent<BasicEnemyProjectile>().SetupProjectile(transform.right);
+            var newProjectile = Instantiate(trackerProjectile, transform.position, Quaternion.identity);
+            newProjectile.GetComponent<BossProjectile>().SetupProjectile(transform.right);
         }
     }
 }

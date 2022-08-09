@@ -141,6 +141,10 @@ public class MissionTracker : MonoBehaviour
         var comboBonus = playerMaxCombo * 10 / (playerAccuracy * 0.01f);
         var clearTimeBonus = playerDamageDone * GetClearTimeMultiplier(timer.currentTime);
 
+        var sum = damageBonus + comboBonus + clearTimeBonus;
+
+        if (sum < 0) return 0;
+        
         return Mathf.RoundToInt(damageBonus + comboBonus + clearTimeBonus);
     }
 

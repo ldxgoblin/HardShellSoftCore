@@ -7,24 +7,17 @@
     <list default="true" id="28e9640f-a86e-4add-8008-8f26441ec2fb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KawaiiContra/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/BossAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/BossAttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/BossTargetState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/BossTargetState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/AI/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/AI/States/IdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Boost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Boost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Abilities/Move.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/BossBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/BossBody.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/BossEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/BossEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/Mech.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/Mech.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Camera/SmashGroupCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Camera/SmashGroupCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Actors/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Actors/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/MissionTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/MissionTracker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/UIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Managers/WaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Managers/WaveManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GabrielAguiarProductions/VFXGraph_Muzzle_2020.3_HDRP_v1.0.1.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GabrielAguiarProductions/VFXGraph_Muzzle_2020.3_URP_v1.0.1.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/RadialHPDisplayMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BasicArena.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BasicArena.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Standard Assets/ParticleSystems/Prefabs/DustStorm.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Standard Assets/ParticleSystems/Prefabs/DustStorm.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WaveManager.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WaveManager.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gate2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

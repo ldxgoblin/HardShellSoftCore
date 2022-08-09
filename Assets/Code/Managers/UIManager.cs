@@ -252,9 +252,13 @@ public class UIManager : MonoBehaviour
         var bossHpLerpSpeed = 10;
         bossHpBar.fillAmount = Mathf.Lerp(bossHpBar.fillAmount, (float)bossHitPoints.currentHitPoints / bossHitPoints.maxHitPoints, bossHpLerpSpeed);
     }
-    
+
+    public static event Action<bool> OnMissionAccomplished; 
+
     private void ShowMissionEndPanel(bool state)
     {
+        OnMissionAccomplished?.Invoke(true);
+        
         var duration = 0.75f;
         var color = new Color();
 

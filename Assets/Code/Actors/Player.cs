@@ -8,6 +8,17 @@ public class Player : Actor
     public static event Action<float> OnPlayerDamage;
     public static event Action OnPlayerDeath;
 
+    protected override void Awake()
+    {
+        UIManager.OnMissionAccomplished += SetInvincibility;
+        base.Awake();
+    }
+
+    private void OnDisable()
+    {
+        UIManager.OnMissionAccomplished -= SetInvincibility;
+    }
+
     public void SetInvincibility(bool state)
     {
         isInvincible = state;

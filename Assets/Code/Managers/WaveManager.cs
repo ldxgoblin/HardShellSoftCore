@@ -65,7 +65,6 @@ public class WaveManager : MonoBehaviour
     
     private void Start()
     {
-        SpawnBoss();
         waveCountDown = timeBetweenWaves;
     }
 

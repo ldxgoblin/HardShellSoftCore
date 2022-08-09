@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossEnemy : Actor
 {
-    [SerializeField] private AudioClip bossIntroScream, bossDeathgrowl;
     [SerializeField] private int score;
     
     private Transform bossHeadTransform;
@@ -24,18 +23,14 @@ public class BossEnemy : Actor
         bossHeadTransform = GetComponent<Transform>();
         bossHeadBaseScale = bossHeadTransform.localScale;
 
-        audioSource = GetComponent<AudioSource>();
-        
         base.Awake();
     }
 
     protected void Start()
     {
-        audioSource.PlayOneShot(bossIntroScream);
         bossHeadTransform = GetComponent<Transform>();
     }
-
-
+    
     public override void Damage(int damage)
     {
         OnBossHit?.Invoke(damage);
@@ -48,7 +43,6 @@ public class BossEnemy : Actor
     {
         OnBossKilled?.Invoke();
         OnBossScore?.Invoke(score);
-        audioSource.PlayOneShot(bossDeathgrowl);
         base.Die();
     }
 }
