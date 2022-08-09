@@ -80,6 +80,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        CheckForGameQuitRequest();
+            
         var randomDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
 
         if (comboRumbleIntensity > 0)
@@ -176,7 +178,7 @@ public class UIManager : MonoBehaviour
     {
         UpdateHitPointsUi(ballStateHp);
     }
-
+    
     private void RemoveHitPointsUiSegment(HitPoints hitPoints)
     {
         if (hitPoints == null) return;
@@ -212,6 +214,13 @@ public class UIManager : MonoBehaviour
             hpDisplayPortrait.sprite = hpDisplayPortraitSprites[0];
     }
 
+    private void CheckForGameQuitRequest()
+    {
+        if (!Input.GetKeyDown(KeyCode.Escape))
+            return;
+        Application.Quit();
+    }
+    
     private void ShowWaveStartWarning(string waveMessage, float duration)
     {
         wavePanel.anchoredPosition = waveWarningBasePosition;
