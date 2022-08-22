@@ -7,7 +7,7 @@ public class PlayerProjectile : BasicProjectile
 
     public override void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.CompareTag("Enemy"))
         {
             var enemyActor = col.gameObject.GetComponent<Actor>();
             if (enemyActor != null)
@@ -18,6 +18,11 @@ public class PlayerProjectile : BasicProjectile
             }
         }
 
+        if (col.CompareTag("ChargeZone"))
+        {
+            return;
+            
+        }
         base.OnTriggerEnter2D(col);
     }
 

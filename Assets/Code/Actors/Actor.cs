@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -14,7 +16,7 @@ public class Actor : MonoBehaviour
     protected bool isInvincible;
     protected Rigidbody2D rigidbody2D;
 
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
     public HitPoints HitPoints => hitPoints;
 
     protected virtual void Awake()
@@ -40,7 +42,7 @@ public class Actor : MonoBehaviour
             else
             {
                 hitPoints.DecreaseHitPoints(damage);
-                HitFlash();
+                StartCoroutine(HitFlash());
             }
         }
     }
@@ -51,14 +53,14 @@ public class Actor : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    protected virtual async void HitFlash()
+    protected IEnumerator HitFlash()
     {
         // TODO: sometimes causes a nullref when this method returns to
         // the main thread and the associated gameobject is inactive
 
         spriteRenderer.color = Color.white;
         spriteRenderer.material = hitMaterial;
-        await Task.Delay(100);
+        yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = baseSpriteColor;
         spriteRenderer.material = baseSpriteMaterial;
     }

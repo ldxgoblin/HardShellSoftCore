@@ -9,6 +9,9 @@ TagManager:
   - Mech
   - AudioPlayer
   - EnemyProjectile
+  - ArenaEdge
+  - Platform
+  - ChargeZone
   layers:
   - Default
   - TransparentFX

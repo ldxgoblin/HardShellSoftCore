@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,6 @@ public class Boost : MonoBehaviour
     private AudioSource audioSource;
 
     private bool boosterRequested;
-    private GroundCheck groundCheck;
 
     private InputHandler inputHandler;
     private InputSource inputSource;
@@ -29,6 +29,8 @@ public class Boost : MonoBehaviour
     private bool isOnGround;
 
     private Rigidbody2D rigidbody2D;
+    private Collider2D collider2D;
+    
     private Vector2 velocity;
 
     private void Awake()
@@ -37,8 +39,8 @@ public class Boost : MonoBehaviour
         if (inputHandler.InputSource != null) inputSource = inputHandler.InputSource;
 
         rigidbody2D = GetComponent<Rigidbody2D>();
-        groundCheck = GetComponent<GroundCheck>();
-
+        collider2D = GetComponent<Collider2D>();
+        
         audioSource = GameObject.FindWithTag("AudioPlayer").GetComponent<AudioSource>();
 
         currentFuel = maxBoostFuel;
@@ -69,8 +71,6 @@ public class Boost : MonoBehaviour
         else
         {
             isBoosting = false;
-            if (currentFuel < maxBoostFuel)
-                currentFuel += 0.75f * fuelDepletionRate;
         }
 
 
@@ -99,6 +99,15 @@ public class Boost : MonoBehaviour
     private void FuelMeterUpdate()
     {
         fuelMeter.fillAmount = Mathf.Lerp(fuelMeter.fillAmount, currentFuel / maxBoostFuel, fuelMeterLerpSpeed);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("ChargeZone"))
+        {
+            if (currentFuel < maxBoostFuel)
+                currentFuel += 0.75f * fuelDepletionRate;
+        }
     }
 
     private void PerformBoost()

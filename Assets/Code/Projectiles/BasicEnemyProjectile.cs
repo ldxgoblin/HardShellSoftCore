@@ -49,6 +49,8 @@ public class BasicEnemyProjectile : BasicProjectile
                 Destroy(gameObject);
             }
         }
+        
+        
     }
 
     protected override void AutoDestruct()

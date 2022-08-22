@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 9149761454452701957}
   m_Layer: 8
   m_Name: BossTrackingSlimeBomb
-  m_TagString: Enemy
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

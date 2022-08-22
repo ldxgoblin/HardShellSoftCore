@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIButtons : MonoBehaviour
 {
+    public static event Action OnQuitButton;
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
@@ -10,6 +12,6 @@ public class UIButtons : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        OnQuitButton?.Invoke();
     }
 }

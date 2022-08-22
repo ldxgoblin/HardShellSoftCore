@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -22,10 +23,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Sprite[] hpDisplayPortraitSprites;
     [SerializeField] private Material hpDisplay;
     [SerializeField] private Image hpDisplayPortrait, playerDamageEffect, missionEndBackgroundImage, heroImage, bossHpBar;
-    [SerializeField] private Sprite heroFailSprite, heroWinSprite;
+    [SerializeField] private Sprite heroFailSprite, heroWinSprite, heroQuitSprite;
 
-    [SerializeField] private RectTransform comboPanel, bossHpPanel, wavePanel, rankBubble, heroImagePanel, infoPanel;
-    [SerializeField] private Color failColor, winColor;
+    [SerializeField] private RectTransform comboPanel, bossHpPanel, wavePanel, rankBubble, heroImagePanel, infoPanel, quitPanel;
+    [SerializeField] private Color failColor, winColor, quitColor;
     
     private Vector2 waveWarningBasePosition;
     public static event Action OnStartSpawning;
@@ -67,6 +68,8 @@ public class UIManager : MonoBehaviour
 
         Player.OnPlayerDamage += ShowPlayerDamageEffect;
         Player.OnPlayerDeath += MissionFailed;
+
+        UIButtons.OnQuitButton += ShowQuitPanel;
 
         heroImage = heroImagePanel.GetComponent<Image>();
 
@@ -123,6 +126,8 @@ public class UIManager : MonoBehaviour
         Player.OnPlayerDeath -= MissionFailed;
         
         MissionTracker.OnBlastAllStatistics -= SetFinalStats;
+        
+        UIButtons.OnQuitButton -= ShowQuitPanel;
     }
 
     private void RumbleCounter(TextMeshProUGUI counterTextObject, Vector3 basePosition, Vector3 direction,
@@ -218,7 +223,7 @@ public class UIManager : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.Escape))
             return;
-        Application.Quit();
+        ShowQuitPanel();
     }
     
     private void ShowWaveStartWarning(string waveMessage, float duration)
@@ -293,7 +298,27 @@ public class UIManager : MonoBehaviour
             .Append(rankBubble.DOScale(new Vector3(1.2f,1.2f, 0), duration))
             .SetEase(Ease.InOutExpo);
     }
+    private void ShowQuitPanel()
+    {
+        OnMissionAccomplished?.Invoke(true);
+        
+        var duration = 0.75f;
+        heroImage.sprite = heroQuitSprite;
 
+        var sequence = DOTween.Sequence();
+        sequence.Append(missionEndBackgroundImage.DOColor(quitColor, duration/2))
+            .Append(quitPanel.DOAnchorPosX(280, duration))
+            .Append(heroImagePanel.DOAnchorPosY(-70, duration))
+            .SetEase(Ease.InOutExpo);
+
+        StartCoroutine(QuitGame());
+    }
+
+    private IEnumerator QuitGame()
+    {
+        yield return new WaitForSeconds(3f);
+        Application.Quit();
+    }
     private void SetFinalStats(int damage, float accuracy, int combos, int score, int bonusScore, string clearTime, string rank)
     {
         finalDamageCountText.text = damage.ToString();
