@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 4809777744860402422}
   previousState: {fileID: 8614957162420234050}
-  chaseSpeed: 300
+  chaseSpeed: 1000
   chaseSpeedMutationRange:
     minValue: -15
     maxValue: 50.000008
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 6352007919430318618}
   - component: {fileID: 9149761454452701957}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: Reddy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,10 +258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints:
-    maxHitPoints: 5
-    currentHitPoints: 5
+    maxHitPoints: 3
+    currentHitPoints: 3
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
-  score: 1399
+  score: 3235
   enemyDeathFX: {fileID: 7650888637837580235, guid: 34eea1aa2d8c2a044a1a1c6a99cd95b5, type: 3}
   enemyDeathAudioEvent: {fileID: 11400000, guid: 86c7b261edfc00947a5e1768eb6f521b, type: 2}
 --- !u!114 &4801662552143707676
@@ -499,7 +499,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 736e29c4c1c26874eae2287236d87443, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9694d9f872e751c46b5396d053a9690c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -558,8 +558,8 @@ MonoBehaviour:
   aiDetector: {fileID: 8647560584721530756}
   projectileTransform: {fileID: 4640287960588930962}
   projectile: {fileID: 369544534265692808, guid: 72f3f426734006949a538d52d613035b, type: 3}
-  fireRate: 0.35
-  fireCooldown: 0.35
+  baseFireRate: 1
+  fireCooldown: 0.1
   doesContactDamage: 0
 --- !u!1001 &1396117512108944140
 PrefabInstance:
