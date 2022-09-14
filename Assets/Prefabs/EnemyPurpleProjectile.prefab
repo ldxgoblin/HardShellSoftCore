@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 369544534265692806}
   - component: {fileID: 2317506225695773212}
   - component: {fileID: 1926008057108933197}
-  - component: {fileID: -1684211914432958481}
+  - component: {fileID: 8355402483701287405}
   m_Layer: 0
-  m_Name: PlayerProjectile
-  m_TagString: Untagged
+  m_Name: EnemyPurpleProjectile
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 369544534265692808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 856595298455695718}
   m_Father: {fileID: 0}
@@ -71,8 +71,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
---- !u!114 &-1684211914432958481
+  m_Radius: 3.35
+--- !u!114 &8355402483701287405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,13 +81,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 369544534265692808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225af81b834b905439378764cdf35c91, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c4155a765cc51043a8d9e7be147e85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 1
-  projectileSpeed: 150
-  destroyAfterSeconds: 2
-  projectileEnemyImpactFX: {fileID: 3210886189403008257, guid: 85e89932c30cb0e47b790e08da3e599c, type: 3}
+  projectileSpeed: 30
+  destroyAfterSeconds: 5
+  projectileImpactFX: {fileID: 7650888637837580235, guid: eb02ce2c06af38040ba62270c174fb0a, type: 3}
+  wobbleDuration: 0.25
+  maxWobbleScale: {x: 1, y: 1, z: 1}
 --- !u!1 &2469154771428581529
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 2469154771428581529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 369544534265692806}
@@ -160,8 +162,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: 917a1bf6484b342419147a3b43c49e90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
