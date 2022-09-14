@@ -263,6 +263,7 @@ MonoBehaviour:
   hitMaterial: {fileID: 2100000, guid: 24830d1a1a857416a944b08ad25fe1c8, type: 2}
   score: 2374
   enemyDeathFX: {fileID: 7650888637837580235, guid: e2724df6e823024419447f5d09e1910d, type: 3}
+  enemyHitFX: {fileID: 3210886189403008257, guid: f0defbee62fbc0a43a03255965398453, type: 3}
   enemyDeathAudioEvent: {fileID: 11400000, guid: 86c7b261edfc00947a5e1768eb6f521b, type: 2}
 --- !u!114 &4801662552143707676
 MonoBehaviour:

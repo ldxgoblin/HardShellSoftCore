@@ -79,7 +79,7 @@ public class Boost : MonoBehaviour
         // multipliers
         if (rigidbody2D.velocity.y > 0)
             // we're going up
-            rigidbody2D.gravityScale = upwardMultiplier;
+            rigidbody2D.gravityScale = upwardMultiplier * 10;
         else if (rigidbody2D.velocity.y < 0)
             // we're going down
             rigidbody2D.gravityScale = downwardMultiplier;
@@ -106,7 +106,7 @@ public class Boost : MonoBehaviour
         if (other.CompareTag("ChargeZone"))
         {
             if (currentFuel < maxBoostFuel)
-                currentFuel += 0.75f * fuelDepletionRate;
+                currentFuel += 1.25f * fuelDepletionRate;
         }
     }
 

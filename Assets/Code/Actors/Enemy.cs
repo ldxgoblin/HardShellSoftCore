@@ -8,6 +8,7 @@ public class Enemy : Actor
 {
     [SerializeField] private int score = 100;                       // enemy base score value
     [SerializeField] private GameObject enemyDeathFX;               // blood splatter vfx prefab
+    [SerializeField] private GameObject enemyHitFX; 
     [SerializeField] private SimpleAudioEvent enemyDeathAudioEvent; // sploosh!
     private Transform enemyTransform;
     private Vector3 enemyBaseScale;
@@ -53,6 +54,8 @@ public class Enemy : Actor
     public override void Damage(int damage)
     {
         onEnemyHit?.Invoke(damage);
+        
+        Instantiate(enemyHitFX, enemyTransform.position, Quaternion.identity);
         
         var wobbleSequence = DOTween.Sequence();
         wobbleSequence.Append(enemyTransform.DOPunchScale(new Vector3(0.35f, 0.35f, 0.35f), 0.25f))

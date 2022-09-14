@@ -87,7 +87,7 @@ MonoBehaviour:
   projectileDamage: 1
   projectileSpeed: 30
   destroyAfterSeconds: 5
-  projectileImpactFX: {fileID: 7650888637837580235, guid: eb02ce2c06af38040ba62270c174fb0a, type: 3}
+  projectileImpactFX: {fileID: 3210886189403008257, guid: f0defbee62fbc0a43a03255965398453, type: 3}
   wobbleDuration: 0.25
   maxWobbleScale: {x: 1, y: 1, z: 1}
 --- !u!1 &2469154771428581529

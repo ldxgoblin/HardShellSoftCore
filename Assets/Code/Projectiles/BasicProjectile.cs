@@ -16,7 +16,7 @@ public class BasicProjectile : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(gameObject);
+
     }
 
     public void SetupProjectile(Vector3 direction)
