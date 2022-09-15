@@ -2871,11 +2871,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2461007897361601653, guid: 0a36a5985913342418eb161d117f9068, type: 3}
       propertyPath: currentFuel
-      value: 75
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 2461007897361601653, guid: 0a36a5985913342418eb161d117f9068, type: 3}
       propertyPath: maxBoostFuel
-      value: 75
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 2461007897361601653, guid: 0a36a5985913342418eb161d117f9068, type: 3}
       propertyPath: upwardMultiplier
@@ -2887,7 +2887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2461007897361601653, guid: 0a36a5985913342418eb161d117f9068, type: 3}
       propertyPath: downwardMultiplier
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3544188008135532197, guid: 0a36a5985913342418eb161d117f9068, type: 3}
       propertyPath: chargeMeter
