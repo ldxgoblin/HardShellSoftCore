@@ -12,6 +12,8 @@ public class PlayerProjectile : BasicProjectile
             {
                 enemyActor.Damage(projectileDamage);
                 OnPlayerProjectileHit?.Invoke();
+                
+                Destroy(gameObject);
             }
         }
 
@@ -19,7 +21,8 @@ public class PlayerProjectile : BasicProjectile
         {
             return;
         }
-        base.OnTriggerEnter2D(col);
+        
+        //base.OnTriggerEnter2D(col);
     }
 
     public static event Action OnPlayerProjectileHit;

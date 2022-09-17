@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 7047894155724562845}
   - component: {fileID: 7047894155724562847}
   - component: {fileID: 7047894155724562833}
-  - component: {fileID: 7536536217481098971}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -465,22 +464,10 @@ MonoBehaviour:
   dashImpactFX: {fileID: 5024009746357069194, guid: afff8bf5e70dd5a46b5eb1efe033c8b8, type: 3}
   dashAudioEvent: {fileID: 11400000, guid: 3ad83ded6988112439226fb75815e6c9, type: 2}
   dashHitAudioEvent: {fileID: 11400000, guid: 7dbd6622f702980489f577e3af2baad6, type: 2}
-  slowMotion: {fileID: 7536536217481098971}
-  slowMotionDuration: 0.15
+  slowMotion: {fileID: 0}
+  slowMotionDuration: 0.1
   canDamage: 0
   playerSprite: {fileID: 3427042484931333943}
---- !u!114 &7536536217481098971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7047894155724562821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc60881a4a592b48bb9c2462df29205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7252375147167346626
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +584,7 @@ Transform:
   - {fileID: 629860309639140460}
   m_Father: {fileID: 7047894155724562820}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 54.39}
 --- !u!114 &4948203531281021944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,5 +597,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69d76d1f81fe7c47bbeeb2a0ab7224d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicatorOrigin: {fileID: 0}
   indicatorTarget: {fileID: 0}

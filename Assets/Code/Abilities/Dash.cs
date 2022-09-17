@@ -72,7 +72,10 @@ public class Dash : MonoBehaviour
         desiredDash = inputHandler.InputSource.GetDashInput();
 
         if (desiredDash)
+        {
             dashDirection = GetDashDirection();
+            StartCoroutine(GrantDamageAndIFrames(invincibilityFrames));
+        }
 
         if (desiredDash && canDash)
         {
@@ -132,9 +135,7 @@ public class Dash : MonoBehaviour
             StopDashInstantly();
         }
     }
-
-
-
+    
     private void ResetDashCoolDown()
     {
         dashCoolDown = dashRate;
@@ -154,7 +155,7 @@ public class Dash : MonoBehaviour
         var force = dashDirection * (dashSpeed * Time.deltaTime);
         rigidbody2D.AddForce(force, ForceMode2D.Impulse);
 
-        StartCoroutine(GrantDamageAndIFrames(invincibilityFrames));
+        //StartCoroutine(GrantDamageAndIFrames(invincibilityFrames));
     }
 
     private void EndDash()
@@ -177,6 +178,11 @@ public class Dash : MonoBehaviour
         player.SetInvincibility(false);
     }
 
+    public void StopDamaging()
+    {
+        canDamage = false;
+    }
+    
     private IEnumerator GrantDamageAndIFrames(int frames)
     {
         player.SetInvincibility(true);
@@ -185,7 +191,7 @@ public class Dash : MonoBehaviour
         for (var i = 0; i < frames; i++) yield return new WaitForEndOfFrame();
 
         player.SetInvincibility(false);
-        canDamage = false;
+        StopDamaging();
     }
 
     private IEnumerator ClearDashTrailDelayed()

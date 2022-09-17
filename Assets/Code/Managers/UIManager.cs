@@ -300,6 +300,9 @@ public class UIManager : MonoBehaviour
     }
     private void ShowQuitPanel()
     {
+        rankBubble.gameObject.SetActive(false);
+        infoPanel.gameObject.SetActive(false);
+        
         OnMissionAccomplished?.Invoke(true);
         
         var duration = 0.75f;
