@@ -9758,7 +9758,7 @@ PrefabInstance:
       objectReference: {fileID: 1071981575}
     - target: {fileID: 7047894155724562833, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}
       propertyPath: invincibilityFrames
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 843e6e905fefd445fa944294e7082ffe, type: 3}

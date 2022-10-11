@@ -16,13 +16,6 @@ public class PlayerProjectile : BasicProjectile
                 Destroy(gameObject);
             }
         }
-
-        if (col.CompareTag("ChargeZone"))
-        {
-            return;
-        }
-        
-        //base.OnTriggerEnter2D(col);
     }
 
     public static event Action OnPlayerProjectileHit;

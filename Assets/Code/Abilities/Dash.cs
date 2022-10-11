@@ -85,7 +85,6 @@ public class Dash : MonoBehaviour
 
                 isDashing = true;
                 canDash = false;
-                canDamage = true;
 
                 dashAudioEvent.Play(audioSource);
                 
@@ -154,8 +153,6 @@ public class Dash : MonoBehaviour
 
         var force = dashDirection * (dashSpeed * Time.deltaTime);
         rigidbody2D.AddForce(force, ForceMode2D.Impulse);
-
-        //StartCoroutine(GrantDamageAndIFrames(invincibilityFrames));
     }
 
     private void EndDash()
